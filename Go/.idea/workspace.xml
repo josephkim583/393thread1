@@ -8,7 +8,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="Merge branch 'master' of https://github.com/NorthwesternSoftwareConstructionFall19/team15-dev&#10;&#10;# Conflicts:&#10;#&#9;Assignment3/src/GO/Board.java" />
+    <list default="true" id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="Merge branch 'master' of https://github.com/NorthwesternSoftwareConstructionFall19/team15-dev&#10;&#10;# Conflicts:&#10;#&#9;Assignment3/src/GO/Board.java">
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5_1.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1S4IIEYkelbC6u3Z70u6dKhygJb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -47,7 +58,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
