@@ -2,23 +2,29 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Assignment4:jar" />
-      <artifact name="Assignment5:jar" />
-      <artifact name="Assignment5_1:jar" />
+      <artifact name="Assignment6:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="Merge branch 'master' of https://github.com/NorthwesternSoftwareConstructionFall19/team15-dev&#10;&#10;# Conflicts:&#10;#&#9;Assignment3/src/GO/Board.java">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Assignment6_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/BoardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/InputParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/InputParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/InputParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/InputParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/MaybeStone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/MaybeStone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/PointTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/PointTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RuleChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RuleChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RuleCheckerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RuleCheckerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Statement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Statement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Stone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Stone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/GameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/GameInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/RuleCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleCheckerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver6.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,12 +51,13 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/Assignment6" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,7 +65,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />

@@ -59,6 +59,6 @@ class RuleCheckerTest {
         RuleChecker rc = new RuleChecker();
         ArrayList<Board> testBoards= new ArrayList<>();
         testBoards.add(testBoard);
-        assertFalse(rc.moveCheck(new Stone("B"), new Point("2-8"), testBoards));
+        assertFalse(rc.moveCheck(new Stone("B"), new Point("2-8"), testBoards).getKey());
     }
 }
