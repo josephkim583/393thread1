@@ -38,26 +38,26 @@ public class Game implements GameInterface {
     }
 
     @Override
-    public Object[] pass() throws Exception {
+    public JSONArray pass() throws Exception {
         JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass++;
         if (consecutivePass == 2) {
-            return endGame().toArray();
+            return endGame();
         }
         alternatePlayer();
 
-        return returnHistory.toArray();
+        return returnHistory;
     }
 
     @Override
-    public Object[] makeMove(Point point) throws Exception {
+    public JSONArray makeMove(Point point) throws Exception {
         JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass = 0;
         Stone currentStone = new Stone(currentStoneColor);
         if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
-            return endGame().toArray();
+            return endGame();
         }
         Board newBoard = new Board(boardHistory.get(0));
         newBoard.place(currentStone, point);
@@ -67,7 +67,7 @@ public class Game implements GameInterface {
         boardHistory.add(0, newBoard);
         alternatePlayer();
 
-        return returnHistory.toArray();
+        return returnHistory;
     }
 
     JSONArray endGame() throws Exception {
@@ -108,7 +108,7 @@ public class Game implements GameInterface {
         JSONArray currentHistory = new JSONArray();
         for (Board board : boardHistory){
             Board boardCopy = new Board(board);
-            currentHistory.add(boardCopy.board);
+            currentHistory.add(boardCopy.printBoard());
         }
         return (currentHistory);
     }

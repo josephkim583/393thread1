@@ -194,7 +194,7 @@ public class Board implements Statement {
         return output;
     }
 
-    private JSONArray printBoard() {
+    public JSONArray printBoard() {
         JSONArray output = new JSONArray();
         for (int i = 0; i < 19; i++) {
             JSONArray temp = new JSONArray();

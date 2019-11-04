@@ -3,7 +3,6 @@ package GO;
 import org.json.simple.JSONArray;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class testDriver6 {
     public static void main(String[] args) throws Exception {
@@ -28,6 +27,6 @@ public class testDriver6 {
                 outputArray.add(game.makeMove(new Point(command)));
             }
         }
-        System.out.println(Arrays.deepToString(outputArray.toArray()));
+        System.out.println(outputArray);
     }
 }
