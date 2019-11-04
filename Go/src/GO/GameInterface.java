@@ -1,7 +1,10 @@
 package GO;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public interface GameInterface {
-    public void registerPlayer(String name);
-    public void makeMove(Point point) throws Exception;
-    public void pass();
+    public String registerPlayer(String name) throws IOException;
+    public ArrayList<Board> makeMove(Point point) throws Exception;
+    public ArrayList<Board> pass();
 }

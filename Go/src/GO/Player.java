@@ -4,10 +4,14 @@ import org.json.simple.JSONArray;
 
 import java.util.ArrayList;
 
-public class Play {
+public class Player {
     private String playerName;
     private Stone playerStone;
-    RuleChecker ruleChecker = new RuleChecker();
+
+    public Player (String name, Stone stone){
+        playerName = name;
+        playerStone = stone;
+    }
 
     public String getPlayerName() {
         return playerName;
