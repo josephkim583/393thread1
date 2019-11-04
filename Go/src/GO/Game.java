@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Game implements GameInterface {
     Player playerOne;
     Player playerTwo;
-    Player currentPlayer;
+    String currentStoneColor = "B";
     int consecutivePass = 0;
     int numberOfPlayers = 0;
     boolean registered;
@@ -26,12 +26,11 @@ public class Game implements GameInterface {
         if (numberOfPlayers == 0){
             Stone blackStone = new Stone("B");
             playerOne = new Player(name, blackStone);
-            currentPlayer = playerOne;
             numberOfPlayers++;
             return "B";
         } else if (numberOfPlayers == 1){
             Stone whiteStone = new Stone("W");
-            playerOne = new Player(name, whiteStone);
+            playerTwo = new Player(name, whiteStone);
             numberOfPlayers++;
             return "W";
         }
@@ -56,7 +55,7 @@ public class Game implements GameInterface {
         JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass = 0;
-        Stone currentStone = currentPlayer.getPlayerStone();
+        Stone currentStone = new Stone(currentStoneColor);
         if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
             return endGame().toArray();
         }
@@ -84,7 +83,8 @@ public class Game implements GameInterface {
             jsonArray.add(playerTwo.getPlayerName());
         }
         else {
-            if (playerOne.getPlayerName().compareTo(playerTwo.getPlayerName()) > 0){
+
+            if (playerOne.getPlayerName().compareTo(playerTwo.getPlayerName()) < 0){
                 jsonArray.add(playerOne.getPlayerName());
                 jsonArray.add(playerTwo.getPlayerName());
             }
@@ -97,10 +97,10 @@ public class Game implements GameInterface {
     }
 
     void alternatePlayer() {
-        if (currentPlayer == playerOne) {
-            currentPlayer = playerTwo;
+        if (currentStoneColor == "B") {
+            currentStoneColor = "W";
         } else {
-            currentPlayer = playerOne;
+            currentStoneColor = "B";
         }
     }
 

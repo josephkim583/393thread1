@@ -10,11 +10,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/GameInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/GameInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/GameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/GameInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver6.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

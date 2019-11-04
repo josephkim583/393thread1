@@ -1,7 +1,6 @@
 package GO;
 
 import org.json.simple.JSONArray;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
