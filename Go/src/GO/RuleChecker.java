@@ -5,26 +5,31 @@ import java.lang.*;
 import java.io.*;
 
 import org.json.simple.JSONArray;
-import javafx.util.Pair;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class RuleChecker {
 
-    public Pair<Boolean, Board> moveCheck(Stone stone, Point point, ArrayList<Board> boards) throws Exception {
+    public ArrayList<Object> moveCheck(Stone stone, Point point, ArrayList<Board> boards) throws Exception {
         Board newestBoard = boards.get(0);
         Board oldestBoard = boards.get(boards.size() - 1);
         Board maybeBoard = makeMaybeBoard(newestBoard, point, stone);
 
         // Can't place if point occupied
         if (newestBoard.occupied(point)) {
-            return new Pair<>(false, maybeBoard);
+            ArrayList moveCheck = new ArrayList();
+            moveCheck.add(false);
+            moveCheck.add(maybeBoard);
+            return moveCheck;
         }
 
         // Can't place if suicide
         if (!maybeBoard.occupies(stone, point)) {
-            return new Pair<>(false, maybeBoard);
+            ArrayList moveCheck = new ArrayList();
+            moveCheck.add(false);
+            moveCheck.add(maybeBoard);
+            return moveCheck;
         }
 
         int boardSize = boards.size();
@@ -33,10 +38,16 @@ public class RuleChecker {
             Board board2 = boards.get(1);
             // Can't place if super-ko
             if (board2.isBoardEqual(maybeBoard)) {
-                return new Pair<>(false, maybeBoard);
+                ArrayList moveCheck = new ArrayList();
+                moveCheck.add(false);
+                moveCheck.add(maybeBoard);
+                return moveCheck;
             }
         }
-        return new Pair<>(true, maybeBoard);
+        ArrayList moveCheck = new ArrayList();
+        moveCheck.add(true);
+        moveCheck.add(maybeBoard);
+        return moveCheck;
     }
 
     public boolean historyCheck(Stone stone, ArrayList<Board> boards) throws Exception {

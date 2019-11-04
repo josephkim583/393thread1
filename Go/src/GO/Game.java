@@ -58,7 +58,7 @@ public class Game implements GameInterface {
 
         consecutivePass = 0;
         Stone currentStone = currentPlayer.getPlayerStone();
-        if (!ruleChecker.moveCheck(currentStone, point, boardHistory).getKey()) {
+        if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
             endGame();
         }
         Board newBoard = new Board(boardHistory.get(0));

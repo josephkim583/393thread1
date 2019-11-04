@@ -7,24 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="Merge branch 'master' of https://github.com/NorthwesternSoftwareConstructionFall19/team15-dev&#10;&#10;# Conflicts:&#10;#&#9;Assignment3/src/GO/Board.java">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Assignment6_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/BoardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/InputParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/InputParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/InputParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/InputParserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/MaybeStone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/MaybeStone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/PointTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/PointTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RuleChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RuleChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RuleCheckerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RuleCheckerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Statement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Statement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Stone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Stone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Play.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/GameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/GameInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/RuleChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/RuleCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleCheckerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver6.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +58,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
