@@ -4,9 +4,11 @@ import org.json.simple.JSONArray;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class testDriver6 {
     public static void main(String[] args) throws Exception {
+        String[][] board = new String[19][19];
         InputParser inputParser = new InputParser();
         ArrayList<Object> parsed = inputParser.parser();
         JSONArray outputArray = new JSONArray();
@@ -27,6 +29,6 @@ public class testDriver6 {
                 outputArray.add(game.makeMove(new Point(command)));
             }
         }
-        System.out.println(outputArray);
+        System.out.println(Arrays.deepToString(outputArray.toArray()));
     }
 }

@@ -2,7 +2,6 @@ package GO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,26 +39,26 @@ public class Game implements GameInterface {
     }
 
     @Override
-    public ArrayList<Board> pass() throws Exception {
-        ArrayList<Board> returnHistory = makeCopyofCurrentState();
+    public Object[] pass() throws Exception {
+        JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass++;
         if (consecutivePass == 2) {
-            return endGame();
+            return endGame().toArray();
         }
         alternatePlayer();
 
-        return (returnHistory);
+        return returnHistory.toArray();
     }
 
     @Override
-    public ArrayList<Board> makeMove(Point point) throws Exception {
-        ArrayList<Board> returnHistory = makeCopyofCurrentState();
+    public Object[] makeMove(Point point) throws Exception {
+        JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass = 0;
         Stone currentStone = currentPlayer.getPlayerStone();
         if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
-            endGame();
+            return endGame().toArray();
         }
         Board newBoard = new Board(boardHistory.get(0));
         newBoard.place(currentStone, point);
@@ -69,7 +68,7 @@ public class Game implements GameInterface {
         boardHistory.add(0, newBoard);
         alternatePlayer();
 
-        return (returnHistory);
+        return returnHistory.toArray();
     }
 
     JSONArray endGame() throws Exception {
@@ -105,11 +104,11 @@ public class Game implements GameInterface {
         }
     }
 
-    private ArrayList<Board> makeCopyofCurrentState(){
-        ArrayList<Board> currentHistory = new ArrayList<>();
+    private JSONArray makeCopyofCurrentState(){
+        JSONArray currentHistory = new JSONArray();
         for (Board board : boardHistory){
             Board boardCopy = new Board(board);
-            currentHistory.add(boardCopy);
+            currentHistory.add(boardCopy.board);
         }
         return (currentHistory);
     }
