@@ -49,6 +49,7 @@ public class Game implements GameInterface {
         if (consecutivePass == 2) {
             gameLog.add(returnHistory);
             endGame();
+            return;
         }
         alternatePlayer();
 
@@ -64,6 +65,7 @@ public class Game implements GameInterface {
         if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
             gameLog.add(returnHistory);
             endGame();
+            return;
         }
         Board newBoard = new Board(boardHistory.get(0));
         newBoard.place(currentStone, point);
