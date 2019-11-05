@@ -1,9 +1,11 @@
 package GO;
 
+import org.json.simple.JSONArray;
+
 import java.io.IOException;
 
 public interface GameInterface {
-    public String registerPlayer(String name) throws IOException;
-    public Object[] makeMove(Point point) throws Exception;
-    public Object[] pass() throws Exception;
+    public void registerPlayer(String name) throws IOException;
+    public void makeMove(Point point) throws Exception;
+    public void pass() throws Exception;
 }

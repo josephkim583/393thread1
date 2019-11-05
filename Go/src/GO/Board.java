@@ -1,5 +1,6 @@
 package GO;
 
+import javafx.css.Rule;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -140,10 +141,26 @@ public class Board implements Statement {
     public Object place(Stone stone, Point point) throws Exception {
         int col = point.getCol();
         int row = point.getRow();
+        RuleChecker ruleChecker = new RuleChecker();
         if (occupied(point)) {
             return "This seat is taken!";
         } else {
             this.board[col][row] = stone.getStone();
+
+            for (int i = 1; i <= 19; i++) {
+                for (int j = 1; j <= 19; j++) {
+                    String pointStr = i + "-" + j;
+                    Point currPoint = new Point(pointStr);
+                    Stone opponent = stone.opponent();
+                    if (getPointValue(currPoint).equals(opponent.getStone())) {
+                        if (!ruleChecker.hasLiberty(this, currPoint)) {
+                            Stone currStone = new Stone(this.getPointValue(currPoint));
+                            this.remove(currStone, currPoint);
+                        }
+                    }
+                }
+            }
+
             JSONArray output = printBoard();
             return output;
         }
@@ -194,7 +211,7 @@ public class Board implements Statement {
         return output;
     }
 
-    private JSONArray printBoard() {
+    public JSONArray printBoard() {
         JSONArray output = new JSONArray();
         for (int i = 0; i < 19; i++) {
             JSONArray temp = new JSONArray();
