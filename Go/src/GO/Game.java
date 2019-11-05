@@ -53,7 +53,7 @@ public class Game implements GameInterface {
                 return;
             }
             alternatePlayer();
-            
+
             Board newBoard = new Board(boardHistory.get(0));
             if (boardHistory.size() == 3) {
                 boardHistory.remove(2);
