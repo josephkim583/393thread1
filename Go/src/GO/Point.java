@@ -62,10 +62,18 @@ public class Point {
 
     public ArrayList<Point> getNeighbors() {
         ArrayList<Point> neighbors = new ArrayList<>();
-        neighbors.add(this.North());
-        neighbors.add(this.East());
-        neighbors.add(this.South());
-        neighbors.add(this.West());
+        if (this.North().isValid()){
+            neighbors.add(this.North());
+        }
+        if (this.East().isValid()){
+            neighbors.add(this.East());
+        }
+        if (this.South().isValid()){
+            neighbors.add(this.South());
+        }
+        if (this.West().isValid()){
+            neighbors.add(this.West());
+        }
         return neighbors;
     }
 
