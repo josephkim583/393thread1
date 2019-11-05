@@ -6,9 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="Merge branch 'master' of https://github.com/NorthwesternSoftwareConstructionFall19/team15-dev&#10;&#10;# Conflicts:&#10;#&#9;Assignment3/src/GO/Board.java">
+    <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/RuleChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleChecker.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,7 +59,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -172,7 +174,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="" />
+      <changelist id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="" />
       <created>1570816359608</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

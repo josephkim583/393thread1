@@ -230,6 +230,44 @@ public class RuleChecker {
         return board.reachable(point, new MaybeStone(" "));
     }
 
+    ArrayList<Point> getLiberties(Board board, Point point) {
+        int col = point.getCol();
+        int row = point.getRow();
+        String originalColor = board.board[col][row];
+        HashMap<Point, Boolean> visited = new HashMap<Point, Boolean>();
+        ArrayList<Point> queue = new ArrayList<>();
+        ArrayList<Point> liberties = new ArrayList<>();
+
+        //If at the point is an empty space on the board
+        if (board.board[col][row].equals(" ")){
+            return liberties;
+        }
+
+        queue.add(point);
+        while (queue.size() > 0){
+            Point pop = queue.get(0);
+            queue.remove(0);
+            visited.put(pop, true);
+            ArrayList<Point> neighbors = pop.getNeighbors();
+
+            for (Point neighborPoint : neighbors){
+                if (!visited.get(neighborPoint)){
+                    String stoneAtPoint = board.board[neighborPoint.getCol()][neighborPoint.getRow()];
+                    if (stoneAtPoint.equals(" ")){
+                        if (!liberties.contains(neighborPoint)){
+                            liberties.add(neighborPoint);
+                        }
+                    } else if (stoneAtPoint.equals(originalColor)){
+                        if (!queue.contains(neighborPoint)){
+                            queue.add(neighborPoint);
+                        }
+                    }
+                }
+            }
+        }
+        return liberties;
+    }
+
     // Returns ArrayList of newly added points (i.e. not in the old board but in the new board)
     // Can
     // 1. Check if there has been only one newly added point
