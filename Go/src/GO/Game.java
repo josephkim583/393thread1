@@ -13,6 +13,7 @@ public class Game implements GameInterface {
     int consecutivePass = 0;
     int numberOfPlayers = 0;
     boolean registered;
+    boolean gameEnded = false;
     ArrayList<Board> boardHistory = new ArrayList<>();
     RuleChecker ruleChecker = new RuleChecker();
     JSONArray gameLog = new JSONArray();
@@ -43,42 +44,56 @@ public class Game implements GameInterface {
 
     @Override
     public void pass() throws Exception {
-        JSONArray returnHistory = makeCopyofCurrentState();
-
-        consecutivePass++;
-        if (consecutivePass == 2) {
+        if (gameEnded == false){
+            JSONArray returnHistory = makeCopyofCurrentState();
+            consecutivePass++;
+            if (consecutivePass == 2) {
+                gameLog.add(returnHistory);
+                legalEndGame();
+                return;
+            }
+            alternatePlayer();
             gameLog.add(returnHistory);
-            endGame();
-            return;
         }
-        alternatePlayer();
-
-        gameLog.add(returnHistory);
     }
 
     @Override
     public void makeMove(Point point) throws Exception {
-        JSONArray returnHistory = makeCopyofCurrentState();
+        if (gameEnded == false){
+            JSONArray returnHistory = makeCopyofCurrentState();
 
-        consecutivePass = 0;
-        Stone currentStone = new Stone(currentStoneColor);
-        if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
+            consecutivePass = 0;
+            Stone currentStone = new Stone(currentStoneColor);
+            if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
+                gameLog.add(returnHistory);
+                illegalEndGame(currentStoneColor);
+                return;
+            }
+            Board newBoard = new Board(boardHistory.get(0));
+            newBoard.place(currentStone, point);
+            if (boardHistory.size() == 3) {
+                boardHistory.remove(2);
+            }
+            boardHistory.add(0, newBoard);
+            alternatePlayer();
+
             gameLog.add(returnHistory);
-            endGame();
-            return;
         }
-        Board newBoard = new Board(boardHistory.get(0));
-        newBoard.place(currentStone, point);
-        if (boardHistory.size() == 3) {
-            boardHistory.remove(2);
-        }
-        boardHistory.add(0, newBoard);
-        alternatePlayer();
-
-        gameLog.add(returnHistory);
     }
 
-    void endGame() throws Exception {
+    void illegalEndGame(String stoneColor) throws Exception {
+        JSONArray winnerArray = new JSONArray();
+        if (stoneColor == "B"){
+            winnerArray.add(playerTwo.getPlayerName());
+        }
+        else{
+            winnerArray.add(playerOne.getPlayerName());
+        }
+        gameLog.add(winnerArray);
+        gameEnded = true;
+    }
+
+    void legalEndGame() throws Exception {
         RuleChecker ruleChecker = new RuleChecker();
         JSONObject scores = ruleChecker.getScore(boardHistory.get(0));
         JSONArray jsonArray = new JSONArray();
@@ -102,6 +117,7 @@ public class Game implements GameInterface {
             }
         }
         gameLog.add(jsonArray);
+        gameEnded = true;
     }
 
     void alternatePlayer() {
