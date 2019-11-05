@@ -268,6 +268,7 @@ public class RuleChecker {
                 Stone opponent = stone.opponent();
                 if (maybeBoard.getPointValue(currPoint).equals(opponent.getStone())) {
                     if (!hasLiberty(maybeBoard, currPoint)) {
+                        System.out.println("removing stone at " + currPoint.toString());
                         Stone currStone = new Stone(maybeBoard.getPointValue(currPoint));
                         maybeBoardRemoveEnemy.remove(currStone, currPoint);
                     }
