@@ -7,7 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2a85fd3-92ec-448a-9595-0ff1184e3632" name="Default Changelist" comment="Merge branch 'master' of https://github.com/NorthwesternSoftwareConstructionFall19/team15-dev&#10;&#10;# Conflicts:&#10;#&#9;Assignment3/src/GO/Board.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/GameInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/GameInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver6.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/GameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/GameInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver6.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

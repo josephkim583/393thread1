@@ -15,49 +15,55 @@ public class Game implements GameInterface {
     boolean registered;
     ArrayList<Board> boardHistory = new ArrayList<>();
     RuleChecker ruleChecker = new RuleChecker();
+    JSONArray gameLog = new JSONArray();
 
     public Game(){
         Board emptyBoard = new Board();
         boardHistory.add(emptyBoard);
     }
 
+    public JSONArray getGameLog() {
+        return gameLog;
+    }
+
     @Override
-    public String registerPlayer(String name) throws IOException {
+    public void registerPlayer(String name) throws IOException {
         if (numberOfPlayers == 0){
             Stone blackStone = new Stone("B");
             playerOne = new Player(name, blackStone);
             numberOfPlayers++;
-            return "B";
+            gameLog.add("B");
         } else if (numberOfPlayers == 1){
             Stone whiteStone = new Stone("W");
             playerTwo = new Player(name, whiteStone);
             numberOfPlayers++;
-            return "W";
+            gameLog.add("W");
         }
-        return "Trying to add more than 2 players";
     }
 
     @Override
-    public JSONArray pass() throws Exception {
+    public void pass() throws Exception {
         JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass++;
         if (consecutivePass == 2) {
-            return endGame();
+            gameLog.add(returnHistory);
+            endGame();
         }
         alternatePlayer();
 
-        return returnHistory;
+        gameLog.add(returnHistory);
     }
 
     @Override
-    public JSONArray makeMove(Point point) throws Exception {
+    public void makeMove(Point point) throws Exception {
         JSONArray returnHistory = makeCopyofCurrentState();
 
         consecutivePass = 0;
         Stone currentStone = new Stone(currentStoneColor);
         if (!(boolean)ruleChecker.moveCheck(currentStone, point, boardHistory).get(0)) {
-            return endGame();
+            gameLog.add(returnHistory);
+            endGame();
         }
         Board newBoard = new Board(boardHistory.get(0));
         newBoard.place(currentStone, point);
@@ -67,10 +73,10 @@ public class Game implements GameInterface {
         boardHistory.add(0, newBoard);
         alternatePlayer();
 
-        return returnHistory;
+        gameLog.add(returnHistory);
     }
 
-    JSONArray endGame() throws Exception {
+    void endGame() throws Exception {
         RuleChecker ruleChecker = new RuleChecker();
         JSONObject scores = ruleChecker.getScore(boardHistory.get(0));
         JSONArray jsonArray = new JSONArray();
@@ -93,7 +99,7 @@ public class Game implements GameInterface {
                 jsonArray.add(playerOne.getPlayerName());
             }
         }
-        return  jsonArray;
+        gameLog.add(jsonArray);
     }
 
     void alternatePlayer() {
