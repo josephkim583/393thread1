@@ -230,6 +230,50 @@ public class RuleChecker {
         return board.reachable(point, new MaybeStone(" "));
     }
 
+    List<Point> getLiberties(Board board, Point point) {
+        int col = point.getCol();
+        int row = point.getRow();
+        String originalColor = board.board[col][row];
+        HashMap<String, Boolean> visited = new HashMap<String, Boolean>();
+        ArrayList<Point> queue = new ArrayList<>();
+        List<Point> liberties = new ArrayList<>();
+
+        //If at the point is an empty space on the board
+        if (board.board[col][row].equals(" ")){
+            return liberties;
+        }
+
+        queue.add(point);
+        while (queue.size() > 0){
+            Point pop = queue.get(0);
+//            System.out.println(pop.pointToString());
+            queue.remove(0);
+            visited.put(pop.pointToString(), true);
+//            System.out.println(visited.toString());
+            ArrayList<Point> neighbors = pop.getNeighbors();
+
+            for (Point neighborPoint : neighbors){
+                if (!visited.containsKey(neighborPoint.pointToString())){
+                    String stoneAtPoint = board.board[neighborPoint.getCol()][neighborPoint.getRow()];
+                    if (stoneAtPoint.equals(" ")){
+                        if (!containsPoint(liberties, neighborPoint)){
+                            liberties.add(neighborPoint);
+                        }
+                    } else if (stoneAtPoint.equals(originalColor)){
+                        if (!queue.contains(neighborPoint)){
+                            queue.add(neighborPoint);
+                        }
+                    }
+                }
+            }
+        }
+        return liberties;
+    }
+
+    boolean containsPoint(List<Point> list, Point point){
+        return list.stream().filter(o -> o.pointToString().equals(point.pointToString())).findFirst().isPresent();
+    }
+
     // Returns ArrayList of newly added points (i.e. not in the old board but in the new board)
     // Can
     // 1. Check if there has been only one newly added point

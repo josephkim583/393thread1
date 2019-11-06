@@ -3,6 +3,7 @@ package GO;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.security.spec.ECField;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,7 +29,6 @@ class RuleCheckerTest {
             {"W", " ", " ", " ", " ", " ", "W", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
             {"W", " ", " ", " ", " ", " ", "W", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
             {"W", " ", " ", " ", " ", " ", "W", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "}};
-
 
     @Test
     void makeMaybeBoard() throws Exception {

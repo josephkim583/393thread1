@@ -3,6 +3,8 @@ package GO;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class Point {
     private int col;
     private int row;
@@ -56,6 +58,23 @@ public class Point {
     public Point West() {
         Point west = new Point(col-1, row);
         return west;
+    }
+
+    public ArrayList<Point> getNeighbors() {
+        ArrayList<Point> neighbors = new ArrayList<>();
+        if (this.North().isValid()){
+            neighbors.add(this.North());
+        }
+        if (this.East().isValid()){
+            neighbors.add(this.East());
+        }
+        if (this.South().isValid()){
+            neighbors.add(this.South());
+        }
+        if (this.West().isValid()){
+            neighbors.add(this.West());
+        }
+        return neighbors;
     }
 
     public String pointToString() {
