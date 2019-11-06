@@ -7,8 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GO/RuleCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleCheckerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
