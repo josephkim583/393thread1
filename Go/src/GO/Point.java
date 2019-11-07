@@ -83,14 +83,14 @@ public class Point {
     }
 
     public Boolean isPriorityOver(Point anotherpoint){
-        if (this.col < anotherpoint.col){
+        if (this.row < anotherpoint.row){
             return true;
-        } else if (anotherpoint.col < this.col){
+        } else if (anotherpoint.row < this.row){
             return false;
         } else {
-            if (this.row < anotherpoint.row){
+            if (this.col < anotherpoint.col){
                 return true;
-            } else if (anotherpoint.row < this.row){
+            } else if (anotherpoint.col < this.col){
                 return false;
             }
         }
