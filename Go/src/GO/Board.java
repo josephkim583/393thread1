@@ -155,8 +155,7 @@ public class Board implements Statement {
                     Stone opponent = stone.opponent();
                     if (getPointValue(currPoint).equals(opponent.getStone())) {
                         if (ruleChecker.getLiberties(this, currPoint).size() == 0) {
-                            Stone currStone = new Stone(this.getPointValue(currPoint));
-//                            this.remove(currStone, currPoint);
+                            removeList.add(currPoint);
                         }
                     }
                 }
