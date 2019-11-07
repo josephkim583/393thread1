@@ -246,10 +246,8 @@ public class RuleChecker {
         queue.add(point);
         while (queue.size() > 0){
             Point pop = queue.get(0);
-//            System.out.println(pop.pointToString());
             queue.remove(0);
             visited.put(pop.pointToString(), true);
-//            System.out.println(visited.toString());
             ArrayList<Point> neighbors = pop.getNeighbors();
 
             for (Point neighborPoint : neighbors){
@@ -305,19 +303,6 @@ public class RuleChecker {
         Board maybeBoard = new Board(board);
         maybeBoard.place(stone, point);
         Board maybeBoardRemoveEnemy = new Board(maybeBoard);
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
-                String pointStr = i + "-" + j;
-                Point currPoint = new Point(pointStr);
-                Stone opponent = stone.opponent();
-                if (maybeBoard.getPointValue(currPoint).equals(opponent.getStone())) {
-                    if (!hasLiberty(maybeBoard, currPoint)) {
-                        Stone currStone = new Stone(maybeBoard.getPointValue(currPoint));
-                        maybeBoardRemoveEnemy.remove(currStone, currPoint);
-                    }
-                }
-            }
-        }
 
         Board maybeBoardAfterRemoving = new Board(maybeBoardRemoveEnemy);
         for (int i = 1; i <= 19; i++) {

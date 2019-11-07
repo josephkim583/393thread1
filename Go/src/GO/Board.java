@@ -141,6 +141,7 @@ public class Board implements Statement {
     public Object place(Stone stone, Point point) throws Exception {
         int col = point.getCol();
         int row = point.getRow();
+        ArrayList<Point> removeList= new ArrayList<>();
         RuleChecker ruleChecker = new RuleChecker();
         if (occupied(point)) {
             return "This seat is taken!";
@@ -155,10 +156,15 @@ public class Board implements Statement {
                     if (getPointValue(currPoint).equals(opponent.getStone())) {
                         if (ruleChecker.getLiberties(this, currPoint).size() == 0) {
                             Stone currStone = new Stone(this.getPointValue(currPoint));
-                            this.remove(currStone, currPoint);
+//                            this.remove(currStone, currPoint);
                         }
                     }
                 }
+            }
+
+            for (Point points : removeList){
+                Stone currStone = new Stone(this.getPointValue(points));
+                this.remove(currStone, points);
             }
 
             JSONArray output = printBoard();

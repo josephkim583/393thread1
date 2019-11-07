@@ -75,13 +75,15 @@ public class Player {
              for (int j = 1; j <= 19; j++) {
                  String pointStr = i + "-" + j;
                  Point currPoint = new Point(pointStr);
-                 List<Point> liberties = ruleChecker.getLiberties(lastBoard, currPoint);
-                 if (liberties.size() == 1){
-                     Point libertyPoint = liberties.get(0);
-                     if ((boolean)ruleChecker.moveCheck(playerStone, libertyPoint, boards).get(0)){
-                        if (libertyPoint.isPriorityOver(pointToPlace)){
-                            pointToPlace = libertyPoint;
-                        }
+                 if (lastBoard.board[currPoint.getCol()][currPoint.getRow()].equals(opponentStone.getStone())){
+                     List<Point> liberties = ruleChecker.getLiberties(lastBoard, currPoint);
+                     if (liberties.size() == 1){
+                         Point libertyPoint = liberties.get(0);
+                         if ((boolean)ruleChecker.moveCheck(playerStone, libertyPoint, boards).get(0)){
+                             if (libertyPoint.isPriorityOver(pointToPlace)){
+                                 pointToPlace = libertyPoint;
+                             }
+                         }
                      }
                  }
 //                 Board maybeBoard = ruleChecker.makeMaybeBoard(lastBoard, currPoint, playerStone);
