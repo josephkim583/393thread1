@@ -302,7 +302,20 @@ public class RuleChecker {
     Board makeMaybeBoard(Board board, Point point, Stone stone) throws Exception {
         Board maybeBoard = new Board(board);
         maybeBoard.place(stone, point);
-        return maybeBoard;
+        Board maybeBoardRemoveEnemy = new Board(maybeBoard);
+
+        Board maybeBoardAfterRemoving = new Board(maybeBoardRemoveEnemy);
+        for (int i = 1; i <= 19; i++) {
+            for (int j = 1; j <= 19; j++) {
+                String pointStr = i + "-" + j;
+                Point currPoint = new Point(pointStr);
+                if (!hasLiberty(maybeBoardRemoveEnemy, currPoint)) {
+                    Stone currStone = new Stone(maybeBoard.getPointValue(currPoint));
+                    maybeBoardAfterRemoving.remove(currStone, currPoint);
+                }
+            }
+        }
+        return maybeBoardAfterRemoving;
     }
 
 }
