@@ -3,11 +3,7 @@ package GO;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public class RuleChecker {
 
@@ -201,8 +197,10 @@ public class RuleChecker {
             for (int j = 1; j <= 19; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
-                if (!hasLiberty(board, currPoint)) {
-                    return false;
+                if (board.occupied(currPoint)){
+                    if (getLiberties(board, currPoint).size() == 0) {
+                        return false;
+                    }
                 }
             }
         }
@@ -222,20 +220,12 @@ public class RuleChecker {
         return true;
     }
 
-    boolean isNotEmptyBoard(Board board) {
-        return !isEmptyBoard(board);
-    }
-
-    boolean hasLiberty(Board board, Point point) throws Exception {
-        return board.reachable(point, new MaybeStone(" "));
-    }
-
     List<Point> getLiberties(Board board, Point point) {
         int col = point.getCol();
         int row = point.getRow();
         String originalColor = board.board[col][row];
         HashMap<String, Boolean> visited = new HashMap<String, Boolean>();
-        ArrayList<Point> queue = new ArrayList<>();
+        List<Point> queue = new ArrayList<>();
         List<Point> liberties = new ArrayList<>();
 
         //If at the point is an empty space on the board
@@ -251,14 +241,14 @@ public class RuleChecker {
             ArrayList<Point> neighbors = pop.getNeighbors();
 
             for (Point neighborPoint : neighbors){
-                if (!visited.containsKey(neighborPoint.pointToString())){
+                if (!visited.containsKey(neighborPoint.pointToString()) && !containsPoint(queue, neighborPoint)){
                     String stoneAtPoint = board.board[neighborPoint.getCol()][neighborPoint.getRow()];
                     if (stoneAtPoint.equals(" ")){
                         if (!containsPoint(liberties, neighborPoint)){
                             liberties.add(neighborPoint);
                         }
                     } else if (stoneAtPoint.equals(originalColor)){
-                        if (!queue.contains(neighborPoint)){
+                        if (!containsPoint(queue, neighborPoint)){
                             queue.add(neighborPoint);
                         }
                     }
@@ -309,9 +299,11 @@ public class RuleChecker {
             for (int j = 1; j <= 19; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
-                if (!hasLiberty(maybeBoardRemoveEnemy, currPoint)) {
-                    Stone currStone = new Stone(maybeBoard.getPointValue(currPoint));
-                    maybeBoardAfterRemoving.remove(currStone, currPoint);
+                if (maybeBoardAfterRemoving.occupied(currPoint)){
+                    if (getLiberties(maybeBoardRemoveEnemy, currPoint).size() == 0) {
+                        Stone currStone = new Stone(maybeBoard.getPointValue(currPoint));
+                        maybeBoardAfterRemoving.remove(currStone, currPoint);
+                    }
                 }
             }
         }
