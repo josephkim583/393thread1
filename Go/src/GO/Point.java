@@ -81,4 +81,19 @@ public class Point {
         String pointString = (row+1)+"-"+(col+1);
         return  pointString;
     }
+
+    public Boolean isPriorityOver(Point anotherpoint){
+        if (this.row < anotherpoint.row){
+            return true;
+        } else if (anotherpoint.row < this.row){
+            return false;
+        } else {
+            if (this.col < anotherpoint.col){
+                return true;
+            } else if (anotherpoint.col < this.col){
+                return false;
+            }
+        }
+        return true;
+    }
 }
