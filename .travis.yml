@@ -9,3 +9,4 @@ script:
  - git clone https://github.com/NorthwesternSoftwareConstructionFall19/oracle
  - chmod u+x ./oracle/run-test-fest.sh
  - ./oracle/run-test-fest.sh $ASSIGN_MAJOR $ASSIGN_MINOR $TEAM_NAME
+
