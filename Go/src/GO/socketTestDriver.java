@@ -1,21 +1,31 @@
 package GO;
 
 import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class socketTestDriver {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         Socket s = new Socket("localhost", 8001);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.add("PENISSSS");
-        pr.println(jsonArray);
+        InputParser input = new InputParser();
+        ArrayList<Object> parsedInput = input.parser();
+
+        pr.println(parsedInput);
         pr.flush();
-//        ProxyPlayer proxyPlayer = new ProxyPlayer();
-//        proxyPlayer.readFromSocket();
-        System.out.println("I CAME");
+
+        InputStreamReader in = new InputStreamReader(s.getInputStream());
+        BufferedReader bf = new BufferedReader(in);
+        String str = bf.readLine();
+        JSONParser parser = new JSONParser();
+        JSONArray playerOutput = (JSONArray) parser.parse(str);
+        System.out.println(playerOutput);
     }
 }

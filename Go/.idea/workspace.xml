@@ -2,39 +2,18 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="socket" />
+      <artifact name="ProxyPlayer" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ProxyPlayer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/socket.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GO/testDriver7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment5_1_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment5_1_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment5_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment5_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TestLiberty/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TestLiberty/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/BoardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/GameInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/GameInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/InputParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/InputParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/InputParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/InputParserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/MaybeStone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/MaybeStone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/PointTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/PointTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RuleChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RuleChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RuleCheckerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RuleCheckerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Statement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Statement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Stone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Stone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver5_1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/socketTestDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,13 +86,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RuleCheckerTest.moveCheckTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="GO.Main" />
+  <component name="RunManager" selected="Application.ProxyPlayer">
+    <configuration name="ProxyPlayer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GO.ProxyPlayer" />
       <module name="Go" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProxyPlayer" />
         <item itemvalue="JUnit.RuleCheckerTest.moveCheckTest" />
         <item itemvalue="JUnit.BoardTest.occupied" />
         <item itemvalue="JUnit.RuleCheckerTest.makeMaybeBoard" />
         <item itemvalue="JUnit.BoardTest.occupies" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
