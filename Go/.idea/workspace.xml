@@ -2,24 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="socket" />
+      <artifact name="ProxyPlayer" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Assignment7_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Deliverables/7/7.1/proxyPlayer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Deliverables/7/7.1/proxyPlayer.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Deliverables/7/7.1/testDriver.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Deliverables/7/7.1/testDriver.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Assignment7.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment7/Assignment7.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/socketTestDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver7.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
