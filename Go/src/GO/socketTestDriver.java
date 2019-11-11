@@ -8,12 +8,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class socketTestDriver {
     public static void main(String[] args) throws IOException, ParseException {
-        Socket s = new Socket("localhost", 8154);
+        InetAddress addr = InetAddress.getByName("127.0.0.1");
+
+        Socket s = new Socket(addr, 8154);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();
@@ -26,6 +29,7 @@ public class socketTestDriver {
         String str = bf.readLine();
         JSONParser parser = new JSONParser();
         JSONArray playerOutput = (JSONArray) parser.parse(str);
+
         s.close();
         pr.close();
         in.close();
