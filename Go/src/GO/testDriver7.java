@@ -13,8 +13,8 @@ public class testDriver7 {
         ArrayList<Object> parsedInput = input.parser();
         JSONArray outputArray = new JSONArray();
         Player thisGame = new Player();
-
-        Socket s = new Socket("localhost", 8015);
+        InetAddress addr = InetAddress.getByName("127.0.0.1");
+        Socket s = new Socket(addr, 8154);
 
         for (Object parse : parsedInput) {
             JSONArray commandArray = ((JSONArray) parse);

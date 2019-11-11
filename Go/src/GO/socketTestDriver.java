@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class socketTestDriver {
     public static void main(String[] args) throws IOException, ParseException {
-        Socket s = new Socket("localhost", 8015);
+        Socket s = new Socket("localhost", 8154);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();
@@ -27,5 +27,6 @@ public class socketTestDriver {
         JSONParser parser = new JSONParser();
         JSONArray playerOutput = (JSONArray) parser.parse(str);
         System.out.println(playerOutput);
+        s.close();
     }
 }
