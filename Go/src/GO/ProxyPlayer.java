@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class ProxyPlayer{
     public static void main(String[] args) throws Exception {
         Player player = new Player();
-        ServerSocket ss = new ServerSocket(8001);
+        ServerSocket ss = new ServerSocket(8015);
         Socket s = ss.accept();
 
         System.out.println("client connected");

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class socketTestDriver {
     public static void main(String[] args) throws IOException, ParseException {
-        Socket s = new Socket("localhost", 8001);
+        Socket s = new Socket("localhost", 8015);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();

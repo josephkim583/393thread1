@@ -14,7 +14,7 @@ public class testDriver7 {
         JSONArray outputArray = new JSONArray();
         Player thisGame = new Player();
 
-        Socket s = new Socket("localhost", 8001);
+        Socket s = new Socket("localhost", 8015);
 
         for (Object parse : parsedInput) {
             JSONArray commandArray = ((JSONArray) parse);
