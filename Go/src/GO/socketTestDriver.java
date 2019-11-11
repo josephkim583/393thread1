@@ -17,7 +17,7 @@ public class socketTestDriver {
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();
 
-//        Thread.sleep(5000);
+        Thread.sleep(5000);
 
         InetAddress addr = InetAddress.getByName("127.0.0.1");
         Socket s = new Socket(addr, 8154);
