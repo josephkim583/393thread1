@@ -19,8 +19,6 @@ public class ProxyPlayer{
         ServerSocket ss = new ServerSocket(8015);
         Socket s = ss.accept();
 
-        System.out.println("client connected");
-
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
 
