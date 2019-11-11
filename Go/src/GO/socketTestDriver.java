@@ -13,13 +13,15 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class socketTestDriver {
-    public static void main(String[] args) throws IOException, ParseException {
-        InetAddress addr = InetAddress.getByName("127.0.0.1");
-
-        Socket s = new Socket(addr, 8154);
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
+    public static void main(String[] args) throws IOException, ParseException, InterruptedException {
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();
+
+//        Thread.sleep(5000);
+
+        InetAddress addr = InetAddress.getByName("127.0.0.1");
+        Socket s = new Socket(addr, 8154);
+        PrintWriter pr = new PrintWriter(s.getOutputStream());
 
         pr.println(parsedInput);
         pr.flush();

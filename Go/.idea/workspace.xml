@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ProxyPlayer" />
+      <artifact name="socket" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/socketTestDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
     </list>
