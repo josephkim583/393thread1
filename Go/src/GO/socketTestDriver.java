@@ -27,6 +27,9 @@ public class socketTestDriver {
         JSONParser parser = new JSONParser();
         JSONArray playerOutput = (JSONArray) parser.parse(str);
         s.close();
+        pr.close();
+        in.close();
+        bf.close();
         System.out.println(playerOutput);
     }
 }

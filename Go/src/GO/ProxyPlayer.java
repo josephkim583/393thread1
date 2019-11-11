@@ -75,6 +75,10 @@ public class ProxyPlayer{
         PrintWriter outputWriter = new PrintWriter(s.getOutputStream());
         outputWriter.println(outputArray);
         outputWriter.flush();
+
+        in.close();
+        bf.close();
+        outputWriter.close();
         s.close();
         ss.close();
     }
