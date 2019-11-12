@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="socket" />
+      <artifact name="RemotePlayer:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/RemotePlayer_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GO/GoPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GO/RemotePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5_1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver5_1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/socketTestDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver7.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +58,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/Assignment7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/RemotePlayer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />

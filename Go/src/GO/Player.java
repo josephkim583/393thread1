@@ -5,12 +5,13 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements GoPlayer{
     private String playerName;
     private Stone playerStone;
+    private boolean registered;
+    private boolean receivedStone;
 
     public Player() {
-        playerName = "no name";
     }
 
     public Player (String name, Stone stone){
@@ -27,12 +28,19 @@ public class Player {
     }
 
     public String register(String name) {
-        this.playerName = name;
-        return name;
+        if (!registered){
+            this.playerName = name;
+            return name;
+        }
+        return "GO has gone crazy!";
     }
 
-    public void receiveStones(Stone stone) {
-        this.playerStone = stone;
+    public boolean receiveStones(Stone stone) {
+        if (registered && !receivedStone) {
+            this.playerStone = stone;
+            return true;
+        }
+        return false;
     }
 
      public String makeADumbMove (ArrayList<Board> boards) throws Exception {
@@ -44,11 +52,14 @@ public class Player {
      }
 
      public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
-         RuleChecker ruleChecker = new RuleChecker();
-         if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
-             return ("This history makes no sense!");
-         }
-         return smartMove(boards);
+        if (registered && receivedStone) {
+            RuleChecker ruleChecker = new RuleChecker();
+            if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
+                return ("This history makes no sense!");
+            }
+            return smartMove(boards);
+        }
+        return "GO has gone crazy!";
      }
 
      String dumbMove (ArrayList<Board> boards) throws Exception {
