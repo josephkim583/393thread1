@@ -66,7 +66,9 @@ public class ProxyPlayer{
 
     public void closeAllConnections() throws IOException {
         openConnections();
-        this.pr.println("shutdown");
+        JSONArray shutdown = new JSONArray();
+        shutdown.add("shutdown");
+        this.pr.println(shutdown);
         this.pr.flush();
         closeConnections();
     }
