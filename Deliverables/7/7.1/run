@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar testDriver.jar & java -jar proxyPlayer.jar
+java -jar testDriver.jar & java -jar remotePlayer.jar

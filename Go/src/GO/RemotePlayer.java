@@ -13,18 +13,17 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class RemotePlayer implements GoPlayer {
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws Exception {
         ServerSocket ss = new ServerSocket(8152);
+        RemotePlayer rp = new RemotePlayer();
 
         while(true){
             Socket s = ss.accept();
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             BufferedReader bf = new BufferedReader(in);
-            RemotePlayer rp = new RemotePlayer();
             PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
             String str = bf.readLine();
             if (str != null){
-                System.out.print(str);
                 JSONParser parser = new JSONParser();
                 JSONArray commandArray = (JSONArray) parser.parse(str);
                 String command = commandArray.get(0).toString();
@@ -40,6 +39,19 @@ public class RemotePlayer implements GoPlayer {
                         Stone playerStone = new Stone(commandArray.get(1).toString());
                         boolean receiveStoneSuccess = rp.receiveStones(playerStone);
                         outputWrtier.println(receiveStoneSuccess);
+                        outputWrtier.flush();
+                        break;
+                    }
+                    case ("make-a-move"): {
+                        InputParser input = new InputParser();
+                        ArrayList<Board> boards = new ArrayList<Board>();
+                        JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
+                        for (int i = 0; i < boardJSONArray.size(); i++) {
+                            Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
+                            boards.add(temp);
+                        }
+                        String move = rp.makeAMove(boards, 1);
+                        outputWrtier.println(move);
                         outputWrtier.flush();
                         break;
                     }

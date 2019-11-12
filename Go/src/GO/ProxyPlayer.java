@@ -20,30 +20,40 @@ public class ProxyPlayer{
     InputStreamReader in;
     BufferedReader bf;
     PrintWriter pr;
+    int portNumber;
 
     public ProxyPlayer(int portNumber) throws IOException {
-        this.s = new Socket("localhost", portNumber);
-        this.in = new InputStreamReader(this.s.getInputStream());
-        this.bf = new BufferedReader(this.in);
-        this.pr = new PrintWriter(this.s.getOutputStream());
+        this.portNumber = portNumber;
     }
 
     public String register(JSONArray commandArray) throws IOException {
+        openConnections();
         this.pr.println(commandArray);
         this.pr.flush();
         String str = this.bf.readLine();
+        closeConnections();
         return str;
     }
 
     public boolean receiveStones(JSONArray commandArray) throws IOException {
+        openConnections();
         this.pr.println(commandArray);
         this.pr.flush();
         String str = this.bf.readLine();
         while (str == null){
             str = this.bf.readLine();
         }
-        System.out.println(str);
-        return true;
+        closeConnections();
+        return Boolean.valueOf(str);
+    }
+
+    public String makeAMove(JSONArray commandArray) throws IOException {
+        openConnections();
+        this.pr.println(commandArray);
+        this.pr.flush();
+        String str = this.bf.readLine();
+        closeConnections();
+        return str;
     }
 
     public void closeConnections() throws IOException {
@@ -52,6 +62,13 @@ public class ProxyPlayer{
         this.s.close();
         this.in.close();
         this.bf.close();
+    }
+
+    public void openConnections() throws IOException {
+        this.s = new Socket("localhost", this.portNumber);
+        this.in = new InputStreamReader(this.s.getInputStream());
+        this.bf = new BufferedReader(this.in);
+        this.pr = new PrintWriter(this.s.getOutputStream());
     }
 
 //    public static void main(String[] args) throws Exception {

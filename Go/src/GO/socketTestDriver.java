@@ -42,34 +42,44 @@ public class socketTestDriver {
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();
         JSONArray outputArray = new JSONArray();
+        ProxyPlayer proxyPlayer = new ProxyPlayer(8152);
 
-        for (Object parse : parsedInput) {
-            ProxyPlayer proxyPlayer = new ProxyPlayer(8152);
+        loop: for (Object parse : parsedInput) {
             JSONArray commandArray = ((JSONArray) parse);
             String command = commandArray.get(0).toString();
             switch (command) {
                 case ("register"): {
                     String registered = proxyPlayer.register(commandArray);
+                    if (registered.equals("GO has gone crazy!")){
+                        outputArray.add(registered);
+                        break loop;
+                    }
                     outputArray.add(registered);
                     break;
                 }
                 case ("receive-stones"): {
-                    Stone playerStone = new Stone(((JSONArray) parse).get(1).toString());
                     boolean receivedStone = proxyPlayer.receiveStones(commandArray);
+                    if (receivedStone == false){
+                        outputArray.add("GO has gone crazy!");
+                        break loop;
+                    }
                     break;
                 }
-//                case ("make-a-move"): {
-//                    ArrayList<Board> boards = new ArrayList<Board>();
-//                    JSONArray boardJSONArray = (JSONArray) ((JSONArray) parse).get(1);
-//                    for (int i = 0; i < boardJSONArray.size(); i++) {
-//                        Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
-//                        boards.add(temp);
-//                    }
-//                    String move = thisGame.makeAMove(boards, 1);
-//                    outputArray.add(move);
-//                }
+                case ("make-a-move"): {
+                    String move = proxyPlayer.makeAMove(commandArray);
+                    if (move.equals("GO has gone crazy!")){
+                        outputArray.add(move);
+                        break loop;
+                    }
+                    outputArray.add(move);
+                    break ;
+                }
+                default: {
+                    outputArray.add("GO has gone crazy!");
+                    break loop;
+                }
             }
-            proxyPlayer.closeConnections();
+//            proxyPlayer.closeConnections();
         }
         System.out.println(outputArray);
     }

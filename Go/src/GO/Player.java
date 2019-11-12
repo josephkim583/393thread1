@@ -30,6 +30,7 @@ public class Player implements GoPlayer{
     public String register(String name) {
         if (!registered){
             this.playerName = name;
+            this.registered = true;
             return name;
         }
         return "GO has gone crazy!";
@@ -38,6 +39,7 @@ public class Player implements GoPlayer{
     public boolean receiveStones(Stone stone) {
         if (registered && !receivedStone) {
             this.playerStone = stone;
+            this.receivedStone = true;
             return true;
         }
         return false;
