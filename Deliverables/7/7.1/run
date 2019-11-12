@@ -1,3 +1,3 @@
 #!/bin/bash
-java -jar testDriver.jar & java -jar remotePlayer.jar & sleep 30s
+java -jar testDriver.jar & java -jar remotePlayer.jar & sleep 30s & killall -9 java
 
