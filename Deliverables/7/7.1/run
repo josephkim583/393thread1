@@ -1,4 +1,3 @@
 #!/bin/bash
-java -jar remotePlayer.jar & java -jar testDriver.jar
-pkill -f 'java -jar'
+java -jar remotePlayer.jar & java -jar testDriver.jar & sleep 30s & pkill -f 'java -jar'
 
