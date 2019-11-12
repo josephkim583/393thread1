@@ -151,7 +151,8 @@ public class RuleChecker {
                 break;
             }
             default: {
-                System.out.print("Boards size is weird");
+                throw new IllegalArgumentException();
+//                System.out.print("Boards size is weird");
             }
         }
         return true;

@@ -56,10 +56,15 @@ public class Player implements GoPlayer{
      public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
         if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();
-            if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
-                return ("This history makes no sense!");
+            try{
+                if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
+                    return ("This history makes no sense!");
+                }
+                return smartMove(boards);
+            } catch (Exception e){
+                return "GO has gone crazy!";
             }
-            return smartMove(boards);
+
         }
         return "GO has gone crazy!";
      }
