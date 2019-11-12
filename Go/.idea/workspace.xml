@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ProxyPlayer" />
+      <artifact name="RemotePlayer:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
