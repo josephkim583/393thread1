@@ -17,7 +17,7 @@ public class RemotePlayer implements GoPlayer {
         ServerSocket ss = new ServerSocket(8152);
         RemotePlayer rp = new RemotePlayer();
 
-        while(true){
+        loop: while(true){
             Socket s = ss.accept();
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             BufferedReader bf = new BufferedReader(in);
@@ -55,9 +55,13 @@ public class RemotePlayer implements GoPlayer {
                         outputWrtier.flush();
                         break;
                     }
+                    case ("shutdown"): {
+                        break loop;
+                    }
                 }
             }
         }
+        ss.close();
     }
 
 

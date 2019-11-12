@@ -64,6 +64,13 @@ public class ProxyPlayer{
         this.bf.close();
     }
 
+    public void closeAllConnections() throws IOException {
+        openConnections();
+        this.pr.println("shutdown");
+        this.pr.flush();
+        closeConnections();
+    }
+
     public void openConnections() throws IOException {
         this.s = new Socket("localhost", this.portNumber);
         this.in = new InputStreamReader(this.s.getInputStream());
