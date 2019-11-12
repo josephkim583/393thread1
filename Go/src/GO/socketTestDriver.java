@@ -81,6 +81,7 @@ public class socketTestDriver {
             }
 //            proxyPlayer.closeConnections();
         }
+        proxyPlayer.closeAllConnections();
         System.out.println(outputArray);
     }
 }
