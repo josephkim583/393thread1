@@ -1,2 +1,4 @@
 #!/bin/bash
 java -jar remotePlayer.jar & java -jar testDriver.jar
+pkill -f 'java -jar'
+
