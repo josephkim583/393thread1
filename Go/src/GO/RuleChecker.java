@@ -129,12 +129,20 @@ public class RuleChecker {
                             if (!addedStoneOld.equals(stone.getStone())) {
                                 return false;
                             }
+                            Board MaybeBoard2 = makeMaybeBoard(board3, addedOld.get(0), new Stone(addedStoneOld));
+                            if (!(MaybeBoard2.isBoardEqual(board2))){
+                                return false;
+                            }
                             // Passed from board 3 to board 2
                         } else if (addedStoneOld.equals(" ") && !addedStoneNew.equals(" ")) {
                             if (!board3.isBoardEqual(board2)) {
                                 return false;
                             }
                             if (addedStoneNew.equals(stone.getStone())) {
+                                return false;
+                            }
+                            Board MaybeBoard1 = makeMaybeBoard(board2, addedNew.get(0), new Stone(addedStoneNew));
+                            if (!(MaybeBoard1.isBoardEqual(board1))){
                                 return false;
                             }
                         } else {
