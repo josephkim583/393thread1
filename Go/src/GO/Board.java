@@ -16,7 +16,16 @@ public class Board implements Statement {
     public Board(String[][] newBoard) {
         super();
         if (newBoard.length == 19 && newBoard[0].length == 19) {
-            this.board = newBoard;
+            this.board = new String[19][19];
+            String[][] ref = newBoard;
+            for (int i = 0 ; i < 19 ; i++) {
+                for (int j = 0; j < 19 ; j++) {
+                    if (!ref[i][j].equals("B") && !ref[i][j].equals("W") && !ref[i][j].equals(" ")){
+                        throw new IllegalArgumentException();
+                    }
+                    board[i][j] = ref[i][j];
+                }
+            }
         }
     }
 
@@ -25,6 +34,9 @@ public class Board implements Statement {
         String[][] ref = copyBoard.getBoard();
         for (int i = 0 ; i < 19 ; i++) {
             for (int j = 0; j < 19 ; j++) {
+                if (!ref[i][j].equals("B") && !ref[i][j].equals("W") && !ref[i][j].equals(" ")){
+                    throw new IllegalArgumentException();
+                }
                 board[i][j] = ref[i][j];
             }
         }

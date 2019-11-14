@@ -5,12 +5,13 @@ import org.json.simple.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements GoPlayer{
     private String playerName;
     private Stone playerStone;
+    private boolean registered;
+    private boolean receivedStone;
 
     public Player() {
-        playerName = "no name";
     }
 
     public Player (String name, Stone stone){
@@ -27,12 +28,21 @@ public class Player {
     }
 
     public String register(String name) {
-        this.playerName = name;
-        return name;
+        if (!registered){
+            this.playerName = name;
+            this.registered = true;
+            return name;
+        }
+        return "GO has gone crazy!";
     }
 
-    public void receiveStones(Stone stone) {
-        this.playerStone = stone;
+    public boolean receiveStones(Stone stone) {
+        if (registered && !receivedStone) {
+            this.playerStone = stone;
+            this.receivedStone = true;
+            return true;
+        }
+        return false;
     }
 
      public String makeADumbMove (ArrayList<Board> boards) throws Exception {
@@ -44,11 +54,20 @@ public class Player {
      }
 
      public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
-         RuleChecker ruleChecker = new RuleChecker();
-         if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
-             return ("This history makes no sense!");
-         }
-         return smartMove(boards);
+        ConfigReader configReader = new ConfigReader();
+        if (registered && receivedStone) {
+            RuleChecker ruleChecker = new RuleChecker();
+            try{
+                if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
+                    return ("This history makes no sense!");
+                }
+                return smartMove(boards, configReader.depth());
+            } catch (Exception e){
+                return "GO has gone crazy!";
+            }
+
+        }
+        return "GO has gone crazy!";
      }
 
      String dumbMove (ArrayList<Board> boards) throws Exception {
@@ -65,7 +84,7 @@ public class Player {
          return "pass";
      }
 
-     String smartMove (ArrayList<Board> boards) throws Exception {
+     String smartMove (ArrayList<Board> boards, int depth) throws Exception {
          RuleChecker ruleChecker = new RuleChecker();
          Stone opponentStone = playerStone.opponent();
          Board lastBoard = boards.get(0);
@@ -77,7 +96,7 @@ public class Player {
                  Point currPoint = new Point(pointStr);
                  if (lastBoard.board[currPoint.getCol()][currPoint.getRow()].equals(opponentStone.getStone())){
                      List<Point> liberties = ruleChecker.getLiberties(lastBoard, currPoint);
-                     if (liberties.size() == 1){
+                     if (liberties.size() == depth){
                          Point libertyPoint = liberties.get(0);
                          if ((boolean)ruleChecker.moveCheck(playerStone, libertyPoint, boards).get(0)){
                              if (libertyPoint.isPriorityOver(pointToPlace)){
