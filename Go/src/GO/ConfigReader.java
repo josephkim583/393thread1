@@ -10,16 +10,26 @@ import java.io.*;
 public class ConfigReader {
     private String ipAddress;
     private int port;
+    private int depth;
     public ConfigReader() throws IOException, ParseException {
-        InputStream in = getClass().getResourceAsStream("go.config");
+
+        String goConfigData = getConfigData("go.config");
+        String goPlayerData = getConfigData("go-player.config");
+
+        JSONParser parser = new JSONParser();
+        JSONObject configData = (JSONObject) parser.parse(goConfigData);
+        JSONObject playerData = (JSONObject) parser.parse(goPlayerData);
+        ipAddress = configData.get("IP").toString();
+        port = ((Long) configData.get("port")).intValue();
+        depth = ((Long) playerData.get("depth")).intValue();
+    }
+
+    private String getConfigData(String fileName) throws IOException {
+        InputStream in = getClass().getResourceAsStream(fileName);
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String currentLine = reader.readLine();
         reader.close();
-
-        JSONParser parser = new JSONParser();
-        JSONObject configData = (JSONObject) parser.parse(currentLine);
-        ipAddress = configData.get("IP").toString();
-        port = ((Long) configData.get("port")).intValue();
+        return currentLine;
     }
 
     public int port() {
@@ -28,5 +38,9 @@ public class ConfigReader {
 
     public String ipAddress() {
         return ipAddress;
+    }
+
+    public int depth() {
+        return depth;
     }
 }

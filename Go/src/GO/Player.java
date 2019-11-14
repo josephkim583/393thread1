@@ -54,13 +54,14 @@ public class Player implements GoPlayer{
      }
 
      public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
+        ConfigReader configReader = new ConfigReader();
         if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();
             try{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
-                return smartMove(boards);
+                return smartMove(boards, configReader.depth());
             } catch (Exception e){
                 return "GO has gone crazy!";
             }
@@ -83,7 +84,7 @@ public class Player implements GoPlayer{
          return "pass";
      }
 
-     String smartMove (ArrayList<Board> boards) throws Exception {
+     String smartMove (ArrayList<Board> boards, int depth) throws Exception {
          RuleChecker ruleChecker = new RuleChecker();
          Stone opponentStone = playerStone.opponent();
          Board lastBoard = boards.get(0);
@@ -95,7 +96,7 @@ public class Player implements GoPlayer{
                  Point currPoint = new Point(pointStr);
                  if (lastBoard.board[currPoint.getCol()][currPoint.getRow()].equals(opponentStone.getStone())){
                      List<Point> liberties = ruleChecker.getLiberties(lastBoard, currPoint);
-                     if (liberties.size() == 1){
+                     if (liberties.size() == depth){
                          Point libertyPoint = liberties.get(0);
                          if ((boolean)ruleChecker.moveCheck(playerStone, libertyPoint, boards).get(0)){
                              if (libertyPoint.isPriorityOver(pointToPlace)){

@@ -15,20 +15,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/GO/go-player.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Assignment3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/Assignment3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment5_1_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment5_1_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment5_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment5_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/TestLiberty/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TestLiberty/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/testDriver5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ConfigReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/RemotePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RemotePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/socketTestDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Player.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
