@@ -22,4 +22,11 @@ public class ConfigReader {
         port = ((Long) configData.get("port")).intValue();
     }
 
+    public int port() {
+        return port;
+    }
+
+    public String ipAddress() {
+        return ipAddress;
+    }
 }
