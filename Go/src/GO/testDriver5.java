@@ -15,6 +15,9 @@ public class testDriver5 {
         JSONArray outputArray = new JSONArray();
         Player thisGame = new Player();
         RuleChecker ruleChecker = new RuleChecker();
+
+        ConfigReader config = new ConfigReader();
+
         for (Object parse : parsedInput) {
             JSONArray commandArray = ((JSONArray) parse);
             String command = commandArray.get(0).toString();

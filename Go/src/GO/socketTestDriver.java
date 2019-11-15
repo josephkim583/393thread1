@@ -42,7 +42,8 @@ public class socketTestDriver {
         InputParser input = new InputParser();
         ArrayList<Object> parsedInput = input.parser();
         JSONArray outputArray = new JSONArray();
-        ProxyPlayer proxyPlayer = new ProxyPlayer(8152);
+        ConfigReader config = new ConfigReader();
+        ProxyPlayer proxyPlayer = new ProxyPlayer(config.port());
 
         loop: for (Object parse : parsedInput) {
             JSONArray commandArray = ((JSONArray) parse);

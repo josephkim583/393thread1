@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 public class RemotePlayer implements GoPlayer {
     public static void main(String[] args) throws Exception {
-        ServerSocket ss = new ServerSocket(8152);
+        ConfigReader config = new ConfigReader();
+        ServerSocket ss = new ServerSocket(config.port());
         RemotePlayer rp = new RemotePlayer();
 
         loop: while(true){
