@@ -171,10 +171,11 @@ public class RuleChecker {
     }
 
     public JSONObject getScore(Board board) throws Exception {
+        int boardSize = board.boardSize();
         int blackScore = 0;
         int whiteScore = 0;
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
+        for (int i = 1; i <= boardSize; i++) {
+            for (int j = 1; j <= boardSize; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
                 if (board.getPointValue(currPoint).equals(" ")) {
@@ -202,8 +203,9 @@ public class RuleChecker {
     }
 
     boolean allPointsHaveLiberties(Board board) throws Exception {
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
+        int boardSize = board.boardSize();
+        for (int i = 1; i <= boardSize; i++) {
+            for (int j = 1; j <= boardSize; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
                 if (board.occupied(currPoint)){
@@ -217,8 +219,9 @@ public class RuleChecker {
     }
 
     boolean isEmptyBoard(Board board) {
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
+        int boardSize = board.boardSize();
+        for (int i = 1; i <= boardSize; i++) {
+            for (int j = 1; j <= boardSize; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
                 if (!board.getPointValue(currPoint).equals(" ")) {
@@ -277,8 +280,9 @@ public class RuleChecker {
     // 2. Used to check whose turn
     ArrayList<Point> addedPoints(Board oldBoard, Board newBoard) {
         ArrayList<Point> added = new ArrayList<Point>();
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
+        int boardSize = oldBoard.boardSize();
+        for (int i = 1; i <= boardSize; i++) {
+            for (int j = 1; j <= boardSize; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
                 if (oldBoard.getPointValue(currPoint).equals(" ") && !newBoard.getPointValue(currPoint).equals(" ")) {
@@ -302,10 +306,11 @@ public class RuleChecker {
         Board maybeBoard = new Board(board);
         maybeBoard.place(stone, point);
         Board maybeBoardRemoveEnemy = new Board(maybeBoard);
+        int boardSize = board.boardSize();
 
         Board maybeBoardAfterRemoving = new Board(maybeBoardRemoveEnemy);
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
+        for (int i = 1; i <= boardSize; i++) {
+            for (int j = 1; j <= boardSize; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
                 if (maybeBoardAfterRemoving.occupied(currPoint)){

@@ -15,12 +15,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GO/go-player.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ConfigReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/InputParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/InputParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/RuleChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver6.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,6 +199,8 @@
       <workItem from="1572126495603" duration="39260000" />
       <workItem from="1572667238964" duration="44000" />
       <workItem from="1572667368660" duration="6282000" />
+      <workItem from="1573835028779" duration="1207000" />
+      <workItem from="1573964046256" duration="1857000" />
     </task>
     <servers />
   </component>

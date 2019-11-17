@@ -6,10 +6,8 @@ import java.util.ArrayList;
 
 public class testDriver6 {
     public static void main(String[] args) throws Exception {
-        String[][] board = new String[19][19];
         InputParser inputParser = new InputParser();
         ArrayList<Object> parsed = inputParser.parser();
-//        JSONArray outputArray = new JSONArray();
         Game game = new Game();
 
         String firstName = parsed.get(0).toString();
