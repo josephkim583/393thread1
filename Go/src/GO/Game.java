@@ -27,6 +27,8 @@ public class Game implements GameInterface {
         return gameLog;
     }
 
+    public String getCurrentStoneColor() {return currentStoneColor;}
+
     @Override
     public void registerPlayer(String name) throws IOException {
         if (numberOfPlayers == 0){
