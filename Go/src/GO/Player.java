@@ -53,7 +53,7 @@ public class Player implements GoPlayer{
          return dumbMove(boards);
      }
 
-     public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
+     public String makeAMove(ArrayList<Board> boards) throws Exception {
         ConfigReader configReader = new ConfigReader();
         if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();

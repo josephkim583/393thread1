@@ -2,26 +2,29 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Assignment4:jar" />
-      <artifact name="Assignment5:jar" />
-      <artifact name="Assignment5_1:jar" />
-      <artifact name="Assignment6:jar" />
-      <artifact name="Assignment7:jar" />
-      <artifact name="Go:jar" />
-      <artifact name="ProxyPlayer" />
-      <artifact name="RemotePlayer:jar" />
-      <artifact name="socket" />
+      <artifact name="gameAdmin" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/gameAdmin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/InputParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/InputParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/GoPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/GoPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RemotePlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/socketTestDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/testDriver5_1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/GoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/GoPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/RuleChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RuleChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/testDriver6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/RemotePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RemotePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/gameAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/gameAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/socketTestDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/socketTestDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/testDriver5_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/testDriver5_1.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +203,7 @@
       <workItem from="1572667238964" duration="44000" />
       <workItem from="1572667368660" duration="6282000" />
       <workItem from="1573835028779" duration="1207000" />
-      <workItem from="1573964046256" duration="1857000" />
+      <workItem from="1573964046256" duration="8477000" />
     </task>
     <servers />
   </component>

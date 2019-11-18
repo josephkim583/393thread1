@@ -78,7 +78,7 @@ public class RemotePlayer implements GoPlayer {
                                 break;
                             }
                         }
-                        String move = rp.makeAMove(boards, 1);
+                        String move = rp.makeAMove(boards);
                         outputWrtier.println(move);
                         outputWrtier.flush();
                         break;
@@ -112,8 +112,8 @@ public class RemotePlayer implements GoPlayer {
     }
 
     @Override
-    public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
-        String makeAMove = p.makeAMove(boards, distance);
+    public String makeAMove(ArrayList<Board> boards) throws Exception {
+        String makeAMove = p.makeAMove(boards);
         return makeAMove;
     }
 }

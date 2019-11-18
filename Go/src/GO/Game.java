@@ -17,6 +17,7 @@ public class Game implements GameInterface {
     ArrayList<Board> boardHistory = new ArrayList<>();
     RuleChecker ruleChecker = new RuleChecker();
     JSONArray gameLog = new JSONArray();
+    JSONArray winner = new JSONArray();
 
     public Game(){
         Board emptyBoard = new Board();
@@ -98,7 +99,7 @@ public class Game implements GameInterface {
         else{
             winnerArray.add(playerOne.getPlayerName());
         }
-        gameLog.add(winnerArray);
+        winner = winnerArray;
         gameEnded = true;
     }
 
@@ -125,7 +126,7 @@ public class Game implements GameInterface {
                 jsonArray.add(playerOne.getPlayerName());
             }
         }
-        gameLog.add(jsonArray);
+        winner = jsonArray;
         gameEnded = true;
     }
 
