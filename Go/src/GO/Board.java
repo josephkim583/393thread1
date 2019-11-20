@@ -6,20 +6,26 @@ import java.util.Collections;
 
 public class Board implements Statement {
     // Creates a new 2D array Board
-    String[][] board = new String[19][19];
+    private int boardSize = 9;
+    String[][] board = new String[boardSize][boardSize];
 
     String dirN = "North";
     String dirE = "East";
     String dirS = "South";
     String dirW = "West";
 
+    public int boardSize() {
+        return boardSize;
+    }
+
     public Board(String[][] newBoard) {
         super();
-        if (newBoard.length == 19 && newBoard[0].length == 19) {
-            this.board = new String[19][19];
+        int size = boardSize;
+        if (newBoard.length == size && newBoard[0].length == size) {
+            this.board = new String[size][size];
             String[][] ref = newBoard;
-            for (int i = 0 ; i < 19 ; i++) {
-                for (int j = 0; j < 19 ; j++) {
+            for (int i = 0 ; i < size ; i++) {
+                for (int j = 0; j < size ; j++) {
                     if (!ref[i][j].equals("B") && !ref[i][j].equals("W") && !ref[i][j].equals(" ")){
                         throw new IllegalArgumentException();
                     }
@@ -30,10 +36,10 @@ public class Board implements Statement {
     }
 
     public Board(Board copyBoard) {
-        this.board = new String[19][19];
+        this.board = new String[boardSize][boardSize];
         String[][] ref = copyBoard.getBoard();
-        for (int i = 0 ; i < 19 ; i++) {
-            for (int j = 0; j < 19 ; j++) {
+        for (int i = 0 ; i < boardSize ; i++) {
+            for (int j = 0; j < boardSize ; j++) {
                 if (!ref[i][j].equals("B") && !ref[i][j].equals("W") && !ref[i][j].equals(" ")){
                     throw new IllegalArgumentException();
                 }
@@ -43,9 +49,9 @@ public class Board implements Statement {
     }
 
     public Board() {
-        this.board = new String[19][19];
-        for (int i = 0 ; i < 19 ; i++) {
-            for (int j = 0; j < 19 ; j++) {
+        this.board = new String[boardSize][boardSize];
+        for (int i = 0 ; i < boardSize ; i++) {
+            for (int j = 0; j < boardSize ; j++) {
                 board[i][j] = " ";
             }
         }
@@ -94,7 +100,7 @@ public class Board implements Statement {
 
     @Override
     public boolean reachable(Point point, MaybeStone stone) throws Exception {
-        boolean[][] trackBoard = new boolean[19][19];
+        boolean[][] trackBoard = new boolean[boardSize][boardSize];
         for (boolean[] row : trackBoard) {
             for (boolean cell : row) {
                 cell = false;
@@ -157,8 +163,8 @@ public class Board implements Statement {
         } else {
             this.board[col][row] = stone.getStone();
 
-            for (int i = 1; i <= 19; i++) {
-                for (int j = 1; j <= 19; j++) {
+            for (int i = 1; i <= boardSize; i++) {
+                for (int j = 1; j <= boardSize; j++) {
                     String pointStr = i + "-" + j;
                     Point currPoint = new Point(pointStr);
                     Stone opponent = stone.opponent();
@@ -202,8 +208,8 @@ public class Board implements Statement {
     @Override
     public JSONArray getPoints(MaybeStone stone){
         List<String> points = new ArrayList<>();
-        for (int i = 0; i < 19; i++) {
-            for(int j = 0; j < 19; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for(int j = 0; j < boardSize; j++) {
                 try {
                     Point temp = new Point(i+1,j+1);
                     if (this.board[i][j].equals(stone.getMaybeStone())) {
@@ -227,9 +233,9 @@ public class Board implements Statement {
 
     public JSONArray printBoard() {
         JSONArray output = new JSONArray();
-        for (int i = 0; i < 19; i++) {
+        for (int i = 0; i < boardSize; i++) {
             JSONArray temp = new JSONArray();
-            for (int j = 0; j < 19; j++){
+            for (int j = 0; j < boardSize; j++){
                 temp.add(this.board[i][j]);
             }
             output.add(temp);
@@ -238,8 +244,8 @@ public class Board implements Statement {
     }
 
     public boolean isBoardEqual(Board board2) {
-        for (int i = 1; i <= 19; i++) {
-            for (int j = 1; j <= 19; j++) {
+        for (int i = 1; i <= boardSize; i++) {
+            for (int j = 1; j <= boardSize; j++) {
                 String pointStr = i + "-" + j;
                 Point currPoint = new Point(pointStr);
                 if (!this.getPointValue(currPoint).equals(board2.getPointValue(currPoint))) {

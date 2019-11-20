@@ -32,7 +32,7 @@ public class testDriver5_1 {
                         Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
                         boards.add(temp);
                     }
-                    String move = thisGame.makeAMove(boards, 1);
+                    String move = thisGame.makeAMove(boards);
                     outputArray.add(move);
                 }
             }

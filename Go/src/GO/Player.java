@@ -53,7 +53,7 @@ public class Player implements GoPlayer{
          return dumbMove(boards);
      }
 
-     public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
+     public String makeAMove(ArrayList<Board> boards) throws Exception {
         ConfigReader configReader = new ConfigReader();
         if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();
@@ -71,27 +71,33 @@ public class Player implements GoPlayer{
      }
 
      String dumbMove (ArrayList<Board> boards) throws Exception {
-         RuleChecker ruleChecker = new RuleChecker();
-         for (int i = 1; i <= 19; i++) {
-             for (int j = 1; j <= 19; j++) {
-                 String pointStr = i + "-" + j;
-                 Point currPoint = new Point(pointStr);
-                 if ((boolean)ruleChecker.moveCheck(getPlayerStone(),currPoint,boards).get(0)) {
-                     return (currPoint.pointToString());
-                 }
-             }
-         }
+//         Board b = new Board();
+//         int boardSize = b.boardSize();
+//
+//         RuleChecker ruleChecker = new RuleChecker();
+//         for (int i = 1; i <= boardSize; i++) {
+//             for (int j = 1; j <= boardSize; j++) {
+//                 String pointStr = i + "-" + j;
+//                 Point currPoint = new Point(pointStr);
+//                 if ((boolean)ruleChecker.moveCheck(getPlayerStone(),currPoint,boards).get(0)) {
+//                     return (currPoint.pointToString());
+//                 }
+//             }
+//         }
          return "pass";
      }
 
      String smartMove (ArrayList<Board> boards, int depth) throws Exception {
+         Board b = new Board();
+         int boardSize = b.boardSize();
+
          RuleChecker ruleChecker = new RuleChecker();
          Stone opponentStone = playerStone.opponent();
          Board lastBoard = boards.get(0);
          Point pointToPlace = new Point(100, 100);
          JSONArray opponentPoints = lastBoard.getPoints(opponentStone.toMaybeStone());
-         for (int i = 1; i <= 19; i++) {
-             for (int j = 1; j <= 19; j++) {
+         for (int i = 1; i <= boardSize; i++) {
+             for (int j = 1; j <= boardSize; j++) {
                  String pointStr = i + "-" + j;
                  Point currPoint = new Point(pointStr);
                  if (lastBoard.board[currPoint.getCol()][currPoint.getRow()].equals(opponentStone.getStone())){

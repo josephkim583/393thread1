@@ -9,6 +9,7 @@ public class Point {
     private int col;
     private int row;
     private boolean valid;
+    private int boardSize = (new Board()).boardSize();
 
     public int getCol() {
         return col;
@@ -31,13 +32,13 @@ public class Point {
         int c = Integer.parseInt(rcArray[1]);
         row = r - 1;
         col = c - 1;
-        valid = 0 < r && r < 20 && 0 < c && c < 20;
+        valid = 0 < r && r < boardSize + 1 && 0 < c && c < boardSize + 1;
     }
 
     public Point(int c, int r) {
         this.col = c;
         this.row = r;
-        valid = 0 <= r && r <= 18 && 0 <= c && c <= 18;
+        valid = 0 <= r && r <= boardSize - 1 && 0 <= c && c <= boardSize - 1;
     }
 
     public Point North() {

@@ -43,13 +43,16 @@ public class InputParser {
 
 
     public String[][] parseJSONboard(JSONArray board) {
-        String[][] strBoard = new String[19][19];
-        if (board.size() > 19){
+        Board b = new Board();
+        int boardSize = b.boardSize();
+
+        String[][] strBoard = new String[boardSize][boardSize];
+        if (board.size() > boardSize){
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < board.size(); i++) {
             JSONArray inner = (JSONArray) board.get(i);
-            if (inner.size() > 19){
+            if (inner.size() > boardSize){
                 throw new IllegalArgumentException();
             }
             for (int j = 0; j < inner.size(); j++) {

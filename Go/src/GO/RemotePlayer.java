@@ -15,81 +15,96 @@ import java.util.ArrayList;
 public class RemotePlayer implements GoPlayer {
     public static void main(String[] args) throws Exception {
         ConfigReader config = new ConfigReader();
-        ServerSocket ss = new ServerSocket(config.port());
         RemotePlayer rp = new RemotePlayer();
+        int counter = 0;
+        Socket s = new Socket(config.ipAddress(), config.port());
+        InputStreamReader in = new InputStreamReader(s.getInputStream());
+        BufferedReader bf = new BufferedReader(in);
+        PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
 
         loop: while(true){
-            Socket s = ss.accept();
-            InputStreamReader in = new InputStreamReader(s.getInputStream());
-            BufferedReader bf = new BufferedReader(in);
-            PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
-            String str = bf.readLine();
-            if (str != null){
-                JSONParser parser = new JSONParser();
-                JSONArray commandArray = (JSONArray) parser.parse(str);
-                String command = commandArray.get(0).toString();
+            try {
+                counter += 1;
+                if (counter == 2){
+                    break loop;
+                }
 
-                switch (command) {
-                    case ("register"): {
-                        if (commandArray.size() != 1){
-                            outputWrtier.println("GO has gone crazy!");
-                            outputWrtier.flush();
-                            break;
-                        }
-                        String registered = rp.register("no name");
-                        outputWrtier.println(registered);
-                        outputWrtier.flush();
-                        break;
-                    }
-                    case ("receive-stones"): {
-                        if (commandArray.size() != 2){
-                            outputWrtier.println("GO has gone crazy!");
-                            outputWrtier.flush();
-                            break;
-                        }
-                        try{
-                            Stone playerStone = new Stone(commandArray.get(1).toString());
-                            boolean receiveStoneSuccess = rp.receiveStones(playerStone);
-                            outputWrtier.println(receiveStoneSuccess);
-                            outputWrtier.flush();
-                            break;
-                        } catch (Exception e){
-                            outputWrtier.println(false);
-                            outputWrtier.flush();
-                            break;
-                        }
-                    }
-                    case ("make-a-move"): {
-                        if (commandArray.size() != 2){
-                            outputWrtier.println("GO has gone crazy!");
-                            outputWrtier.flush();
-                            break;
-                        }
-                        InputParser input = new InputParser();
-                        ArrayList<Board> boards = new ArrayList<Board>();
-                        JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
-                        for (int i = 0; i < boardJSONArray.size(); i++) {
-                            try{
-                                Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
-                                boards.add(temp);
-                            } catch (Exception e){
+                String str = bf.readLine();
+                if (str != null) {
+//                    System.out.println(str);
+                    JSONParser parser = new JSONParser();
+                    JSONArray commandArray = (JSONArray) parser.parse(str);
+                    String command = commandArray.get(0).toString();
+
+                    switch (command) {
+                        case ("register"): {
+                            if (commandArray.size() != 1) {
                                 outputWrtier.println("GO has gone crazy!");
                                 outputWrtier.flush();
                                 break;
                             }
+                            String registered = rp.register("no name");
+                            outputWrtier.println(registered);
+                            outputWrtier.flush();
+                            break;
                         }
-                        String move = rp.makeAMove(boards, 1);
-                        outputWrtier.println(move);
-                        outputWrtier.flush();
-                        break;
-                    }
-                    case ("shutdown"): {
-                        break loop;
+                        case ("receive-stones"): {
+                            if (commandArray.size() != 2) {
+                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.flush();
+                                break;
+                            }
+                            try {
+                                Stone playerStone = new Stone(commandArray.get(1).toString());
+                                boolean receiveStoneSuccess = rp.receiveStones(playerStone);
+                                outputWrtier.println(receiveStoneSuccess);
+                                outputWrtier.flush();
+                                break;
+                            } catch (Exception e) {
+                                outputWrtier.println(false);
+                                outputWrtier.flush();
+                                break;
+                            }
+                        }
+                        case ("make-a-move"): {
+                            if (commandArray.size() != 2) {
+                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.flush();
+                                break;
+                            }
+                            InputParser input = new InputParser();
+                            ArrayList<Board> boards = new ArrayList<Board>();
+                            JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
+                            for (int i = 0; i < boardJSONArray.size(); i++) {
+                                try {
+                                    Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
+                                    boards.add(temp);
+                                } catch (Exception e) {
+                                    outputWrtier.println("GO has gone crazy!");
+                                    outputWrtier.flush();
+                                    break;
+                                }
+                            }
+                            String move = rp.makeAMove(boards);
+                            outputWrtier.println(move);
+                            outputWrtier.flush();
+                            break;
+                        }
+                        case ("shutdown"): {
+                            break loop;
+                        }
                     }
                 }
+//                s.close();
+//                in.close();
+//                bf.close();
+//                outputWrtier.close();
+            } catch (Exception e){
+                continue ;
             }
         }
-        ss.close();
+        s.close();
+        in.close();
     }
 
 
@@ -112,8 +127,8 @@ public class RemotePlayer implements GoPlayer {
     }
 
     @Override
-    public String makeAMove(ArrayList<Board> boards, int distance) throws Exception {
-        String makeAMove = p.makeAMove(boards, distance);
+    public String makeAMove(ArrayList<Board> boards) throws Exception {
+        String makeAMove = p.makeAMove(boards);
         return makeAMove;
     }
 }
