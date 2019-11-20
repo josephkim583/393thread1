@@ -39,6 +39,7 @@ public class gameAdmin {
         referee.registerPlayerTwo(proxyPlayer);
 
         winners = referee.playGame();
+        ss.close();
         System.out.println(winners);
 
 //        while(true){
