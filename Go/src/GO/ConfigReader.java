@@ -19,7 +19,6 @@ public class ConfigReader {
         JSONObject configData = (JSONObject) parser.parse(goConfigData);
         ipAddress = configData.get("IP").toString();
         port = ((Long) configData.get("port")).intValue();
-        System.out.println(port);
     }
 
     private String getConfigData(String fileName) throws IOException {
