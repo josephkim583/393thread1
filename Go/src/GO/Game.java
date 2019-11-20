@@ -130,6 +130,7 @@ public class Game implements GameInterface {
                         makeMove(playerTwoMovePoint);
                     }
                 } catch(Exception e) {
+                    gameEnded = true;
                     JSONArray playerWins = new JSONArray();
                     playerWins.add(playerOne.getPlayerName());
                     return (playerWins);

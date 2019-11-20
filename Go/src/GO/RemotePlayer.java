@@ -16,14 +16,19 @@ public class RemotePlayer implements GoPlayer {
     public static void main(String[] args) throws Exception {
         ConfigReader config = new ConfigReader();
         RemotePlayer rp = new RemotePlayer();
+        int counter = 0;
+        Socket s = new Socket(config.ipAddress(), config.port());
+        InputStreamReader in = new InputStreamReader(s.getInputStream());
+        BufferedReader bf = new BufferedReader(in);
+        PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
 
         loop: while(true){
             try {
+                counter += 1;
+                if (counter == 20){
+                    break loop;
+                }
 
-                Socket s = new Socket(config.ipAddress(), config.port());
-                InputStreamReader in = new InputStreamReader(s.getInputStream());
-                BufferedReader bf = new BufferedReader(in);
-                PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
                 String str = bf.readLine();
                 if (str != null) {
 //                    System.out.println(str);
@@ -90,10 +95,10 @@ public class RemotePlayer implements GoPlayer {
                         }
                     }
                 }
-                s.close();
-                in.close();
-                bf.close();
-                outputWrtier.close();
+//                s.close();
+//                in.close();
+//                bf.close();
+//                outputWrtier.close();
             } catch (Exception e){
                 continue ;
             }

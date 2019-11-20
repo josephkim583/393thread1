@@ -18,6 +18,7 @@ public class gameAdmin {
         JSONArray winners = new JSONArray();
 
         ServerSocket ss = new ServerSocket(config.port());
+        Socket s = ss.accept();
 
         Player localPlayer = new Player();
 
@@ -28,7 +29,7 @@ public class gameAdmin {
         referee.registerPlayerOne(localPlayer);
 
         //register the Remote Player after connecting
-        ProxyPlayer proxyPlayer = new ProxyPlayer(ss);
+        ProxyPlayer proxyPlayer = new ProxyPlayer(s);
         JSONArray registerArray = new JSONArray();
         JSONArray receiveStoneArray = new JSONArray();
         receiveStoneArray.add("receive-stones");
@@ -40,6 +41,7 @@ public class gameAdmin {
 
         winners = referee.playGame();
         ss.close();
+        s.close();
         System.out.println(winners);
 
 //        while(true){

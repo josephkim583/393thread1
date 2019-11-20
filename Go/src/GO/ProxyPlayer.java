@@ -18,14 +18,16 @@ import java.util.ArrayList;
 
 public class ProxyPlayer {
     private String proxyPlayerName;
-    private ServerSocket ss;
     private Socket s;
     private InputStreamReader in;
     private BufferedReader bf;
     private PrintWriter outputWriter;
 
-    public ProxyPlayer(ServerSocket ss) throws IOException {
-        this.ss = ss;
+    public ProxyPlayer(Socket s) throws IOException {
+        this.s = s;
+        this.in = new InputStreamReader(this.s.getInputStream());
+        this.bf = new BufferedReader(this.in);
+        this.outputWriter = new PrintWriter(this.s.getOutputStream());
     }
 
     public String getProxyPlayerName() {
@@ -34,34 +36,28 @@ public class ProxyPlayer {
 
     //TODO: does it need to return the name?
     public String register(JSONArray commandArray) throws IOException {
-        openConnections();
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = this.bf.readLine();
         proxyPlayerName = str;
-        closeConnections();
         return str;
     }
 
     //TODO: does it need to return?
     public boolean receiveStones(JSONArray commandArray) throws IOException {
-        openConnections();
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = bf.readLine();
         while (str == null) {
             str = bf.readLine();
         }
-        closeConnections();
         return Boolean.valueOf(str);
     }
 
     public String makeAMove(JSONArray commandArray) throws IOException {
-        openConnections();
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = bf.readLine();
-        closeConnections();
         return str;
     }
 
@@ -71,6 +67,7 @@ public class ProxyPlayer {
         this.bf.close();
         this.outputWriter.close();
     }
+
 
     //
 //    public void closeAllConnections() throws IOException {
@@ -83,7 +80,6 @@ public class ProxyPlayer {
 //    }
 //
     public void openConnections() throws IOException {
-        this.s = this.ss.accept();
         this.in = new InputStreamReader(this.s.getInputStream());
         this.bf = new BufferedReader(this.in);
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
