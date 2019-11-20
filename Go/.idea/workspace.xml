@@ -16,7 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Deliverables/8/8.1/gameAdmin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Deliverables/8/8.1/gameAdmin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/go.config" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/go.config" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +193,7 @@
       <workItem from="1572667238964" duration="44000" />
       <workItem from="1572667368660" duration="6282000" />
       <workItem from="1573835028779" duration="1207000" />
-      <workItem from="1573964046256" duration="15752000" />
+      <workItem from="1573964046256" duration="17138000" />
     </task>
     <servers />
   </component>
