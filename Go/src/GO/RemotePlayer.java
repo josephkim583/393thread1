@@ -25,7 +25,7 @@ public class RemotePlayer implements GoPlayer {
         loop: while(true){
             try {
                 counter += 1;
-                if (counter == 20){
+                if (counter == 2){
                     break loop;
                 }
 
@@ -103,6 +103,8 @@ public class RemotePlayer implements GoPlayer {
                 continue ;
             }
         }
+        s.close();
+        in.close();
     }
 
 

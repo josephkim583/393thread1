@@ -1,5 +1,6 @@
 package GO;
 
+import com.sun.rmi.rmid.ExecOptionPermission;
 import jdk.internal.util.xml.impl.Input;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,9 +36,15 @@ public class gameAdmin {
         receiveStoneArray.add("receive-stones");
         receiveStoneArray.add("W");
         registerArray.add("register");
-        proxyPlayer.register(registerArray);
-        proxyPlayer.receiveStones(receiveStoneArray);
-        referee.registerPlayerTwo(proxyPlayer);
+
+        try{
+            proxyPlayer.register(registerArray);
+            proxyPlayer.receiveStones(receiveStoneArray);
+            referee.registerPlayerTwo(proxyPlayer);
+        } catch (Exception e){
+            referee.gameEnded = true;
+            referee.winner.add(referee.playerOne.getPlayerName());
+        }
 
         winners = referee.playGame();
         ss.close();
