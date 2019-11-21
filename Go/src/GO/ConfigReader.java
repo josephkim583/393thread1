@@ -7,14 +7,15 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 public class ConfigReader {
     private String ipAddress;
     private int port;
 
     public ConfigReader() throws IOException, ParseException, URISyntaxException {
-        String goConfigData = getConfigData("/Users/sumin/Documents/EECS393/team29-dev/Deliverables/8/8.1/go.config");
+        String url = gameAdmin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        String newURL = url.replace("Go.jar", "go.config");
+        String goConfigData = getConfigData(newURL);
         JSONParser parser = new JSONParser();
         JSONObject configData = (JSONObject) parser.parse(goConfigData);
         ipAddress = configData.get("IP").toString();

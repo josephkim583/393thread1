@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="gameAdmin" />
+      <artifact name="RemotePlayer:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Deliverables/8/8.1/Go.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Deliverables/8/8.1/gameAdmin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Deliverables/8/8.1/gameAdmin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/gameAdmin/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/gameAdmin/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ConfigReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/gameAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/gameAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
