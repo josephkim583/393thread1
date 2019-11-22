@@ -24,10 +24,10 @@ public class RemotePlayer implements GoPlayer {
 
         loop: while(true){
             try {
-                counter += 1;
-                if (counter == 2){
-                    break loop;
-                }
+//                counter += 1;
+//                if (counter == 2){
+//                    break loop;
+//                }
 
                 String str = bf.readLine();
                 if (str != null) {

@@ -6,26 +6,24 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.net.URISyntaxException;
 
 public class ConfigReader {
     private String ipAddress;
     private int port;
-    private int depth;
-    public ConfigReader() throws IOException, ParseException {
 
-        String goConfigData = getConfigData("go.config");
-        String goPlayerData = getConfigData("go-player.config");
-
+    public ConfigReader() throws IOException, ParseException, URISyntaxException {
+        String url = gameAdmin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        String newURL = url.replace("gameAdmin.jar", "go.config");
+        String goConfigData = getConfigData(newURL);
         JSONParser parser = new JSONParser();
         JSONObject configData = (JSONObject) parser.parse(goConfigData);
-        JSONObject playerData = (JSONObject) parser.parse(goPlayerData);
         ipAddress = configData.get("IP").toString();
         port = ((Long) configData.get("port")).intValue();
-        depth = ((Long) playerData.get("depth")).intValue();
     }
 
     private String getConfigData(String fileName) throws IOException {
-        InputStream in = getClass().getResourceAsStream(fileName);
+        InputStream in = new FileInputStream(fileName);
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String currentLine = reader.readLine();
         reader.close();
@@ -38,9 +36,5 @@ public class ConfigReader {
 
     public String ipAddress() {
         return ipAddress;
-    }
-
-    public int depth() {
-        return depth;
     }
 }

@@ -61,7 +61,7 @@ public class Player implements GoPlayer{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
-                return smartMove(boards, configReader.depth());
+                return smartMove(boards, 1);
             } catch (Exception e){
                 return "GO has gone crazy!";
             }
@@ -71,19 +71,19 @@ public class Player implements GoPlayer{
      }
 
      String dumbMove (ArrayList<Board> boards) throws Exception {
-//         Board b = new Board();
-//         int boardSize = b.boardSize();
-//
-//         RuleChecker ruleChecker = new RuleChecker();
-//         for (int i = 1; i <= boardSize; i++) {
-//             for (int j = 1; j <= boardSize; j++) {
-//                 String pointStr = i + "-" + j;
-//                 Point currPoint = new Point(pointStr);
-//                 if ((boolean)ruleChecker.moveCheck(getPlayerStone(),currPoint,boards).get(0)) {
-//                     return (currPoint.pointToString());
-//                 }
-//             }
-//         }
+         Board b = new Board();
+         int boardSize = b.boardSize();
+
+         RuleChecker ruleChecker = new RuleChecker();
+         for (int i = 1; i <= boardSize; i++) {
+             for (int j = 1; j <= boardSize; j++) {
+                 String pointStr = i + "-" + j;
+                 Point currPoint = new Point(pointStr);
+                 if ((boolean)ruleChecker.moveCheck(getPlayerStone(),currPoint,boards).get(0)) {
+                     return (currPoint.pointToString());
+                 }
+             }
+         }
          return "pass";
      }
 

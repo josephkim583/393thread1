@@ -2,10 +2,7 @@ package GO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import sun.net.ConnectionResetException;
-
 import java.io.IOException;
-import java.net.SocketException;
 import java.util.ArrayList;
 
 public class Game implements GameInterface {
@@ -14,7 +11,6 @@ public class Game implements GameInterface {
     String currentStoneColor = "B";
     int consecutivePass = 0;
     int numberOfPlayers = 0;
-    boolean registered;
     boolean gameEnded = false;
     ArrayList<Board> boardHistory = new ArrayList<>();
     RuleChecker ruleChecker = new RuleChecker();
@@ -30,32 +26,33 @@ public class Game implements GameInterface {
         return gameLog;
     }
 
-    public String getCurrentStoneColor() { return currentStoneColor; }
+    public void registerPlayer() throws IOException {
+        if (numberOfPlayers == 0){
+            playerOne.register("localPlayer");
+            Stone localPlayerStone = new Stone("B");
+            playerOne.receiveStones(localPlayerStone);
+            numberOfPlayers++;
+            gameLog.add("B");
+        } else if (numberOfPlayers == 1){
+            JSONArray registerArray = new JSONArray();
+            JSONArray receiveStoneArray = new JSONArray();
+            receiveStoneArray.add("receive-stones");
+            receiveStoneArray.add("W");
+            registerArray.add("register");
 
-    public void registerPlayerOne(Player player) {
-        playerOne = player;
-        numberOfPlayers ++;
+            //Check if connection is still open.
+            // If connection was closed then add local player as winner then end game.
+            try{
+                playerTwo.register(registerArray);
+                playerTwo.receiveStones(receiveStoneArray);
+            } catch (Exception e){
+                gameEnded = true;
+                winner.add(playerOne.getPlayerName());
+            }
+            numberOfPlayers++;
+            gameLog.add("W");
+        }
     }
-
-    public void registerPlayerTwo(ProxyPlayer player) {
-        playerTwo = player;
-        numberOfPlayers ++;
-    }
-
-//    @Override
-//    public void registerPlayer(String name) throws IOException {
-//        if (numberOfPlayers == 0){
-//            Stone blackStone = new Stone("B");
-//            playerOne = new Player(name, blackStone);
-//            numberOfPlayers++;
-//            gameLog.add("B");
-//        } else if (numberOfPlayers == 1){
-//            Stone whiteStone = new Stone("W");
-//            playerTwo = new ProxyPlayer();
-//            numberOfPlayers++;
-//            gameLog.add("W");
-//        }
-//    }
 
     @Override
     public void pass() throws Exception {
@@ -104,7 +101,7 @@ public class Game implements GameInterface {
     }
     public JSONArray playGame() throws Exception {
         while (!gameEnded) {
-//            System.out.println(boardHistory.get(0).printBoard());
+            System.out.println(boardHistory.get(0).printBoard());
             if (currentStoneColor.equals("B")){
                 String playerOneMove = playerOne.makeADumbMove(boardHistory);
                 if (playerOneMove.equals("pass")){
