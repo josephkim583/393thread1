@@ -1,6 +1,8 @@
 package GO;
 
 import org.json.simple.JSONArray;
+
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,7 +13,8 @@ public class gameAdmin {
         JSONArray winners = new JSONArray();
 
         //open sockets
-        ServerSocket ss = new ServerSocket(config.port());
+        InetAddress addr = InetAddress.getByName(config.ipAddress());
+        ServerSocket ss = new ServerSocket(config.port(), 50, addr);
         Socket s = ss.accept();
 
         //register player 1
