@@ -24,14 +24,8 @@ public class RemotePlayer implements GoPlayer {
 
         loop: while(true){
             try {
-//                counter += 1;
-//                if (counter == 2){
-//                    break loop;
-//                }
-
                 String str = bf.readLine();
                 if (str != null) {
-//                    System.out.println(str);
                     JSONParser parser = new JSONParser();
                     JSONArray commandArray = (JSONArray) parser.parse(str);
                     String command = commandArray.get(0).toString();
@@ -95,10 +89,6 @@ public class RemotePlayer implements GoPlayer {
                         }
                     }
                 }
-//                s.close();
-//                in.close();
-//                bf.close();
-//                outputWrtier.close();
             } catch (Exception e){
                 continue ;
             }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game implements GameInterface {
-    Player playerOne;
+    GoPlayer playerOne;
     ProxyPlayer playerTwo;
     String currentStoneColor = "B";
     int consecutivePass = 0;
@@ -29,22 +29,17 @@ public class Game implements GameInterface {
     public void registerPlayer() throws IOException {
         if (numberOfPlayers == 0){
             playerOne.register("localPlayer");
-            Stone localPlayerStone = new Stone("B");
-            playerOne.receiveStones(localPlayerStone);
+            Stone blackStone = new Stone("B");
+            playerOne.receiveStones(blackStone);
             numberOfPlayers++;
             gameLog.add("B");
         } else if (numberOfPlayers == 1){
-            JSONArray registerArray = new JSONArray();
-            JSONArray receiveStoneArray = new JSONArray();
-            receiveStoneArray.add("receive-stones");
-            receiveStoneArray.add("W");
-            registerArray.add("register");
-
             //Check if connection is still open.
             // If connection was closed then add local player as winner then end game.
             try{
-                playerTwo.register(registerArray);
-                playerTwo.receiveStones(receiveStoneArray);
+                playerTwo.register("localPlayer");
+                Stone whiteStone = new Stone("W");
+                playerTwo.receiveStones(whiteStone);
             } catch (Exception e){
                 gameEnded = true;
                 winner.add(playerOne.getPlayerName());
@@ -52,6 +47,55 @@ public class Game implements GameInterface {
             numberOfPlayers++;
             gameLog.add("W");
         }
+        // TODO: GO has gone crazy case
+    }
+
+    public JSONArray playGame() throws Exception {
+        while (!gameEnded) {
+//            System.out.println(boardHistory.get(0).printBoard());
+//            if (currentStoneColor.equals("B")){
+//                String playerOneMove = playerOne.makeAMove(boardHistory);
+//                if (playerOneMove.equals("pass")){
+//                    pass();
+//                }
+//                else{
+//                    Point playerOneMovePoint = new Point(playerOneMove);
+//                    makeMove(playerOneMovePoint);
+//                }
+//            }
+//            else {
+//                JSONArray makeAMoveArray = new JSONArray();
+//                makeAMoveArray.add("make-a-move");
+//                makeAMoveArray.add(makeCopyofCurrentState());
+            try {
+                    GoPlayer currentPlayer;
+                    if (currentStoneColor.equals("B")) {
+                        currentPlayer = playerOne;
+                    } else {
+                        currentPlayer = playerTwo;
+                    }
+                    String playerMove = currentPlayer.makeAMove(boardHistory);
+
+                    if (playerMove.equals("pass")){
+                        pass();
+                    }
+                    else {
+                        Point playerTwoMovePoint = new Point(playerMove);
+                        makeMove(playerTwoMovePoint);
+                    }
+                } catch(Exception e) {
+                    gameEnded = true;
+                    GoPlayer opponent;
+                    if (currentStoneColor.equals("B")) {
+                        opponent = playerTwo;
+                    } else {
+                        opponent = playerOne;
+                    }
+
+                    winner.add(opponent.getPlayerName());
+                }
+            }
+        return(this.winner);
     }
 
     @Override
@@ -99,49 +143,12 @@ public class Game implements GameInterface {
             gameLog.add(returnHistory);
         }
     }
-    public JSONArray playGame() throws Exception {
-        while (!gameEnded) {
-            System.out.println(boardHistory.get(0).printBoard());
-            if (currentStoneColor.equals("B")){
-                String playerOneMove = playerOne.makeADumbMove(boardHistory);
-                if (playerOneMove.equals("pass")){
-                    pass();
-                }
-                else{
-                    Point playerOneMovePoint = new Point(playerOneMove);
-                    makeMove(playerOneMovePoint);
-                }
-            }
-            else {
-                JSONArray makeAMoveArray = new JSONArray();
-                makeAMoveArray.add("make-a-move");
-                makeAMoveArray.add(makeCopyofCurrentState());
-                try {
-                    String playerTwoMove = playerTwo.makeAMove(makeAMoveArray);
-
-                    if (playerTwoMove.equals("pass")){
-                        pass();
-                    }
-                    else {
-                        Point playerTwoMovePoint = new Point(playerTwoMove);
-                        makeMove(playerTwoMovePoint);
-                    }
-                } catch(Exception e) {
-                    gameEnded = true;
-                    JSONArray playerWins = new JSONArray();
-                    playerWins.add(playerOne.getPlayerName());
-                    return (playerWins);
-                }
-            }
-        }
-        return(this.winner);
-    }
 
     void illegalEndGame(String stoneColor) throws Exception {
 
         JSONArray winnerArray = new JSONArray();
         if (stoneColor == "B"){
-            winnerArray.add(playerTwo.getProxyPlayerName());
+            winnerArray.add(playerTwo.getPlayerName());
         }
         else{
             winnerArray.add(playerOne.getPlayerName());
@@ -160,16 +167,16 @@ public class Game implements GameInterface {
             jsonArray.add(playerOne.getPlayerName());
         }
         else if (whiteScore > blackScore){
-            jsonArray.add(playerTwo.getProxyPlayerName());
+            jsonArray.add(playerTwo.getPlayerName());
         }
         else {
-
-            if (playerOne.getPlayerName().compareTo(playerTwo.getProxyPlayerName()) < 0){
+            // TODO: Randomize this part
+            if (playerOne.getPlayerName().compareTo(playerTwo.getPlayerName()) < 0){
                 jsonArray.add(playerOne.getPlayerName());
-                jsonArray.add(playerTwo.getProxyPlayerName());
+                jsonArray.add(playerTwo.getPlayerName());
             }
             else {
-                jsonArray.add(playerTwo.getProxyPlayerName());
+                jsonArray.add(playerTwo.getPlayerName());
                 jsonArray.add(playerOne.getPlayerName());
             }
         }
@@ -178,7 +185,7 @@ public class Game implements GameInterface {
     }
 
     void alternatePlayer() {
-        if (currentStoneColor == "B") {
+        if (currentStoneColor.equals("B")) {
             currentStoneColor = "W";
         } else {
             currentStoneColor = "B";

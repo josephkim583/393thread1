@@ -23,8 +23,17 @@ public class Player implements GoPlayer{
         return playerName;
     }
 
+
     public Stone getPlayerStone() {
         return playerStone;
+    }
+
+    public boolean isRegistered() {
+        return registered;
+    }
+
+    public boolean isReceivedStone() {
+        return receivedStone;
     }
 
     public String register(String name) {
@@ -54,14 +63,13 @@ public class Player implements GoPlayer{
      }
 
      public String makeAMove(ArrayList<Board> boards) throws Exception {
-        ConfigReader configReader = new ConfigReader();
         if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();
             try{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
-                return smartMove(boards, 1);
+                return smartMove(boards);
             } catch (Exception e){
                 return "GO has gone crazy!";
             }
@@ -87,7 +95,7 @@ public class Player implements GoPlayer{
          return "pass";
      }
 
-     String smartMove (ArrayList<Board> boards, int depth) throws Exception {
+     String smartMove (ArrayList<Board> boards) throws Exception {
          Board b = new Board();
          int boardSize = b.boardSize();
 
@@ -102,7 +110,7 @@ public class Player implements GoPlayer{
                  Point currPoint = new Point(pointStr);
                  if (lastBoard.board[currPoint.getCol()][currPoint.getRow()].equals(opponentStone.getStone())){
                      List<Point> liberties = ruleChecker.getLiberties(lastBoard, currPoint);
-                     if (liberties.size() == depth){
+                     if (liberties.size() == 1){
                          Point libertyPoint = liberties.get(0);
                          if ((boolean)ruleChecker.moveCheck(playerStone, libertyPoint, boards).get(0)){
                              if (libertyPoint.isPriorityOver(pointToPlace)){
