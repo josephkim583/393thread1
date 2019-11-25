@@ -27,6 +27,8 @@ public class gameAdmin {
         referee.playerTwo = proxyPlayer;
         referee.registerPlayer();
 
+        System.out.println("It is registering players at least");
+
         //play game and get winners
         winners = referee.playGame();
 

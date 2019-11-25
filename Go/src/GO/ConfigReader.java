@@ -15,8 +15,10 @@ public class ConfigReader {
     public ConfigReader() throws IOException, ParseException, URISyntaxException {
         String url = gameAdmin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
         String newURL = url.replace("gameAdmin.jar", "go.config");
+        System.out.println(newURL);
         String goConfigData = getConfigData(newURL);
         JSONParser parser = new JSONParser();
+
         JSONObject configData = (JSONObject) parser.parse(goConfigData);
         ipAddress = configData.get("IP").toString();
         port = ((Long) configData.get("port")).intValue();
