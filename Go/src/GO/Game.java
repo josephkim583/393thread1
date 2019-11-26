@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class Game implements GameInterface {
     GoPlayer playerOne;
@@ -62,6 +63,8 @@ public class Game implements GameInterface {
             gameEnded = true;
             gameResult.put("winner", playerTwo);
             gameResult.put("loser", playerOne);
+            playerOne.endGame();
+            playerTwo.endGame();
         }
 
         //receive stone playerTwo
@@ -73,36 +76,10 @@ public class Game implements GameInterface {
             gameEnded = true;
             gameResult.put("winner", playerOne);
             gameResult.put("loser", playerTwo);
+            playerOne.endGame();
+            playerTwo.endGame();
         }
         // TODO: GO has gone crazy case
-    }
-
-    public void receiveStone(GoPlayer player) throws IOException {
-        if (player.getPlayerName().equals(this.playerOne.getPlayerName())){
-            try {
-                Stone blackStone = new Stone("B");
-                playerOne.receiveStones(blackStone);
-            } catch (IOException e) {
-                gameEnded = true;
-                gameResult.put("winner", playerTwo);
-                gameResult.put("loser", playerOne);
-                playerOne.endGame();
-                playerTwo.endGame();
-            }
-        }
-        else {
-            try {
-                Stone blackStone = new Stone("W");
-                playerOne.receiveStones(blackStone);
-            } catch (IOException e) {
-                gameEnded = true;
-                gameResult.put("winner", playerOne);
-                gameResult.put("loser", playerTwo);
-                playerOne.endGame();
-                playerTwo.endGame();
-            }
-        }
-
     }
 
     public void playGame() throws Exception {
@@ -114,11 +91,16 @@ public class Game implements GameInterface {
                         pass();
                     }
                     else{
-                        Point playerOneMovePoint = new Point(playerOneMove);
-                        if (!playerOneMovePoint.isValid()){
+                        try{
+                            Point playerOneMovePoint = new Point(playerOneMove);
+                            if (!playerOneMovePoint.isValid()){
+                                illegalEndGame("B");
+                            }
+                            makeMove(playerOneMovePoint);
+                        } catch (Exception e){
                             illegalEndGame("B");
                         }
-                        makeMove(playerOneMovePoint);
+
                     }
                 }
                 if (currentStoneColor.equals("W")){
@@ -127,11 +109,16 @@ public class Game implements GameInterface {
                         pass();
                     }
                     else{
-                        Point playerTwoMovePoint = new Point(playerTwoMove);
-                        if (!playerTwoMovePoint.isValid()){
+                        try{
+                            Point playerTwoMovePoint = new Point(playerTwoMove);
+                            if (!playerTwoMovePoint.isValid()){
+                                illegalEndGame("W");
+                            }
+                            makeMove(playerTwoMovePoint);
+                        } catch (Exception e){
                             illegalEndGame("W");
                         }
-                        makeMove(playerTwoMovePoint);
+
                     }
                 }
             } catch(Exception e) {
