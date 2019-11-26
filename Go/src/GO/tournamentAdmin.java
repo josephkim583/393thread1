@@ -75,6 +75,7 @@ public class tournamentAdmin {
 
         //play the league
         for (int i = 0; i < playerList.size(); i++) {
+            System.out.println(i + "playing games");
             for (int j = i+1; j < playerList.size(); j++) {
                 GoPlayer playerOne = playerList.get(i);
                 GoPlayer playerTwo = playerList.get(j);
