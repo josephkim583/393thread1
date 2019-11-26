@@ -5,8 +5,7 @@ import org.json.simple.JSONArray;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
@@ -39,7 +38,7 @@ public class tournamentAdmin {
 
      int closestPowerOfTwo(int n){
         if (n == 0){
-            return 4;
+            return 2;
         }
         int closestPower = 2;
         while (closestPower < n){
@@ -109,6 +108,7 @@ public class tournamentAdmin {
         }
 
         HashMap<Integer, ArrayList<String>> rankingBoard = new HashMap<>();
+        HashMap<Integer, ArrayList<String>> finalRanking = new HashMap<>();
         for(GoPlayer player : currentStanding.keySet()) {
             int total = 0;
             for(GoPlayer opponent : currentStanding.get(player).keySet()) {
@@ -119,8 +119,14 @@ public class tournamentAdmin {
             }
             rankingBoard.get(total).add(player.getPlayerName());
         }
-        rankingBoard.put(-100, cheaters);
-        return rankingBoard.toString();
+        SortedSet<Integer> keysOfRankingBoard = new TreeSet<>(rankingBoard.keySet());
+        int counter = 1;
+        for (Integer key : keysOfRankingBoard){
+            finalRanking.put(counter, rankingBoard.get(key));
+            counter += 1;
+        }
+        finalRanking.put(0, cheaters);
+        return finalRanking.toString();
     };
 
     String cup(ArrayList<GoPlayer> playerList) throws Exception {
