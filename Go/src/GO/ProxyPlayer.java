@@ -42,7 +42,6 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.flush();
         String str = this.bf.readLine();
         return proxyPlayer.register(str);
-//        proxyPlayerName = str;
     }
 
     //TODO: does it need to return?
@@ -52,10 +51,6 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add(stone.getStone());
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-//        String str = bf.readLine();
-//        while (str == null) {
-//            str = bf.readLine();
-//        }
         return proxyPlayer.receiveStones(stone);
     }
 
@@ -81,6 +76,7 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
+        s.close();
         String str = bf.readLine();
         proxyPlayer.endGame();
         return str;

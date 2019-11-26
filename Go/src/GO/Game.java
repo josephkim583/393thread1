@@ -103,11 +103,9 @@ public class Game implements GameInterface {
 
     public void playGame() throws Exception {
         while (!gameEnded) {
-            System.out.println(boardHistory.get(0).printBoard());
             try {
                 if (currentStoneColor.equals("B")){
                     String playerOneMove = playerOne.makeAMove(boardHistory);
-                    System.out.println(playerOneMove);
                     if (playerOneMove.equals("pass")){
                         pass();
                     }
@@ -121,7 +119,6 @@ public class Game implements GameInterface {
                 }
                 if (currentStoneColor.equals("W")){
                     String playerTwoMove = playerTwo.makeAMove(boardHistory);
-                    System.out.println(playerTwoMove);
                     if (playerTwoMove.equals("pass")){
                         pass();
                     }
@@ -186,7 +183,6 @@ public class Game implements GameInterface {
     }
 
     void illegalEndGame(String stoneColor) throws Exception {
-        System.out.println("comes to illgal end game");
         JSONArray winnerArray = new JSONArray();
         if (stoneColor == "B"){
             winnerArray.add(playerTwo.getPlayerName());

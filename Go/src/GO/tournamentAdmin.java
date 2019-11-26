@@ -5,41 +5,50 @@ import org.json.simple.JSONArray;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
         tournamentAdmin admin = new tournamentAdmin();
+        System.out.println("starting tournament");
         int playerNum = Integer.parseInt(args[0]);
         String mode = args[1];
 
         ConfigReader configReader = new ConfigReader();
+        System.out.println("getting closest power of two");
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
         int numNewPlayers = closestPowerOfTwo - playerNum;
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
+        System.out.println("try creating proxyplayers");
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
             listOfPlayers.add(proxyPlayer);
         }
+        System.out.println("created proxyplayers");
+
         for (int i = 0; i < numNewPlayers ; i++) {
             Player defaultPlayer = new Player();
             listOfPlayers.add(defaultPlayer);
         }
 
         if (mode.equals("-league")) {
+            System.out.println("playing league");
+
             System.out.println(admin.league(listOfPlayers));
         } else if (mode.equals("-cup")) {
+            System.out.println("playing cup");
+
             System.out.println(admin.cup(listOfPlayers));
         }
+        ss.close();
     }
 
      int closestPowerOfTwo(int n){
         if (n == 0){
-            return 4;
+            return 2;
         }
         int closestPower = 2;
         while (closestPower < n){
@@ -109,6 +118,7 @@ public class tournamentAdmin {
         }
 
         HashMap<Integer, ArrayList<String>> rankingBoard = new HashMap<>();
+        HashMap<Integer, ArrayList<String>> finalRanking = new HashMap<>();
         for(GoPlayer player : currentStanding.keySet()) {
             int total = 0;
             for(GoPlayer opponent : currentStanding.get(player).keySet()) {
@@ -119,8 +129,14 @@ public class tournamentAdmin {
             }
             rankingBoard.get(total).add(player.getPlayerName());
         }
-        rankingBoard.put(-100, cheaters);
-        return rankingBoard.toString();
+        SortedSet<Integer> keysOfRankingBoard = new TreeSet<>(rankingBoard.keySet());
+        int counter = 1;
+        for (Integer key : keysOfRankingBoard){
+            finalRanking.put(counter, rankingBoard.get(key));
+            counter += 1;
+        }
+        finalRanking.put(0, cheaters);
+        return finalRanking.toString();
     };
 
     String cup(ArrayList<GoPlayer> playerList) throws Exception {
@@ -159,7 +175,6 @@ public class tournamentAdmin {
         referee.registerPlayer(playerOne, playerTwo);
         referee.playGame();
         HashMap<String, GoPlayer> gameResult = referee.getGameResult();
-        System.out.println(gameResult);
         return gameResult;
     };
 }
