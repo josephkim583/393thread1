@@ -2,10 +2,13 @@ package GO;
 
 import org.json.simple.JSONArray;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
@@ -14,12 +17,29 @@ public class tournamentAdmin {
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
         int playerNum = Integer.parseInt(args[0]);
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
+
+        class Task implements Runnable {
+            final Socket socket;
+            Task(Socket socket) {
+                this.socket = socket;
+            }
+            @Override
+            public void run() {
+                try {
+                    ProxyPlayer proxyPlayer = new ProxyPlayer(this.socket);
+                    listOfPlayers.add(proxyPlayer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        ExecutorService service = Executors.newFixedThreadPool(3);
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
-            System.out.println("got socket");
-            ProxyPlayer proxyPlayer = new ProxyPlayer(s);
-            listOfPlayers.add(proxyPlayer);
+            service.execute(new Task(s));
         }
+        service.shutdown();
 
         tournamentAdmin admin = new tournamentAdmin();
         String mode = args[1];

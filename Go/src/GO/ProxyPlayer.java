@@ -23,7 +23,6 @@ public class ProxyPlayer implements GoPlayer{
         this.in = new InputStreamReader(this.s.getInputStream());
         this.bf = new BufferedReader(this.in);
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
-        System.out.println("socket initialized");
     }
 
     public Player getProxyPlayer() {
@@ -77,9 +76,9 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        s.close();
         String str = bf.readLine();
         proxyPlayer.endGame();
+//        s.close();
         return str;
     }
 
