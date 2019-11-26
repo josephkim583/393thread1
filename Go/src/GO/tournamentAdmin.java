@@ -159,7 +159,6 @@ public class tournamentAdmin {
         referee.registerPlayer(playerOne, playerTwo);
         referee.playGame();
         HashMap<String, GoPlayer> gameResult = referee.getGameResult();
-        System.out.println(gameResult);
         return gameResult;
     };
 }
