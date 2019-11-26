@@ -13,13 +13,14 @@ import java.util.concurrent.Executors;
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
         ConfigReader configReader = new ConfigReader();
-        InetAddress addr = InetAddress.getByName(configReader.ipAddress());configReader.port();
+        InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
         int playerNum = Integer.parseInt(args[0]);
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
+            System.out.println("proxyplayer made");
             listOfPlayers.add(proxyPlayer);
         }
 
