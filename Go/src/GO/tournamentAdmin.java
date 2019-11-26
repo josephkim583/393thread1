@@ -20,7 +20,6 @@ public class tournamentAdmin {
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
-            System.out.println("proxyplayer made");
             listOfPlayers.add(proxyPlayer);
         }
 
