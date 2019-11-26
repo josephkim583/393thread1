@@ -8,10 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/tournament_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/tournament_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/tournamentAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/tournamentAdmin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ConfigReader.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -14,7 +14,7 @@ public class ConfigReader {
 
     public ConfigReader() throws IOException, ParseException, URISyntaxException {
         String url = tournamentAdmin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-        String newURL = url.replace("Go.jar", "go.config");
+        String newURL = url.replace("tournamentAdmin.jar", "go.config");
         String goConfigData = getConfigData(newURL);
         JSONParser parser = new JSONParser();
         JSONObject configData = (JSONObject) parser.parse(goConfigData);
