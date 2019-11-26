@@ -12,6 +12,10 @@ import java.util.concurrent.Executors;
 
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
+        if (args.length == 0){
+            System.out.println("not enough arguments");
+            System.exit(0);
+        }
         ConfigReader configReader = new ConfigReader();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
