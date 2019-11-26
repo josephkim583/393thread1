@@ -54,7 +54,6 @@ public class Player implements GoPlayer{
      }
 
      public String makeAMove(ArrayList<Board> boards) throws Exception {
-        ConfigReader configReader = new ConfigReader();
         if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();
             try{

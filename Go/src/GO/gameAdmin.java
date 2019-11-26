@@ -9,6 +9,7 @@ import java.net.Socket;
 public class gameAdmin {
     public static void main(String[] args) throws Exception {
         Game referee = new Game();
+
         ConfigReader config = new ConfigReader();
         JSONArray winners = new JSONArray();
 
@@ -16,6 +17,7 @@ public class gameAdmin {
         InetAddress addr = InetAddress.getByName(config.ipAddress());
         ServerSocket ss = new ServerSocket(config.port(), 50, addr);
         Socket s = ss.accept();
+
 
         //register player 1
         Player localPlayer = new Player();
@@ -26,6 +28,8 @@ public class gameAdmin {
         ProxyPlayer proxyPlayer = new ProxyPlayer(s);
         referee.playerTwo = proxyPlayer;
         referee.registerPlayer();
+
+//        System.out.println("It is registering players at least");
 
         //play game and get winners
         winners = referee.playGame();

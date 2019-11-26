@@ -101,7 +101,7 @@ public class Game implements GameInterface {
     }
     public JSONArray playGame() throws Exception {
         while (!gameEnded) {
-            System.out.println(boardHistory.get(0).printBoard());
+//            System.out.println(boardHistory.get(0).printBoard());
             if (currentStoneColor.equals("B")){
                 String playerOneMove = playerOne.makeADumbMove(boardHistory);
                 if (playerOneMove.equals("pass")){

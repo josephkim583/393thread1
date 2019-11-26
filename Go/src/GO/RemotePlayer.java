@@ -8,16 +8,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class RemotePlayer implements GoPlayer {
     public static void main(String[] args) throws Exception {
-        ConfigReader config = new ConfigReader();
+//        ConfigReader config = new ConfigReader();
         RemotePlayer rp = new RemotePlayer();
         int counter = 0;
-        Socket s = new Socket(config.ipAddress(), config.port());
+        Socket s = new Socket("localhost", 9000);
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
         PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
