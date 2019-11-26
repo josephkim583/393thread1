@@ -19,7 +19,7 @@ public class tournamentAdmin {
         ConfigReader configReader = new ConfigReader();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
-        int playerNum = Integer.parseInt(args[0]);
+        int playerNum = Integer.parseInt(args[1]);
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
@@ -28,7 +28,7 @@ public class tournamentAdmin {
         }
 
         tournamentAdmin admin = new tournamentAdmin();
-        String mode = args[1];
+        String mode = args[0];
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
         int numNewPlayers = closestPowerOfTwo - playerNum;
 
@@ -37,9 +37,9 @@ public class tournamentAdmin {
             listOfPlayers.add(defaultPlayer);
         }
 
-        if (mode.equals("-league")) {
+        if (mode.equals("-league") || mode.equals("--league")) {
             System.out.println(admin.league(listOfPlayers));
-        } else if (mode.equals("-cup")) {
+        } else if (mode.equals("-cup") || mode.equals("--cup")) {
             System.out.println(admin.cup(listOfPlayers));
         }
         ss.close();
