@@ -10,6 +10,7 @@ public class Player implements GoPlayer{
     private Stone playerStone;
     private boolean registered;
     private boolean receivedStone;
+    private boolean gameEnded = false;
 
     public Player() {
     }
@@ -37,7 +38,7 @@ public class Player implements GoPlayer{
     }
 
     public String register(String name) {
-        if (!registered){
+        if (!registered && !gameEnded){
             this.playerName = name;
             this.registered = true;
             return name;
@@ -46,7 +47,7 @@ public class Player implements GoPlayer{
     }
 
     public boolean receiveStones(Stone stone) {
-        if (registered && !receivedStone) {
+        if (registered && !receivedStone && !gameEnded) {
             this.playerStone = stone;
             this.receivedStone = true;
             return true;
@@ -63,13 +64,14 @@ public class Player implements GoPlayer{
      }
 
      public String makeAMove(ArrayList<Board> boards) throws Exception {
-        if (registered && receivedStone) {
+        if (registered && receivedStone && !gameEnded) {
             RuleChecker ruleChecker = new RuleChecker();
             try{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
                 return smartMove(boards);
+//                return "pass";
             } catch (Exception e){
                 return "GO has gone crazy!";
             }
@@ -130,6 +132,11 @@ public class Player implements GoPlayer{
              return dumbMove(boards);
          }
          return pointToPlace.pointToString();
+     }
+
+     public String endGame() {
+        gameEnded = true;
+        return "OK";
      }
 
 }

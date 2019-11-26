@@ -52,11 +52,11 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add(stone.getStone());
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = bf.readLine();
-        while (str == null) {
-            str = bf.readLine();
-        }
-        return proxyPlayer.receiveStones(stone) && Boolean.valueOf(str);
+//        String str = bf.readLine();
+//        while (str == null) {
+//            str = bf.readLine();
+//        }
+        return proxyPlayer.receiveStones(stone);
     }
 
     public String makeAMove(ArrayList<Board> boards) throws IOException {
@@ -65,10 +65,24 @@ public class ProxyPlayer implements GoPlayer{
         }
         JSONArray commandArray = new JSONArray();
         commandArray.add("make-a-move");
-        commandArray.add(boards);
+        JSONArray boardArray = new JSONArray();
+        for (Board b : boards) {
+            boardArray.add(b.printBoard());
+        }
+        commandArray.add(boardArray);
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = bf.readLine();
+        return str;
+    }
+
+    public String endGame() throws IOException {
+        JSONArray commandArray = new JSONArray();
+        commandArray.add("end-game");
+        this.outputWriter.println(commandArray);
+        this.outputWriter.flush();
+        String str = bf.readLine();
+        proxyPlayer.endGame();
         return str;
     }
 

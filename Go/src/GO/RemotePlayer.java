@@ -12,7 +12,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class RemotePlayer implements GoPlayer {
+public class RemotePlayer {
     public static void main(String[] args) throws Exception {
         ConfigReader config = new ConfigReader();
         RemotePlayer rp = new RemotePlayer();
@@ -37,26 +37,17 @@ public class RemotePlayer implements GoPlayer {
                                 outputWrtier.flush();
                                 break;
                             }
-                            String registered = rp.register("no name");
+                            String registered = rp.register("remotePlayer");
                             outputWrtier.println(registered);
                             outputWrtier.flush();
                             break;
                         }
                         case ("receive-stones"): {
-                            if (commandArray.size() != 2) {
-                                outputWrtier.println("GO has gone crazy!");
-                                outputWrtier.flush();
-                                break;
-                            }
                             try {
                                 Stone playerStone = new Stone(commandArray.get(1).toString());
                                 boolean receiveStoneSuccess = rp.receiveStones(playerStone);
-                                outputWrtier.println(receiveStoneSuccess);
-                                outputWrtier.flush();
                                 break;
                             } catch (Exception e) {
-                                outputWrtier.println(false);
-                                outputWrtier.flush();
                                 break;
                             }
                         }
@@ -84,6 +75,17 @@ public class RemotePlayer implements GoPlayer {
                             outputWrtier.flush();
                             break;
                         }
+                        case ("end-game"): {
+                            if (commandArray.size() != 1) {
+                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.flush();
+                                break;
+                            }
+                            String endGame = rp.endGame();
+                            outputWrtier.println(endGame);
+                            outputWrtier.flush();
+                            break;
+                        }
                         case ("shutdown"): {
                             break loop;
                         }
@@ -104,21 +106,23 @@ public class RemotePlayer implements GoPlayer {
 
     }
 
-    @Override
     public String register(String name) {
         String register = p.register("no name");
         return register;
     }
 
-    @Override
     public boolean receiveStones(Stone stone) {
         boolean receiveStoneSuccess = p.receiveStones(stone);
         return receiveStoneSuccess;
     }
 
-    @Override
     public String makeAMove(ArrayList<Board> boards) throws Exception {
         String makeAMove = p.makeAMove(boards);
         return makeAMove;
+    }
+
+    public String endGame() {
+        String endOk = p.endGame();
+        return endOk;
     }
 }
