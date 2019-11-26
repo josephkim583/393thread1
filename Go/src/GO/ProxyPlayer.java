@@ -49,9 +49,6 @@ public class ProxyPlayer implements GoPlayer{
 
     //TODO: does it need to return?
     public boolean receiveStones(Stone stone) throws IOException {
-        if (proxyPlayer.isReceivedStone()){
-            return true;
-        }
         JSONArray commandArray = new JSONArray();
         commandArray.add("receive-stones");
         commandArray.add(stone.getStone());
