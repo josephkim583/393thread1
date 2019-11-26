@@ -47,11 +47,11 @@ public class ProxyPlayer {
     public boolean receiveStones(JSONArray commandArray) throws IOException {
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = bf.readLine();
-        while (str == null) {
-            str = bf.readLine();
-        }
-        return Boolean.valueOf(str);
+//        String str = bf.readLine();
+//        while (str == null) {
+//            str = bf.readLine();
+//        }
+        return true;
     }
 
     public String makeAMove(JSONArray commandArray) throws IOException {
