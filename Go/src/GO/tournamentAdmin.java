@@ -10,24 +10,25 @@ import java.util.*;
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
         tournamentAdmin admin = new tournamentAdmin();
-        System.out.println("starting tournament");
+//        System.out.println("starting tournament");
         int playerNum = Integer.parseInt(args[0]);
         String mode = args[1];
 
         ConfigReader configReader = new ConfigReader();
-        System.out.println("getting closest power of two");
+//        System.out.println("config reader results" + configReader.ipAddress() + configReader.port());
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
         int numNewPlayers = closestPowerOfTwo - playerNum;
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
-        System.out.println("try creating proxyplayers");
+//        System.out.println("try creating proxyplayers");
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
+            System.out.println("got socket");
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
             listOfPlayers.add(proxyPlayer);
         }
-        System.out.println("created proxyplayers");
+//        System.out.println("created proxyplayers");
 
         for (int i = 0; i < numNewPlayers ; i++) {
             Player defaultPlayer = new Player();
@@ -35,11 +36,11 @@ public class tournamentAdmin {
         }
 
         if (mode.equals("-league")) {
-            System.out.println("playing league");
+//            System.out.println("playing league");
 
             System.out.println(admin.league(listOfPlayers));
         } else if (mode.equals("-cup")) {
-            System.out.println("playing cup");
+//            System.out.println("playing cup");
 
             System.out.println(admin.cup(listOfPlayers));
         }

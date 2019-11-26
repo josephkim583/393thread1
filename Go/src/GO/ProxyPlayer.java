@@ -23,6 +23,7 @@ public class ProxyPlayer implements GoPlayer{
         this.in = new InputStreamReader(this.s.getInputStream());
         this.bf = new BufferedReader(this.in);
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
+        System.out.println("socket initialized");
     }
 
     public Player getProxyPlayer() {
