@@ -13,33 +13,15 @@ import java.util.concurrent.Executors;
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
         ConfigReader configReader = new ConfigReader();
-        InetAddress addr = InetAddress.getByName(configReader.ipAddress());
+        InetAddress addr = InetAddress.getByName(configReader.ipAddress());configReader.port();
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
         int playerNum = Integer.parseInt(args[0]);
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
-
-        class Task implements Runnable {
-            final Socket socket;
-            Task(Socket socket) {
-                this.socket = socket;
-            }
-            @Override
-            public void run() {
-                try {
-                    ProxyPlayer proxyPlayer = new ProxyPlayer(this.socket);
-                    listOfPlayers.add(proxyPlayer);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        ExecutorService service = Executors.newFixedThreadPool(16);
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
-            service.execute(new Task(s));
+            ProxyPlayer proxyPlayer = new ProxyPlayer(s);
+            listOfPlayers.add(proxyPlayer);
         }
-        service.shutdown();
 
         tournamentAdmin admin = new tournamentAdmin();
         String mode = args[1];
