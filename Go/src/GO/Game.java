@@ -77,7 +77,7 @@ public class Game implements GameInterface {
         // TODO: GO has gone crazy case
     }
 
-    public void receiveStone(GoPlayer player) {
+    public void receiveStone(GoPlayer player) throws IOException {
         if (player.getPlayerName().equals(this.playerOne.getPlayerName())){
             try {
                 Stone blackStone = new Stone("B");
@@ -86,6 +86,8 @@ public class Game implements GameInterface {
                 gameEnded = true;
                 gameResult.put("winner", playerTwo);
                 gameResult.put("loser", playerOne);
+                playerOne.endGame();
+                playerTwo.endGame();
             }
         }
         else {
@@ -96,6 +98,8 @@ public class Game implements GameInterface {
                 gameEnded = true;
                 gameResult.put("winner", playerOne);
                 gameResult.put("loser", playerTwo);
+                playerOne.endGame();
+                playerTwo.endGame();
             }
         }
 
