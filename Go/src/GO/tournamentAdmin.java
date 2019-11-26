@@ -16,6 +16,8 @@ public class tournamentAdmin {
             System.out.println("not enough arguments");
             System.exit(0);
         }
+        System.out.println(Integer.parseInt(args[1]));
+        System.out.println(args[0]);
         ConfigReader configReader = new ConfigReader();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
