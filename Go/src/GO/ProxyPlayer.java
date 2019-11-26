@@ -36,6 +36,9 @@ public class ProxyPlayer implements GoPlayer{
 
     //TODO: does it need to return the name?
     public String register(String string) throws IOException {
+        if (proxyPlayer.isRegistered()){
+            return proxyPlayer.getPlayerName();
+        }
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
         this.outputWriter.println(commandArray);
@@ -46,6 +49,9 @@ public class ProxyPlayer implements GoPlayer{
 
     //TODO: does it need to return?
     public boolean receiveStones(Stone stone) throws IOException {
+        if (proxyPlayer.isReceivedStone()){
+            return true;
+        }
         JSONArray commandArray = new JSONArray();
         commandArray.add("receive-stones");
         commandArray.add(stone.getStone());
@@ -77,8 +83,7 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = bf.readLine();
-        proxyPlayer.endGame();
-        s.close();
+//        s.close();
         return str;
     }
 
