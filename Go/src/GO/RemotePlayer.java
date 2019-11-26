@@ -52,25 +52,25 @@ public class RemotePlayer {
                             }
                         }
                         case ("make-a-move"): {
-                            if (commandArray.size() != 2) {
-                                outputWrtier.println("GO has gone crazy!");
-                                outputWrtier.flush();
-                                break;
-                            }
-                            InputParser input = new InputParser();
-                            ArrayList<Board> boards = new ArrayList<Board>();
-                            JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
-                            for (int i = 0; i < boardJSONArray.size(); i++) {
-                                try {
-                                    Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
-                                    boards.add(temp);
-                                } catch (Exception e) {
-                                    outputWrtier.println("GO has gone crazy!");
-                                    outputWrtier.flush();
-                                    break;
-                                }
-                            }
-                            String move = rp.makeAMove(boards);
+//                            if (commandArray.size() != 2) {
+//                                outputWrtier.println("GO has gone crazy!");
+//                                outputWrtier.flush();
+//                                break;
+//                            }
+//                            InputParser input = new InputParser();
+//                            ArrayList<Board> boards = new ArrayList<Board>();
+//                            JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
+//                            for (int i = 0; i < boardJSONArray.size(); i++) {
+//                                try {
+//                                    Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
+//                                    boards.add(temp);
+//                                } catch (Exception e) {
+//                                    outputWrtier.println("GO has gone crazy!");
+//                                    outputWrtier.flush();
+//                                    break;
+//                                }
+//                            }
+                            String move = "fuckthisshit";
                             outputWrtier.println(move);
                             outputWrtier.flush();
                             break;

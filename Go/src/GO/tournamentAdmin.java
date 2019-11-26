@@ -1,13 +1,10 @@
 package GO;
 
 import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,7 +31,7 @@ public class tournamentAdmin {
         }
 
         if (mode.equals("-league")) {
-            admin.league(listOfPlayers);
+            System.out.println(admin.league(listOfPlayers));
         } else if (mode.equals("-cup")) {
             System.out.println(admin.cup(listOfPlayers));
         }
@@ -51,10 +48,79 @@ public class tournamentAdmin {
         return closestPower;
     }
 
-    JSONArray league(ArrayList<GoPlayer> playerList) throws ParseException, IOException, URISyntaxException {
+    String league(ArrayList<GoPlayer> playerList) throws Exception {
         JSONArray ranking = new JSONArray();
+        ArrayList<String> cheaters = new ArrayList<>();
+        HashMap<GoPlayer, HashMap<GoPlayer, Integer>> currentStanding = new HashMap<>();
+        //initialize currentStanding
+        for (int i = 0; i < playerList.size(); i++) {
+            HashMap<GoPlayer, Integer> initialWinLoss = new HashMap<>();
+            for (int j = 0; j < playerList.size(); j++) {
+                if (i != j){
+                    initialWinLoss.put(playerList.get(j), 0);
+                }
+            }
+            currentStanding.put(playerList.get(i), initialWinLoss);
+        }
 
-        return ranking;
+        //play the league
+        for (int i = 0; i < playerList.size(); i++) {
+            for (int j = i+1; j < playerList.size(); j++) {
+                GoPlayer playerOne = playerList.get(i);
+                GoPlayer playerTwo = playerList.get(j);
+                HashMap<String, GoPlayer> gameResult = playOneGame(playerOne,playerTwo);
+
+                //In case there was a cheater
+                if (gameResult.get("cheater") != null) {
+                    GoPlayer cheater = gameResult.get("cheater");
+                    cheaters.add(cheater.getPlayerName());
+                    Player newPlayer = new Player();
+                    //TODO: check this indexOF thing works by sysout later
+                    int indexToReplace = playerList.indexOf(cheater);
+                    playerList.set(indexToReplace, newPlayer);
+                    //initialize currentStanding for new Player
+                    HashMap<GoPlayer, Integer> newPlayerWinLoss = new HashMap<>();
+                    for (int z = 0; z < playerList.size(); z++){
+                        if (z != indexToReplace){
+                            newPlayerWinLoss.put(playerList.get(z), 0);
+                        }
+                    }
+                    currentStanding.put(newPlayer, newPlayerWinLoss);
+
+                    //add point to everyone that lost to cheater
+                    for (GoPlayer player : currentStanding.get(cheater).keySet()){
+                        if (currentStanding.get(cheater).get(player) == 1){
+                            currentStanding.get(player).put(cheater, 1);
+                        }
+                    }
+
+                    //delete cheater from currentStanding
+                    currentStanding.remove(cheater);
+                }
+                //NO cheater
+                else{
+                    GoPlayer winner = gameResult.get("winner");
+                    GoPlayer loser = gameResult.get("loser");
+
+                    currentStanding.get(winner).put(loser, 1);
+                    currentStanding.get(loser).put(winner, -1);
+                }
+            }
+        }
+
+        HashMap<Integer, ArrayList<String>> rankingBoard = new HashMap<>();
+        for(GoPlayer player : currentStanding.keySet()) {
+            int total = 0;
+            for(GoPlayer opponent : currentStanding.get(player).keySet()) {
+                total += currentStanding.get(player).get(opponent);
+            }
+            if (rankingBoard.get(total) == null) {
+                rankingBoard.put(total, new ArrayList<String>());
+            }
+            rankingBoard.get(total).add(player.getPlayerName());
+        }
+        rankingBoard.put(-100, cheaters);
+        return rankingBoard.toString();
     };
 
     String cup(ArrayList<GoPlayer> playerList) throws Exception {
@@ -91,20 +157,9 @@ public class tournamentAdmin {
     HashMap<String, GoPlayer> playOneGame(GoPlayer playerOne, GoPlayer playerTwo) throws Exception {
         Game referee = new Game();
         referee.registerPlayer(playerOne, playerTwo);
-        JSONArray winnerArray = referee.playGame();
-
+        referee.playGame();
         HashMap<String, GoPlayer> gameResult = referee.getGameResult();
-
-        if (winnerArray.size() == 2) {
-            double rand = Math.random();
-            if (rand < 0.5) {
-                winnerArray.remove(0);
-            } else {
-                winnerArray.remove(1);
-            }
-        }
-        String winner = winnerArray.get(0).toString();
-
+        System.out.println(gameResult);
         return gameResult;
     };
 }

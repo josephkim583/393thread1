@@ -5,22 +5,17 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
 
 public class Game implements GameInterface {
     GoPlayer playerOne;
     GoPlayer playerTwo;
     String currentStoneColor = "B";
     int consecutivePass = 0;
-    int numberOfPlayers = 0;
     boolean gameEnded = false;
     ArrayList<Board> boardHistory = new ArrayList<>();
     RuleChecker ruleChecker = new RuleChecker();
     JSONArray gameLog = new JSONArray();
-    JSONArray winner = new JSONArray();
-
     HashMap<String, GoPlayer> gameResult = new HashMap<>();
 
     public Game(){
@@ -89,7 +84,6 @@ public class Game implements GameInterface {
                 playerOne.receiveStones(blackStone);
             } catch (IOException e) {
                 gameEnded = true;
-                winner.add(playerTwo.getPlayerName());
                 gameResult.put("winner", playerTwo);
                 gameResult.put("loser", playerOne);
             }
@@ -100,7 +94,6 @@ public class Game implements GameInterface {
                 playerOne.receiveStones(blackStone);
             } catch (IOException e) {
                 gameEnded = true;
-                winner.add(playerOne.getPlayerName());
                 gameResult.put("winner", playerOne);
                 gameResult.put("loser", playerTwo);
             }
@@ -108,7 +101,7 @@ public class Game implements GameInterface {
 
     }
 
-    public JSONArray playGame() throws Exception {
+    public void playGame() throws Exception {
         while (!gameEnded) {
             System.out.println(boardHistory.get(0).printBoard());
             try {
@@ -120,6 +113,9 @@ public class Game implements GameInterface {
                     }
                     else{
                         Point playerOneMovePoint = new Point(playerOneMove);
+                        if (!playerOneMovePoint.isValid()){
+                            illegalEndGame("B");
+                        }
                         makeMove(playerOneMovePoint);
                     }
                 }
@@ -131,26 +127,16 @@ public class Game implements GameInterface {
                     }
                     else{
                         Point playerTwoMovePoint = new Point(playerTwoMove);
+                        if (!playerTwoMovePoint.isValid()){
+                            illegalEndGame("W");
+                        }
                         makeMove(playerTwoMovePoint);
                     }
                 }
             } catch(Exception e) {
-                gameEnded = true;
-                GoPlayer winnerPlayer;
-                GoPlayer loserPlayer;
-                if (currentStoneColor.equals("B")) {
-                    winnerPlayer = playerTwo;
-                    loserPlayer = playerOne;
-                } else {
-                    winnerPlayer = playerOne;
-                    loserPlayer = playerTwo;
-                }
-                gameResult.put("winner", winnerPlayer);
-                gameResult.put("loser", loserPlayer);
-                winner.add(winnerPlayer.getPlayerName());
+                illegalEndGame(currentStoneColor);
             }
         }
-        return(this.winner);
     }
 
     @Override
@@ -200,19 +186,20 @@ public class Game implements GameInterface {
     }
 
     void illegalEndGame(String stoneColor) throws Exception {
-
+        System.out.println("comes to illgal end game");
         JSONArray winnerArray = new JSONArray();
         if (stoneColor == "B"){
             winnerArray.add(playerTwo.getPlayerName());
             gameResult.put("winner", playerTwo);
             gameResult.put("loser", playerOne);
+            gameResult.put("cheater", playerOne);
         }
         else{
             winnerArray.add(playerOne.getPlayerName());
             gameResult.put("winner", playerOne);
             gameResult.put("loser", playerTwo);
+            gameResult.put("cheater", playerTwo);
         }
-        winner = winnerArray;
         gameEnded = true;
         playerOne.endGame();
         playerTwo.endGame();
@@ -224,6 +211,7 @@ public class Game implements GameInterface {
         JSONArray jsonArray = new JSONArray();
         int blackScore = (int)scores.get("B");
         int whiteScore = (int)scores.get("W");
+        gameResult.put("cheater", null);
         if (blackScore > whiteScore){
             jsonArray.add(playerOne.getPlayerName());
             gameResult.put("winner", playerOne);
@@ -247,7 +235,6 @@ public class Game implements GameInterface {
                 jsonArray.add(playerOne.getPlayerName());
             }
         }
-        winner = jsonArray;
         gameEnded = true;
         playerOne.endGame();
         playerTwo.endGame();
