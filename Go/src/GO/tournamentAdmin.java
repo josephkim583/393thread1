@@ -34,7 +34,7 @@ public class tournamentAdmin {
             }
         }
 
-        ExecutorService service = Executors.newFixedThreadPool(3);
+        ExecutorService service = Executors.newFixedThreadPool(16);
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             service.execute(new Task(s));
