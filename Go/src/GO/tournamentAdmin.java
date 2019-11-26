@@ -19,21 +19,29 @@ public class tournamentAdmin {
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
+        System.out.println("try creating proxyplayers");
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
             listOfPlayers.add(proxyPlayer);
         }
+        System.out.println("created proxyplayers");
+
         for (int i = 0; i < numNewPlayers ; i++) {
             Player defaultPlayer = new Player();
             listOfPlayers.add(defaultPlayer);
         }
 
         if (mode.equals("-league")) {
+            System.out.println("playing league");
+
             System.out.println(admin.league(listOfPlayers));
         } else if (mode.equals("-cup")) {
+            System.out.println("playing cup");
+
             System.out.println(admin.cup(listOfPlayers));
         }
+        ss.close();
     }
 
      int closestPowerOfTwo(int n){

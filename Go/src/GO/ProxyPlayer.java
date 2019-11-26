@@ -76,6 +76,7 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
+        s.close();
         String str = bf.readLine();
         proxyPlayer.endGame();
         return str;
