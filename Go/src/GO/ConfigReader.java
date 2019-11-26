@@ -13,7 +13,7 @@ public class ConfigReader {
     private int port;
 
     public ConfigReader() throws IOException, ParseException, URISyntaxException {
-        String url = gameAdmin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        String url = tournamentAdmin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
         String newURL = url.replace("Go.jar", "go.config");
         String goConfigData = getConfigData(newURL);
         JSONParser parser = new JSONParser();

@@ -2,12 +2,12 @@ package GO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class Game implements GameInterface {
     GoPlayer playerOne;
@@ -21,39 +21,63 @@ public class Game implements GameInterface {
     JSONArray gameLog = new JSONArray();
     JSONArray winner = new JSONArray();
 
-    HashMap<String, ArrayList<GoPlayer>> gameResult = new HashMap<>();
+    HashMap<String, GoPlayer> gameResult = new HashMap<>();
 
     public Game(){
         Board emptyBoard = new Board();
         boardHistory.add(emptyBoard);
     }
 
+    public HashMap<String, GoPlayer> getGameResult() {
+        return gameResult;
+    }
+
     public JSONArray getGameLog() {
         return gameLog;
     }
 
-    public void registerPlayer(GoPlayer player) throws IOException {
-        if (numberOfPlayers == 0){
-            //Check if connection is still open.
-            // If connection was closed then add local player as winner then end game.
-            try{
-                this.playerOne = player;
-                playerOne.register("localPlayer");
-            } catch (Exception e){
-                gameEnded = true;
-            }
-            numberOfPlayers++;
+    public void registerPlayer(GoPlayer playerOne, GoPlayer playerTwo) throws IOException {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
 
-        } else if (numberOfPlayers == 1){
-            //Check if connection is still open.
-            // If connection was closed then add local player as winner then end game.
-            try{
-                this.playerTwo = player;
-                playerTwo.register("localPlayer");
-            } catch (Exception e){
+        //register playerOne
+        try {
+            this.playerOne.register("localPlayer");
+        }
+        catch (Exception e){
+            this.playerOne = new Player();
+            playerOne.register("localPlayer");
+        }
 
-            }
-            numberOfPlayers++;
+        //register playerTwo
+        try {
+            this.playerTwo.register("localPlayer");
+        }
+        catch (Exception e){
+            this.playerTwo = new Player();
+            playerTwo.register("localPlayer");
+        }
+
+        //receive stone playerOne
+        try{
+            Stone blackStone = new Stone("B");
+            this.playerOne.receiveStones(blackStone);
+        }
+        catch (Exception e){
+            gameEnded = true;
+            gameResult.put("winner", playerTwo);
+            gameResult.put("loser", playerOne);
+        }
+
+        //receive stone playerTwo
+        try{
+            Stone whiteStone = new Stone("W");
+            this.playerTwo.receiveStones(whiteStone);
+        }
+        catch (Exception e){
+            gameEnded = true;
+            gameResult.put("winner", playerOne);
+            gameResult.put("loser", playerTwo);
         }
         // TODO: GO has gone crazy case
     }
@@ -66,8 +90,8 @@ public class Game implements GameInterface {
             } catch (IOException e) {
                 gameEnded = true;
                 winner.add(playerTwo.getPlayerName());
-                gameResult.get("winner").add(playerTwo);
-                gameResult.get("loser").add(playerOne);
+                gameResult.put("winner", playerTwo);
+                gameResult.put("loser", playerOne);
             }
         }
         else {
@@ -77,8 +101,8 @@ public class Game implements GameInterface {
             } catch (IOException e) {
                 gameEnded = true;
                 winner.add(playerOne.getPlayerName());
-                gameResult.get("winner").add(playerOne);
-                gameResult.get("loser").add(playerTwo);
+                gameResult.put("winner", playerOne);
+                gameResult.put("loser", playerTwo);
             }
         }
 
@@ -90,6 +114,7 @@ public class Game implements GameInterface {
             try {
                 if (currentStoneColor.equals("B")){
                     String playerOneMove = playerOne.makeAMove(boardHistory);
+                    System.out.println(playerOneMove);
                     if (playerOneMove.equals("pass")){
                         pass();
                     }
@@ -100,6 +125,7 @@ public class Game implements GameInterface {
                 }
                 if (currentStoneColor.equals("W")){
                     String playerTwoMove = playerTwo.makeAMove(boardHistory);
+                    System.out.println(playerTwoMove);
                     if (playerTwoMove.equals("pass")){
                         pass();
                     }
@@ -109,16 +135,19 @@ public class Game implements GameInterface {
                     }
                 }
             } catch(Exception e) {
-                System.out.println(Arrays.toString(e.getStackTrace()));
                 gameEnded = true;
-                GoPlayer opponent;
+                GoPlayer winnerPlayer;
+                GoPlayer loserPlayer;
                 if (currentStoneColor.equals("B")) {
-                    opponent = playerTwo;
+                    winnerPlayer = playerTwo;
+                    loserPlayer = playerOne;
                 } else {
-                    opponent = playerOne;
+                    winnerPlayer = playerOne;
+                    loserPlayer = playerTwo;
                 }
-
-                winner.add(opponent.getPlayerName());
+                gameResult.put("winner", winnerPlayer);
+                gameResult.put("loser", loserPlayer);
+                winner.add(winnerPlayer.getPlayerName());
             }
         }
         return(this.winner);
@@ -175,9 +204,13 @@ public class Game implements GameInterface {
         JSONArray winnerArray = new JSONArray();
         if (stoneColor == "B"){
             winnerArray.add(playerTwo.getPlayerName());
+            gameResult.put("winner", playerTwo);
+            gameResult.put("loser", playerOne);
         }
         else{
             winnerArray.add(playerOne.getPlayerName());
+            gameResult.put("winner", playerOne);
+            gameResult.put("loser", playerTwo);
         }
         winner = winnerArray;
         gameEnded = true;
@@ -193,12 +226,18 @@ public class Game implements GameInterface {
         int whiteScore = (int)scores.get("W");
         if (blackScore > whiteScore){
             jsonArray.add(playerOne.getPlayerName());
+            gameResult.put("winner", playerOne);
+            gameResult.put("loser", playerTwo);
         }
         else if (whiteScore > blackScore){
             jsonArray.add(playerTwo.getPlayerName());
+            gameResult.put("winner", playerTwo);
+            gameResult.put("loser", playerOne);
         }
         else {
             // TODO: Randomize this part
+            gameResult.put("winner", playerTwo);
+            gameResult.put("loser", playerOne);
             if (playerOne.getPlayerName().compareTo(playerTwo.getPlayerName()) < 0){
                 jsonArray.add(playerOne.getPlayerName());
                 jsonArray.add(playerTwo.getPlayerName());

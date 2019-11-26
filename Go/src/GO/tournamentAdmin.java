@@ -36,11 +36,14 @@ public class tournamentAdmin {
         if (mode.equals("-league")) {
             admin.league(listOfPlayers);
         } else if (mode.equals("-cup")) {
-            admin.cup(listOfPlayers);
+            System.out.println(admin.cup(listOfPlayers));
         }
     }
 
      int closestPowerOfTwo(int n){
+        if (n == 0){
+            return 4;
+        }
         int closestPower = 2;
         while (closestPower < n){
             closestPower = closestPower*2;
@@ -54,7 +57,7 @@ public class tournamentAdmin {
         return ranking;
     };
 
-    JSONArray cup(ArrayList<GoPlayer> playerList) throws Exception {
+    String cup(ArrayList<GoPlayer> playerList) throws Exception {
         JSONArray ranking = new JSONArray();
 
         HashMap<Integer, ArrayList<String>> rankings = new HashMap<>();
@@ -67,33 +70,31 @@ public class tournamentAdmin {
             for (int i =0; i<playerList.size(); i+=2){
                 GoPlayer playerOne = playerList.get(i);
                 GoPlayer playerTwo = playerList.get(i+1);
-                String winner = playOneGame(playerOne, playerTwo);
-                if (winner.equals(playerOne.getPlayerName())) {
-                    tempNewPlayerList.add(playerOne);
-                    loserList.add(playerTwo.getPlayerName());
-                }
-                else {
-                    tempNewPlayerList.add(playerTwo);
-                    loserList.add(playerOne.getPlayerName());
-                }
+                HashMap<String, GoPlayer> gameResult = playOneGame(playerOne, playerTwo);
+                tempNewPlayerList.add(gameResult.get("winner"));
+                loserList.add(gameResult.get("loser").getPlayerName());
             }
             rankings.put(round, loserList);
             playerList = tempNewPlayerList;
             round ++;
         }
-
+        ArrayList<String> finalWinner = new ArrayList<>();
+        finalWinner.add(playerList.get(0).getPlayerName());
+        rankings.put(round, finalWinner);
         //loop through the list of remote players and try to register
         //keep track of how many fail register. Add this number to the number of
 
         //TODO: make rankings json form to print then return it
-        return ranking;
+        return rankings.toString();
     };
 
-    GoPlayer playOneGame(GoPlayer playerOne, GoPlayer playerTwo) throws Exception {
+    HashMap<String, GoPlayer> playOneGame(GoPlayer playerOne, GoPlayer playerTwo) throws Exception {
         Game referee = new Game();
-        referee.registerPlayer(playerOne);
-        referee.registerPlayer(playerTwo);
+        referee.registerPlayer(playerOne, playerTwo);
         JSONArray winnerArray = referee.playGame();
+
+        HashMap<String, GoPlayer> gameResult = referee.getGameResult();
+
         if (winnerArray.size() == 2) {
             double rand = Math.random();
             if (rand < 0.5) {
@@ -104,6 +105,6 @@ public class tournamentAdmin {
         }
         String winner = winnerArray.get(0).toString();
 
-        return winner;
+        return gameResult;
     };
 }
