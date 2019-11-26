@@ -9,18 +9,19 @@ import java.util.*;
 
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
+        ConfigReader configReader = new ConfigReader();
+        InetAddress addr = InetAddress.getByName(configReader.ipAddress());
+        ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
+
         tournamentAdmin admin = new tournamentAdmin();
 //        System.out.println("starting tournament");
         int playerNum = Integer.parseInt(args[0]);
         String mode = args[1];
 
-        ConfigReader configReader = new ConfigReader();
 //        System.out.println("config reader results" + configReader.ipAddress() + configReader.port());
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
         int numNewPlayers = closestPowerOfTwo - playerNum;
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
-        InetAddress addr = InetAddress.getByName(configReader.ipAddress());
-        ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
 //        System.out.println("try creating proxyplayers");
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
