@@ -10,10 +10,12 @@ import java.util.*;
 public class tournamentAdmin {
     public static void main(String[] args) throws Exception {
         tournamentAdmin admin = new tournamentAdmin();
+        System.out.println("starting tournament");
         int playerNum = Integer.parseInt(args[0]);
         String mode = args[1];
 
         ConfigReader configReader = new ConfigReader();
+        System.out.println("getting closest power of two");
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
         int numNewPlayers = closestPowerOfTwo - playerNum;
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
