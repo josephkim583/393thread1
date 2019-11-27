@@ -55,7 +55,7 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != -1 && counter <25) {
+        while ((c = bf.read()) != -1 && counter <27) {
             System.out.println(c);
             sb.append((char) c);
             counter += 1;
@@ -107,7 +107,7 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int counter = 0;
         int c = 0;
-        while ((c = bf.read()) != -1 && counter <3) {
+        while ((c = bf.read()) != -1 && counter <5) {
             System.out.println(c);
             sb.append((char) c);
             counter += 1;
@@ -128,7 +128,7 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != -1 && counter <2) {
+        while ((c = bf.read()) != -1 && counter <4) {
             System.out.println(c);
             sb.append((char) c);
             counter += 1;
