@@ -40,7 +40,7 @@ public class tournamentAdmin {
         }
 
         if (mode.equals("-league") || mode.equals("--league")) {
-            System.out.println(admin.cup(listOfPlayers));
+            System.out.println(admin.league(listOfPlayers));
         } else if (mode.equals("-cup") || mode.equals("--cup")) {
             System.out.println(admin.cup(listOfPlayers));
         }
