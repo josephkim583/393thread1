@@ -36,9 +36,9 @@ public class ProxyPlayer implements GoPlayer{
 
     //TODO: does it need to return the name?
     public String register(String string) throws IOException {
-        if (proxyPlayer.isRegistered()){
-            return proxyPlayer.getPlayerName();
-        }
+//        if (proxyPlayer.isRegistered()){
+//            return proxyPlayer.getPlayerName();
+//        }
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
         this.outputWriter.println(commandArray);
@@ -58,9 +58,9 @@ public class ProxyPlayer implements GoPlayer{
     }
 
     public String makeAMove(ArrayList<Board> boards) throws IOException {
-        if (!(proxyPlayer.isRegistered() && proxyPlayer.isReceivedStone())) {
-            return "Go has gone crazy!";
-        }
+//        if (!(proxyPlayer.isRegistered() && proxyPlayer.isReceivedStone())) {
+//            return "Go has gone crazy!";
+//        }
         JSONArray commandArray = new JSONArray();
         commandArray.add("make-a-move");
         JSONArray boardArray = new JSONArray();
@@ -84,9 +84,4 @@ public class ProxyPlayer implements GoPlayer{
 //        s.close();
         return str;
     }
-
-    public void endConnection() throws IOException {
-        s.close();
-    }
-
 }
