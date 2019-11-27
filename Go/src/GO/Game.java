@@ -42,7 +42,7 @@ public class Game implements GameInterface {
         }
         catch (Exception e){
             this.playerOne = new Player();
-            playerOne.register("localPlayer");
+            this.playerOne.register("localPlayer");
         }
 
         //register playerTwo
@@ -51,7 +51,7 @@ public class Game implements GameInterface {
         }
         catch (Exception e){
             this.playerTwo = new Player();
-            playerTwo.register("localPlayer");
+            this.playerTwo.register("localPlayer");
         }
 
         //receive stone playerOne
@@ -61,10 +61,10 @@ public class Game implements GameInterface {
         }
         catch (Exception e){
             gameEnded = true;
-            gameResult.put("winner", playerTwo);
-            gameResult.put("loser", playerOne);
-            playerOne.endGame();
-            playerTwo.endGame();
+            gameResult.put("winner", this.playerTwo);
+            gameResult.put("loser", this.playerOne);
+            this.playerOne.endGame();
+            this.playerTwo.endGame();
         }
 
         //receive stone playerTwo
@@ -74,10 +74,10 @@ public class Game implements GameInterface {
         }
         catch (Exception e){
             gameEnded = true;
-            gameResult.put("winner", playerOne);
-            gameResult.put("loser", playerTwo);
-            playerOne.endGame();
-            playerTwo.endGame();
+            gameResult.put("winner", this.playerOne);
+            gameResult.put("loser", this.playerTwo);
+            this.playerOne.endGame();
+            this.playerTwo.endGame();
         }
         // TODO: GO has gone crazy case
     }

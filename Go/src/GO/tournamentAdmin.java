@@ -40,7 +40,7 @@ public class tournamentAdmin {
         }
 
         if (mode.equals("-league") || mode.equals("--league")) {
-            System.out.println(admin.league(listOfPlayers));
+            System.out.println(admin.cup(listOfPlayers));
         } else if (mode.equals("-cup") || mode.equals("--cup")) {
             System.out.println(admin.cup(listOfPlayers));
         }
@@ -81,7 +81,7 @@ public class tournamentAdmin {
                 HashMap<String, GoPlayer> gameResult = playOneGame(playerOne,playerTwo);
 
                 //In case there was a cheater
-                if (gameResult.get("cheater") != null) {
+                if (!gameResult.get("cheater").equals(null)) {
                     GoPlayer cheater = gameResult.get("cheater");
                     cheaters.add(cheater.getPlayerName());
                     Player newPlayer = new Player();
@@ -125,7 +125,7 @@ public class tournamentAdmin {
             for(GoPlayer opponent : currentStanding.get(player).keySet()) {
                 total += currentStanding.get(player).get(opponent);
             }
-            if (rankingBoard.get(total) == null) {
+            if (rankingBoard.get(total).equals(null)) {
                 rankingBoard.put(total, new ArrayList<String>());
             }
             rankingBoard.get(total).add(player.getPlayerName());
@@ -140,6 +140,8 @@ public class tournamentAdmin {
         return finalRanking.toString();
     };
 
+
+    //TODO:Losers at the bottom of the ranking
     String cup(ArrayList<GoPlayer> playerList) throws Exception {
         JSONArray ranking = new JSONArray();
 
@@ -164,10 +166,6 @@ public class tournamentAdmin {
         ArrayList<String> finalWinner = new ArrayList<>();
         finalWinner.add(playerList.get(0).getPlayerName());
         rankings.put(round, finalWinner);
-        //loop through the list of remote players and try to register
-        //keep track of how many fail register. Add this number to the number of
-
-        //TODO: make rankings json form to print then return it
         return rankings.toString();
     };
 

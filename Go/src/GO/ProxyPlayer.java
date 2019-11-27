@@ -84,4 +84,8 @@ public class ProxyPlayer implements GoPlayer{
         return str;
     }
 
+    public void endConnection() throws IOException {
+        s.close();
+    }
+
 }
