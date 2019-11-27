@@ -73,10 +73,7 @@ public class Board implements Statement {
         if (point.isValid()) {
             int col = point.getCol();
             int row = point.getRow();
-            if (board[col][row].equals("B") || board[col][row].equals("W")) {
-                return true;
-            }
-            return false;
+            return board[col][row].equals("B") || board[col][row].equals("W");
         } else {
             throw new Exception("Not a valid point! - from Occupied");
         }
@@ -89,10 +86,7 @@ public class Board implements Statement {
         if (point.isValid()) {
             int col = point.getCol();
             int row = point.getRow();
-            if (this.board[col][row].equals(stone.getStone())) {
-                return true;
-            }
-            return false;
+            return this.board[col][row].equals(stone.getStone());
         } else {
             throw new Exception("Not a valid point! - from Occupies");
         }

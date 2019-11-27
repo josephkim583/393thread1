@@ -91,10 +91,7 @@ public class Point {
         } else {
             if (this.col < anotherpoint.col){
                 return true;
-            } else if (anotherpoint.col < this.col){
-                return false;
-            }
+            } else return anotherpoint.col >= this.col;
         }
-        return true;
     }
 }

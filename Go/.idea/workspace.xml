@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+<<<<<<< HEAD
+      <artifact name="tournament:jar" />
+=======
       <artifact name="gameAdmin" />
+>>>>>>> master
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ConfigReader.java" afterDir="false" />
+>>>>>>> master
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,17 +64,18 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="GO" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="GO" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="GO" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -185,6 +194,9 @@
       <workItem from="1572667368660" duration="6282000" />
       <workItem from="1573835028779" duration="1207000" />
       <workItem from="1573964046256" duration="24519000" />
+      <workItem from="1574363266299" duration="3056000" />
+      <workItem from="1574489034478" duration="635000" />
+      <workItem from="1574490225016" duration="29082000" />
     </task>
     <servers />
   </component>

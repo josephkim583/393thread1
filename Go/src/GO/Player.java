@@ -10,6 +10,7 @@ public class Player implements GoPlayer{
     private Stone playerStone;
     private boolean registered;
     private boolean receivedStone;
+    private boolean gameEnded = false;
 
     public Player() {
     }
@@ -23,12 +24,21 @@ public class Player implements GoPlayer{
         return playerName;
     }
 
+
     public Stone getPlayerStone() {
         return playerStone;
     }
 
+    public boolean isRegistered() {
+        return registered;
+    }
+
+    public boolean isReceivedStone() {
+        return receivedStone;
+    }
+
     public String register(String name) {
-        if (!registered){
+        if (!registered && !gameEnded){
             this.playerName = name;
             this.registered = true;
             return name;
@@ -37,7 +47,7 @@ public class Player implements GoPlayer{
     }
 
     public boolean receiveStones(Stone stone) {
-        if (registered && !receivedStone) {
+        if (registered && !receivedStone && !gameEnded) {
             this.playerStone = stone;
             this.receivedStone = true;
             return true;
@@ -54,13 +64,14 @@ public class Player implements GoPlayer{
      }
 
      public String makeAMove(ArrayList<Board> boards) throws Exception {
-        if (registered && receivedStone) {
+        if (registered && receivedStone && !gameEnded) {
             RuleChecker ruleChecker = new RuleChecker();
             try{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
-                return smartMove(boards, 1);
+                return smartMove(boards);
+//                return "pass";
             } catch (Exception e){
                 return "GO has gone crazy!";
             }
@@ -86,7 +97,7 @@ public class Player implements GoPlayer{
          return "pass";
      }
 
-     String smartMove (ArrayList<Board> boards, int depth) throws Exception {
+     String smartMove (ArrayList<Board> boards) throws Exception {
          Board b = new Board();
          int boardSize = b.boardSize();
 
@@ -101,7 +112,7 @@ public class Player implements GoPlayer{
                  Point currPoint = new Point(pointStr);
                  if (lastBoard.board[currPoint.getCol()][currPoint.getRow()].equals(opponentStone.getStone())){
                      List<Point> liberties = ruleChecker.getLiberties(lastBoard, currPoint);
-                     if (liberties.size() == depth){
+                     if (liberties.size() == 1){
                          Point libertyPoint = liberties.get(0);
                          if ((boolean)ruleChecker.moveCheck(playerStone, libertyPoint, boards).get(0)){
                              if (libertyPoint.isPriorityOver(pointToPlace)){
@@ -121,6 +132,13 @@ public class Player implements GoPlayer{
              return dumbMove(boards);
          }
          return pointToPlace.pointToString();
+     }
+
+     public String endGame() {
+//        gameEnded = true;
+         this.registered = false;
+         this.receivedStone = false;
+        return "OK";
      }
 
 }

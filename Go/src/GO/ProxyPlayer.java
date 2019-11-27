@@ -1,27 +1,21 @@
 package GO;
 
-import com.sun.security.ntlm.Server;
-import jdk.internal.util.xml.impl.Input;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ProxyPlayer {
-    private String proxyPlayerName;
+public class ProxyPlayer implements GoPlayer{
     private Socket s;
     private InputStreamReader in;
     private BufferedReader bf;
     private PrintWriter outputWriter;
+    private String proxyPlayerName;
+    private String stoneColor;
 
     public ProxyPlayer(Socket s) throws IOException {
         this.s = s;
@@ -30,58 +24,61 @@ public class ProxyPlayer {
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
     }
 
-    public String getProxyPlayerName() {
-        return proxyPlayerName;
+    @Override
+    public String getPlayerName() {
+       return this.proxyPlayerName;
     }
 
     //TODO: does it need to return the name?
-    public String register(JSONArray commandArray) throws IOException {
-        this.outputWriter.println(commandArray);
+    public String register(String string) throws IOException {
+        if (proxyPlayerName != null){
+            return this.proxyPlayerName;
+        }
+        JSONArray commandArray = new JSONArray();
+        commandArray.add("register");
+        this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
         String str = this.bf.readLine();
-        proxyPlayerName = str;
-        return str;
+        this.proxyPlayerName = str;
+        return this.proxyPlayerName;
     }
 
     //TODO: does it need to return?
-    public boolean receiveStones(JSONArray commandArray) throws IOException {
-        this.outputWriter.println(commandArray);
+    public boolean receiveStones(Stone stone) {
+        JSONArray commandArray = new JSONArray();
+        commandArray.add("receive-stones");
+        commandArray.add(stone.getStone());
+        System.out.println(commandArray.toJSONString());
+        this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
-//        String str = bf.readLine();
-//        while (str == null) {
-//            str = bf.readLine();
-//        }
+        this.stoneColor = stone.getStone();
         return true;
     }
 
-    public String makeAMove(JSONArray commandArray) throws IOException {
-        this.outputWriter.println(commandArray);
+    public String makeAMove(ArrayList<Board> boards) throws IOException {
+        if (!(this.proxyPlayerName != null && this.stoneColor != null)) {
+            return "Go has gone crazy!";
+        }
+        JSONArray commandArray = new JSONArray();
+        commandArray.add("make-a-move");
+        JSONArray boardArray = new JSONArray();
+        for (Board b : boards) {
+            Board boardCopy = new Board(b);
+            boardArray.add(boardCopy.printBoard());
+        }
+        commandArray.add(boardArray);
+        this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
         String str = bf.readLine();
         return str;
     }
 
-    public void closeConnections() throws IOException {
-        this.s.close();
-        this.in.close();
-        this.bf.close();
-        this.outputWriter.close();
-    }
-
-
-    //
-//    public void closeAllConnections() throws IOException {
-//        openConnections();
-//        JSONArray shutdown = new JSONArray();
-//        shutdown.add("shutdown");
-//        this.pr.println(shutdown);
-//        this.pr.flush();
-//        closeConnections();
-//    }
-//
-    public void openConnections() throws IOException {
-        this.in = new InputStreamReader(this.s.getInputStream());
-        this.bf = new BufferedReader(this.in);
-        this.outputWriter = new PrintWriter(this.s.getOutputStream());
+    public String endGame() throws IOException {
+        JSONArray commandArray = new JSONArray();
+        commandArray.add("end-game");
+        this.outputWriter.println(commandArray.toJSONString());
+        this.outputWriter.flush();
+        String str = bf.readLine();
+        return str;
     }
 }
