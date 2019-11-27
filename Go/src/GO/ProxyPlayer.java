@@ -39,9 +39,8 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("register");
 //        this.outputWriter.println(commandArray.toJSONString());
 //        this.outputWriter.flush();
-        OutputStreamWriter out = new OutputStreamWriter(
-                s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toJSONString());
+        DataOutputStream dOut = new DataOutputStream(this.s.getOutputStream());
+        dOut.write(commandArray.toJSONString().getBytes());
         String str = this.bf.readLine();
         this.proxyPlayerName = str;
         return this.proxyPlayerName;
@@ -53,9 +52,8 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("receive-stones");
         commandArray.add(stone.getStone());
         System.out.println(commandArray.toJSONString());
-        OutputStreamWriter out = new OutputStreamWriter(
-                s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toJSONString());
+        DataOutputStream dOut = new DataOutputStream(this.s.getOutputStream());
+        dOut.write(commandArray.toJSONString().getBytes());
 //        this.outputWriter.println(commandArray.toJSONString());
 //        this.outputWriter.flush();
         this.stoneColor = stone.getStone();
@@ -75,9 +73,8 @@ public class ProxyPlayer implements GoPlayer{
         }
         commandArray.add(boardArray);
         System.out.println(commandArray.toJSONString());
-        OutputStreamWriter out = new OutputStreamWriter(
-                s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toJSONString());
+        DataOutputStream dOut = new DataOutputStream(this.s.getOutputStream());
+        dOut.write(commandArray.toJSONString().getBytes());
 //        this.outputWriter.println(commandArray.toJSONString());
 //        this.outputWriter.flush();
         String str = bf.readLine();
@@ -89,9 +86,8 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
 //        this.outputWriter.println(commandArray.toJSONString());
 //        this.outputWriter.flush();
-        OutputStreamWriter out = new OutputStreamWriter(
-                s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toString());
+        DataOutputStream dOut = new DataOutputStream(this.s.getOutputStream());
+        dOut.write(commandArray.toJSONString().getBytes());
         String str = bf.readLine();
         return str;
     }
