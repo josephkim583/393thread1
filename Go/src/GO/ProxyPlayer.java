@@ -39,7 +39,7 @@ public class ProxyPlayer implements GoPlayer{
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
         this.outputWriter.println(commandArray);
-        this.outputWriter.flush();
+//        this.outputWriter.flush();
         String str = this.bf.readLine();
         this.proxyPlayerName = str;
         return this.proxyPlayerName;
@@ -70,7 +70,7 @@ public class ProxyPlayer implements GoPlayer{
         }
         commandArray.add(boardArray);
         this.outputWriter.println(commandArray);
-        this.outputWriter.flush();
+//        this.outputWriter.flush();
         String str = bf.readLine();
         return str;
     }
@@ -79,7 +79,7 @@ public class ProxyPlayer implements GoPlayer{
         JSONArray commandArray = new JSONArray();
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
-        this.outputWriter.flush();
+//        this.outputWriter.flush();
         String str = bf.readLine();
         return str;
     }
