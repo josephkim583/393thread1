@@ -14,6 +14,12 @@ import java.util.ArrayList;
 
 public class RemotePlayer {
     public static void main(String[] args) throws Exception {
+        String name;
+        if (args[0] != null) {
+            name = args[0];
+        } else {
+            name = "remotePlayer";
+        }
 //        ConfigReader config = new ConfigReader();
         RemotePlayer rp = new RemotePlayer();
         int counter = 0;
@@ -37,7 +43,7 @@ public class RemotePlayer {
                                 outputWrtier.flush();
                                 break;
                             }
-                            String registered = rp.register("remotePlayer");
+                            String registered = rp.register(name);
                             outputWrtier.println(registered);
                             outputWrtier.flush();
                             break;
@@ -71,7 +77,8 @@ public class RemotePlayer {
                                 }
                             }
 //                            String move = "fuckthisshit";
-                            outputWrtier.println("1-1");
+                            String move = rp.makeAMove(boards);
+                            outputWrtier.println(move);
                             outputWrtier.flush();
                             break;
                         }
@@ -107,7 +114,7 @@ public class RemotePlayer {
     }
 
     public String register(String name) {
-        String register = p.register("no name");
+        String register = p.register(name);
         return register;
     }
 

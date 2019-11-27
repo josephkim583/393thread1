@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProxyPlayer implements GoPlayer{
     private Player proxyPlayer = new Player();
@@ -42,9 +43,14 @@ public class ProxyPlayer implements GoPlayer{
 //        }
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
+        System.out.println(commandArray.getClass());
+        System.out.println(commandArray.get(0).getClass());
+
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = this.bf.readLine();
+        System.out.println("flushed");
+        String str = listenForMessage();
+        System.out.println("register Name read");
         System.out.println(str);
         return proxyPlayer.register(str);
     }
@@ -67,14 +73,23 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("make-a-move");
         JSONArray boardArray = new JSONArray();
         for (Board b : boards) {
-            Board boardCopy = new Board(b);
-            boardArray.add(boardCopy.printBoard());
+            JSONArray printBoard = b.printBoard();
+            boardArray.add(printBoard);
+//            String[][] boardCopy = b.getStringBoard();
+//            boardArray.add(Arrays.deepToString(boardCopy));
+//            System.out.println(Arrays.deepToString(boardCopy).getClass());
         }
         commandArray.add(boardArray);
+        System.out.println(commandArray.size());
+//        System.out.println(commandArray.getClass());
+//        System.out.println(commandArray.get(0).getClass());
+//        System.out.println(commandArray.get(1).getClass());
+
         System.out.println(commandArray);
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = bf.readLine();
+        String str = listenForMessage();
+//        String str = bf.readLine();
         System.out.println(str);
         return str;
     }
@@ -84,8 +99,30 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = bf.readLine();
+        String str = listenForMessage();
 //        s.close();
         return str;
+    }
+
+    public String listenForMessage() throws IOException{
+        String receiveMessage = "";
+        int t = -1;
+        boolean started = false;
+
+        while(true){
+            if(bf.ready())
+                t = bf.read();
+            else
+                t = -1;
+
+            if(t != -1){
+                started = true;
+                receiveMessage += (char) t;
+            }else{
+                if(started)
+                    break;
+            }
+        }
+        return receiveMessage;
     }
 }

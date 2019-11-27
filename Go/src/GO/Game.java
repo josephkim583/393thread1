@@ -55,8 +55,11 @@ public class Game implements GameInterface {
 
         //receive stone playerOne
         try{
+            System.out.println("before sending receive stone");
             Stone blackStone = new Stone("B");
             this.playerOne.receiveStones(blackStone);
+            System.out.println("after sending receive stone");
+
         }
         catch (Exception e){
             gameEnded = true;
@@ -78,8 +81,6 @@ public class Game implements GameInterface {
             this.playerOne.endGame();
             this.playerTwo.endGame();
         }
-        System.out.println(playerOne.getPlayerName());
-        System.out.println(playerTwo.getPlayerName());
 
 
         // TODO: GO has gone crazy case
@@ -90,7 +91,6 @@ public class Game implements GameInterface {
             try {
                 if (currentStoneColor.equals("B")){
                     String playerOneMove = playerOne.makeAMove(boardHistory);
-                    System.out.println("playeroneMove: "+ playerOneMove);
                     if (playerOneMove.equals("pass")){
                         pass();
                     }
@@ -109,7 +109,6 @@ public class Game implements GameInterface {
                 }
                 if (currentStoneColor.equals("W")){
                     String playerTwoMove = playerTwo.makeAMove(boardHistory);
-                    System.out.println("playertneMove: "+ playerTwoMove);
 
                     if (playerTwoMove.equals("pass")){
                         pass();
