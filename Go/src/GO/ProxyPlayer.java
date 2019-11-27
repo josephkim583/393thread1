@@ -66,7 +66,7 @@ public class ProxyPlayer implements GoPlayer{
         JSONArray boardArray = new JSONArray();
         for (Board b : boards) {
             Board boardCopy = new Board(b);
-            boardArray.add(boardCopy.printBoard());
+            boardArray.add(boardCopy.getBoard());
         }
         commandArray.add(boardArray);
         System.out.println(commandArray);
