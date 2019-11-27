@@ -52,6 +52,7 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         while ((c = bf.read()) != -1) {
+            System.out.println(c);
             sb.append((char) c);
         }
         String str = sb.toString();
@@ -85,7 +86,7 @@ public class ProxyPlayer implements GoPlayer{
 //            System.out.println(Arrays.deepToString(boardCopy).getClass());
         }
         commandArray.add(boardArray);
-        System.out.println(commandArray.size());
+//        System.out.println(commandArray.size());
 //        System.out.println(commandArray.getClass());
 //        System.out.println(commandArray.get(0).getClass());
 //        System.out.println(commandArray.get(1).getClass());
@@ -100,6 +101,7 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         while ((c = bf.read()) != -1) {
+            System.out.println(c);
             sb.append((char) c);
         }
         String str = sb.toString();
@@ -115,6 +117,7 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         while ((c = bf.read()) != -1) {
+            System.out.println(c);
             sb.append((char) c);
         }
         String str = sb.toString();
