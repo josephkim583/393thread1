@@ -23,12 +23,11 @@ public class tournamentAdmin {
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
         int playerNum = Integer.parseInt(args[1]);
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
-//        for (int i = 0; i < playerNum; i++) {
-//            Socket s = ss.accept();
-//            ProxyPlayer proxyPlayer = new ProxyPlayer(s);
-//            listOfPlayers.add(proxyPlayer);
-//
-//        }
+        for (int i = 0; i < playerNum; i++) {
+            Socket s = ss.accept();
+            ProxyPlayer proxyPlayer = new ProxyPlayer(s);
+            listOfPlayers.add(proxyPlayer);
+        }
 //
         tournamentAdmin admin = new tournamentAdmin();
         String mode = args[0];
