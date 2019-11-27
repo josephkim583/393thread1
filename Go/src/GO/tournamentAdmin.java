@@ -16,8 +16,8 @@ public class tournamentAdmin {
             System.out.println("not enough arguments");
             System.exit(0);
         }
-        System.out.println(Integer.parseInt(args[1]));
-        System.out.println(args[0]);
+//        System.out.println(Integer.parseInt(args[1]));
+//        System.out.println(args[0]);
         ConfigReader configReader = new ConfigReader();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
@@ -80,7 +80,7 @@ public class tournamentAdmin {
 
         //play the league
         for (int i = 0; i < playerList.size(); i++) {
-            System.out.println(i + "playing games");
+//            System.out.println(i + "playing games");
             for (int j = i+1; j < playerList.size(); j++) {
                 GoPlayer playerOne = playerList.get(i);
                 GoPlayer playerTwo = playerList.get(j);
@@ -131,7 +131,7 @@ public class tournamentAdmin {
             for(GoPlayer opponent : currentStanding.get(player).keySet()) {
                 total += currentStanding.get(player).get(opponent);
             }
-            if (rankingBoard.get(total).equals(null)) {
+            if (rankingBoard.get(total) == null) {
                 rankingBoard.put(total, new ArrayList<String>());
             }
             rankingBoard.get(total).add(player.getPlayerName());
@@ -177,12 +177,12 @@ public class tournamentAdmin {
 
     HashMap<String, GoPlayer> playOneGame(GoPlayer playerOne, GoPlayer playerTwo) throws Exception {
         Game referee = new Game();
-        System.out.println("registering");
+//        System.out.println("registering");
         referee.registerPlayer(playerOne, playerTwo);
-        System.out.println("registering done");
+//        System.out.println("registering done");
 
         referee.playGame();
-        System.out.println("Game is done");
+//        System.out.println("Game is done");
 
         HashMap<String, GoPlayer> gameResult = referee.getGameResult();
         return gameResult;
