@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 public class RemotePlayer {
     public static void main(String[] args) throws Exception {
-        ConfigReader config = new ConfigReader();
+//        ConfigReader config = new ConfigReader();
         RemotePlayer rp = new RemotePlayer();
         int counter = 0;
-        Socket s = new Socket(config.ipAddress(), config.port());
+        Socket s = new Socket("localhost", 8080);
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
         PrintWriter outputWrtier = new PrintWriter(s.getOutputStream());
@@ -52,26 +52,26 @@ public class RemotePlayer {
                             }
                         }
                         case ("make-a-move"): {
-//                            if (commandArray.size() != 2) {
-//                                outputWrtier.println("GO has gone crazy!");
-//                                outputWrtier.flush();
-//                                break;
-//                            }
-//                            InputParser input = new InputParser();
-//                            ArrayList<Board> boards = new ArrayList<Board>();
-//                            JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
-//                            for (int i = 0; i < boardJSONArray.size(); i++) {
-//                                try {
-//                                    Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
-//                                    boards.add(temp);
-//                                } catch (Exception e) {
-//                                    outputWrtier.println("GO has gone crazy!");
-//                                    outputWrtier.flush();
-//                                    break;
-//                                }
-//                            }
-                            String move = "fuckthisshit";
-                            outputWrtier.println(move);
+                            if (commandArray.size() != 2) {
+                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.flush();
+                                break;
+                            }
+                            InputParser input = new InputParser();
+                            ArrayList<Board> boards = new ArrayList<Board>();
+                            JSONArray boardJSONArray = (JSONArray) commandArray.get(1);
+                            for (int i = 0; i < boardJSONArray.size(); i++) {
+                                try {
+                                    Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
+                                    boards.add(temp);
+                                } catch (Exception e) {
+                                    outputWrtier.println("GO has gone crazy!");
+                                    outputWrtier.flush();
+                                    break;
+                                }
+                            }
+//                            String move = "fuckthisshit";
+                            outputWrtier.println("1-1");
                             outputWrtier.flush();
                             break;
                         }

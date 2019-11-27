@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="tournament:jar" />
+      <artifact name="RemotePlayer:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="" />
+    <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/gameAdmin.textClipping" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/gameAdmin/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/gameAdmin/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/tournament_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/tournament_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/tournament_jar/tournamentAdmin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/tournament_jar/tournamentAdmin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RemotePlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RemotePlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/tournamentAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/tournamentAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/RemotePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RemotePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/gameAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/gameAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

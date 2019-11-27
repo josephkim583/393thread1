@@ -81,7 +81,7 @@ public class tournamentAdmin {
                 HashMap<String, GoPlayer> gameResult = playOneGame(playerOne,playerTwo);
 
                 //In case there was a cheater
-                if (!gameResult.get("cheater").equals(null)) {
+                if (gameResult.get("cheater") != null) {
                     GoPlayer cheater = gameResult.get("cheater");
                     cheaters.add(cheater.getPlayerName());
                     Player newPlayer = new Player();
@@ -125,7 +125,7 @@ public class tournamentAdmin {
             for(GoPlayer opponent : currentStanding.get(player).keySet()) {
                 total += currentStanding.get(player).get(opponent);
             }
-            if (rankingBoard.get(total).equals(null)) {
+            if (rankingBoard.get(total) == null) {
                 rankingBoard.put(total, new ArrayList<String>());
             }
             rankingBoard.get(total).add(player.getPlayerName());
