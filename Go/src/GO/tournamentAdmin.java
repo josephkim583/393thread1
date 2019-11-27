@@ -26,7 +26,7 @@ public class tournamentAdmin {
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
-            listOfPlayers.add(proxyPlayer);
+//            listOfPlayers.add(proxyPlayer);
         }
 //
         tournamentAdmin admin = new tournamentAdmin();
