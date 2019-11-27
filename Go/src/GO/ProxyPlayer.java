@@ -41,7 +41,7 @@ public class ProxyPlayer implements GoPlayer{
 //        this.outputWriter.flush();
         OutputStreamWriter out = new OutputStreamWriter(
                 s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toString());
+        out.write(commandArray.toJSONString());
         String str = this.bf.readLine();
         this.proxyPlayerName = str;
         return this.proxyPlayerName;
@@ -55,7 +55,7 @@ public class ProxyPlayer implements GoPlayer{
         System.out.println(commandArray.toJSONString());
         OutputStreamWriter out = new OutputStreamWriter(
                 s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toString());
+        out.write(commandArray.toJSONString());
 //        this.outputWriter.println(commandArray.toJSONString());
 //        this.outputWriter.flush();
         this.stoneColor = stone.getStone();
@@ -77,7 +77,7 @@ public class ProxyPlayer implements GoPlayer{
         System.out.println(commandArray.toJSONString());
         OutputStreamWriter out = new OutputStreamWriter(
                 s.getOutputStream(), StandardCharsets.UTF_8);
-        out.write(commandArray.toString());
+        out.write(commandArray.toJSONString());
 //        this.outputWriter.println(commandArray.toJSONString());
 //        this.outputWriter.flush();
         String str = bf.readLine();
