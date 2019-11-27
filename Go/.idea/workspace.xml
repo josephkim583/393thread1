@@ -7,20 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Deliverables/9/9.1/tournamentAdmin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Deliverables/9/9.1/tournamentAdmin.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/tournament_jar/tournamentAdmin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/ProxyPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Go/GO/RemotePlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Go/GO/RemotePlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GO/RemotePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RemotePlayer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

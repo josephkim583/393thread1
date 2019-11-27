@@ -49,10 +49,10 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         System.out.println("flushed");
-        String str = listenForMessage();
+        int c = bf.read();
         System.out.println("register Name read");
-        System.out.println(str);
-        return proxyPlayer.register(str);
+        System.out.println(c);
+        return proxyPlayer.register(Integer.toString(c));
     }
 
     //TODO: does it need to return?
@@ -88,10 +88,11 @@ public class ProxyPlayer implements GoPlayer{
         System.out.println(commandArray);
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = listenForMessage();
+//        String str = listenForMessage();
 //        String str = bf.readLine();
-        System.out.println(str);
-        return str;
+        int c = bf.read();
+        System.out.println(c);
+        return Integer.toString(c);
     }
 
     public String endGame() throws IOException {
@@ -99,9 +100,12 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        String str = listenForMessage();
-//        s.close();
-        return str;
+        int c = bf.read();
+        System.out.println(c);
+        return Integer.toString(c);
+//        String str = listenForMessage();
+////        s.close();
+//        return str;
     }
 
     public String listenForMessage() throws IOException{
