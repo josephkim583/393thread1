@@ -65,7 +65,8 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("make-a-move");
         JSONArray boardArray = new JSONArray();
         for (Board b : boards) {
-            boardArray.add(b.printBoard());
+            Board boardCopy = new Board(b);
+            boardArray.add(boardCopy.printBoard());
         }
         commandArray.add(boardArray);
         this.outputWriter.println(commandArray);
