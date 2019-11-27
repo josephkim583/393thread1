@@ -17,6 +17,7 @@ public class ConfigReader {
         String newURL = url.replace("tournamentAdmin.jar", "go.config");
         String goConfigData = getConfigData(newURL);
         JSONParser parser = new JSONParser();
+
         JSONObject configData = (JSONObject) parser.parse(goConfigData);
         ipAddress = configData.get("IP").toString();
         port = ((Long) configData.get("port")).intValue();
