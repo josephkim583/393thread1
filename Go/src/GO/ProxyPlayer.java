@@ -19,6 +19,7 @@ public class ProxyPlayer implements GoPlayer{
     private PrintWriter outputWriter;
 
     public ProxyPlayer(Socket s) throws IOException {
+        System.out.println("Proxy player made - proxyplayer.java");
         this.s = s;
         this.in = new InputStreamReader(this.s.getInputStream());
         this.bf = new BufferedReader(this.in);
@@ -44,6 +45,7 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = this.bf.readLine();
+        System.out.println(str);
         return proxyPlayer.register(str);
     }
 
@@ -73,6 +75,7 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         String str = bf.readLine();
+        System.out.println(str);
         return str;
     }
 
