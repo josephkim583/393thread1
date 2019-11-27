@@ -49,16 +49,19 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
         System.out.println("flushed");
-        StringBuilder sb = new StringBuilder(512);
-        int c = 0;
-        while ((c = bf.read()) != -1) {
-            System.out.println(c);
-            sb.append((char) c);
-        }
-        String str = sb.toString();
-        System.out.println("register Name read");
-        System.out.println(str);
-        return proxyPlayer.register(str);
+        int c = bf.read();
+        System.out.println((char) c);
+        return proxyPlayer.register(Integer.toString(c));
+//        StringBuilder sb = new StringBuilder(512);
+//        int c = 0;
+//        while ((c = bf.read()) != -1) {
+//            System.out.println(c);
+//            sb.append((char) c);
+//        }
+//        String str = sb.toString();
+//        System.out.println("register Name read");
+//        System.out.println(str);
+//        return proxyPlayer.register(str);
     }
 
     //TODO: does it need to return?
@@ -98,15 +101,19 @@ public class ProxyPlayer implements GoPlayer{
 //        String str = bf.readLine();
 //        int c = bf.read();
 
-        StringBuilder sb = new StringBuilder(512);
-        int c = 0;
-        while ((c = bf.read()) != -1) {
-            System.out.println(c);
-            sb.append((char) c);
-        }
-        String str = sb.toString();
-        System.out.println("From make a move: " + str);
-        return str;
+        int c = bf.read();
+        System.out.println((char) c);
+        return (Integer.toString(c));
+
+//        StringBuilder sb = new StringBuilder(512);
+//        int c = 0;
+//        while ((c = bf.read()) != -1) {
+//            System.out.println(c);
+//            sb.append((char) c);
+//        }
+//        String str = sb.toString();
+//        System.out.println("From make a move: " + str);
+//        return str;
     }
 
     public String endGame() throws IOException {
@@ -114,17 +121,20 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        StringBuilder sb = new StringBuilder(512);
-        int c = 0;
-        while ((c = bf.read()) != -1) {
-            System.out.println(c);
-            sb.append((char) c);
-        }
-        String str = sb.toString();
-        System.out.println("at endgame");
-        System.out.println(str);
-        System.out.println("From end game: " + str);
-        return str;
+        int c = bf.read();
+        System.out.println((char) c);
+        return (Integer.toString(c));
+//        StringBuilder sb = new StringBuilder(512);
+//        int c = 0;
+//        while ((c = bf.read()) != -1) {
+//            System.out.println(c);
+//            sb.append((char) c);
+//        }
+//        String str = sb.toString();
+//        System.out.println("at endgame");
+//        System.out.println(str);
+//        System.out.println("From end game: " + str);
+//        return str;
 //        int c = bf.read();
 //        System.out.println(c);
 //        return Integer.toString(c);
