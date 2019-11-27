@@ -70,8 +70,8 @@ public class Player implements GoPlayer{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
-//                return smartMove(boards);
-                return "pass";
+                return smartMove(boards);
+//                return "pass";
             } catch (Exception e){
                 return "GO has gone crazy!";
             }
