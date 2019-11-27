@@ -172,12 +172,12 @@ public class tournamentAdmin {
 
     HashMap<String, GoPlayer> playOneGame(GoPlayer playerOne, GoPlayer playerTwo) throws Exception {
         Game referee = new Game();
-        System.out.println("registering");
+//        System.out.println("registering");
         referee.registerPlayer(playerOne, playerTwo);
-        System.out.println("registering done");
+//        System.out.println("registering done");
 
         referee.playGame();
-        System.out.println("Game is done");
+//        System.out.println("Game is done");
 
         HashMap<String, GoPlayer> gameResult = referee.getGameResult();
         return gameResult;

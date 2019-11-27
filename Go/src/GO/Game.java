@@ -35,7 +35,6 @@ public class Game implements GameInterface {
     public void registerPlayer(GoPlayer playerOne, GoPlayer playerTwo) throws IOException {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        System.out.println("registering");
         //register playerOne
         try {
             this.playerOne.register("localPlayer");
@@ -53,7 +52,6 @@ public class Game implements GameInterface {
             this.playerTwo = new Player();
             this.playerTwo.register("localPlayer");
         }
-        System.out.println("registered");
 
         //receive stone playerOne
         try{
@@ -67,7 +65,6 @@ public class Game implements GameInterface {
             this.playerOne.endGame();
             this.playerTwo.endGame();
         }
-        System.out.println("received black");
 
         //receive stone playerTwo
         try{
@@ -81,7 +78,9 @@ public class Game implements GameInterface {
             this.playerOne.endGame();
             this.playerTwo.endGame();
         }
-        System.out.println("received white");
+        System.out.println(playerOne.getPlayerName());
+        System.out.println(playerTwo.getPlayerName());
+
 
         // TODO: GO has gone crazy case
     }
