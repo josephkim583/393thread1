@@ -7,6 +7,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class ProxyPlayer implements GoPlayer{
@@ -36,21 +37,27 @@ public class ProxyPlayer implements GoPlayer{
         }
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
-        this.outputWriter.println(commandArray.toJSONString());
-        this.outputWriter.flush();
+//        this.outputWriter.println(commandArray.toJSONString());
+//        this.outputWriter.flush();
+        OutputStreamWriter out = new OutputStreamWriter(
+                s.getOutputStream(), StandardCharsets.UTF_8);
+        out.write(commandArray.toString());
         String str = this.bf.readLine();
         this.proxyPlayerName = str;
         return this.proxyPlayerName;
     }
 
     //TODO: does it need to return?
-    public boolean receiveStones(Stone stone) {
+    public boolean receiveStones(Stone stone) throws IOException {
         JSONArray commandArray = new JSONArray();
         commandArray.add("receive-stones");
         commandArray.add(stone.getStone());
-        System.out.println(commandArray);
-        this.outputWriter.println(commandArray.toJSONString());
-        this.outputWriter.flush();
+        System.out.println(commandArray.toJSONString());
+        OutputStreamWriter out = new OutputStreamWriter(
+                s.getOutputStream(), StandardCharsets.UTF_8);
+        out.write(commandArray.toString());
+//        this.outputWriter.println(commandArray.toJSONString());
+//        this.outputWriter.flush();
         this.stoneColor = stone.getStone();
         return true;
     }
@@ -67,8 +74,12 @@ public class ProxyPlayer implements GoPlayer{
             boardArray.add(boardCopy.printBoard());
         }
         commandArray.add(boardArray);
-        this.outputWriter.println(commandArray.toJSONString());
-        this.outputWriter.flush();
+        System.out.println(commandArray.toJSONString());
+        OutputStreamWriter out = new OutputStreamWriter(
+                s.getOutputStream(), StandardCharsets.UTF_8);
+        out.write(commandArray.toString());
+//        this.outputWriter.println(commandArray.toJSONString());
+//        this.outputWriter.flush();
         String str = bf.readLine();
         return str;
     }
@@ -76,8 +87,11 @@ public class ProxyPlayer implements GoPlayer{
     public String endGame() throws IOException {
         JSONArray commandArray = new JSONArray();
         commandArray.add("end-game");
-        this.outputWriter.println(commandArray.toJSONString());
-        this.outputWriter.flush();
+//        this.outputWriter.println(commandArray.toJSONString());
+//        this.outputWriter.flush();
+        OutputStreamWriter out = new OutputStreamWriter(
+                s.getOutputStream(), StandardCharsets.UTF_8);
+        out.write(commandArray.toString());
         String str = bf.readLine();
         return str;
     }
