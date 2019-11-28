@@ -55,10 +55,12 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != -1 && counter <27) {
+        while ((c = bf.read()) != -1 && counter != 2) {
             System.out.println(c);
             sb.append((char) c);
-            counter += 1;
+            if (c == 34){
+                counter += 1;
+            }
         }
         String str = sb.toString();
         System.out.println("register Name read");
@@ -107,10 +109,12 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int counter = 0;
         int c = 0;
-        while ((c = bf.read()) != -1 && counter <5) {
+        while ((c = bf.read()) != -1 && counter != 2) {
             System.out.println(c);
             sb.append((char) c);
-            counter += 1;
+            if (c == 34){
+                counter += 1;
+            }
         }
         String str = sb.toString();
         System.out.println("From make a move: " + str);
@@ -128,10 +132,12 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != -1 && counter <4) {
+        while ((c = bf.read()) != -1 && counter != 2) {
             System.out.println(c);
             sb.append((char) c);
-            counter += 1;
+            if (c == 34){
+                counter += 1;
+            }
         }
         String str = sb.toString();
         System.out.println("at endgame");
