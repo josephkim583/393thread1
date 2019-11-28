@@ -119,15 +119,15 @@ public class ProxyPlayer implements GoPlayer{
         int counter = 0;
         while ((c = bf.read()) != -1 && counter < 4) {
             char temp = (char) c;
-            if (counter == 0 && temp == 'p'){
-                return "pass";
-            }
             System.out.println(c);
             sb.append((char) c);
             counter += 1;
         }
         String str = sb.toString();
-        System.out.println("From make a move: " + str);
+        System.out.println("From make a move: " + str.substring(1));
+        if (str.charAt(0) == 'p'){
+            return "pass";
+        }
         return str.substring(1);
     }
 
