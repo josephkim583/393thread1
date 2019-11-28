@@ -41,6 +41,10 @@ public class ProxyPlayer implements GoPlayer{
 //        if (proxyPlayer.isRegistered()){
 //            return proxyPlayer.getPlayerName();
 //        }
+        this.in = new InputStreamReader(this.s.getInputStream());
+        this.bf = new BufferedReader(this.in);
+        this.outputWriter = new PrintWriter(this.s.getOutputStream());
+
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
         System.out.println(commandArray.getClass());
@@ -70,6 +74,9 @@ public class ProxyPlayer implements GoPlayer{
 
     //TODO: does it need to return?
     public boolean receiveStones(Stone stone) throws IOException {
+        this.in = new InputStreamReader(this.s.getInputStream());
+        this.bf = new BufferedReader(this.in);
+        this.outputWriter = new PrintWriter(this.s.getOutputStream());
         JSONArray commandArray = new JSONArray();
         commandArray.add("receive-stones");
         commandArray.add(stone.getStone());
@@ -82,6 +89,9 @@ public class ProxyPlayer implements GoPlayer{
 //        if (!(proxyPlayer.isRegistered() && proxyPlayer.isReceivedStone())) {
 //            return "Go has gone crazy!";
 //        }
+        this.in = new InputStreamReader(this.s.getInputStream());
+        this.bf = new BufferedReader(this.in);
+        this.outputWriter = new PrintWriter(this.s.getOutputStream());
         JSONArray commandArray = new JSONArray();
         commandArray.add("make-a-move");
         JSONArray boardArray = new JSONArray();
@@ -122,6 +132,9 @@ public class ProxyPlayer implements GoPlayer{
     }
 
     public String endGame() throws IOException {
+        this.in = new InputStreamReader(this.s.getInputStream());
+        this.bf = new BufferedReader(this.in);
+        this.outputWriter = new PrintWriter(this.s.getOutputStream());
         JSONArray commandArray = new JSONArray();
         commandArray.add("end-game");
         this.outputWriter.println(commandArray);
