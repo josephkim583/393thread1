@@ -4,20 +4,20 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ProxyPlayer implements GoPlayer{
-    private Player proxyPlayer = new Player();
     private Socket s;
     private InputStreamReader in;
     private BufferedReader bf;
     private PrintWriter outputWriter;
+    private String proxyPlayerName;
+    private String stoneColor;
+    private Player proxyPlayer = new Player();
 
     public ProxyPlayer(Socket s) throws IOException {
         System.out.println("Proxy player made - proxyplayer.java");
@@ -27,13 +27,9 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
     }
 
-    public Player getProxyPlayer() {
-        return proxyPlayer;
-    }
-
     @Override
     public String getPlayerName() {
-       return proxyPlayer.getPlayerName();
+       return this.proxyPlayerName;
     }
 
     //TODO: does it need to return the name?
@@ -78,9 +74,11 @@ public class ProxyPlayer implements GoPlayer{
         JSONArray commandArray = new JSONArray();
         commandArray.add("receive-stones");
         commandArray.add(stone.getStone());
-        this.outputWriter.println(commandArray);
+        System.out.println(commandArray.toJSONString());
+        this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
-        return proxyPlayer.receiveStones(stone);
+        this.stoneColor = stone.getStone();
+        return true;
     }
 
     public String makeAMove(ArrayList<Board> boards) throws IOException {
@@ -101,11 +99,6 @@ public class ProxyPlayer implements GoPlayer{
 //            System.out.println(Arrays.deepToString(boardCopy).getClass());
         }
         commandArray.add(boardArray);
-//        System.out.println(commandArray.size());
-//        System.out.println(commandArray.getClass());
-//        System.out.println(commandArray.get(0).getClass());
-//        System.out.println(commandArray.get(1).getClass());
-
         System.out.println(commandArray);
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
@@ -137,7 +130,7 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
         JSONArray commandArray = new JSONArray();
         commandArray.add("end-game");
-        this.outputWriter.println(commandArray);
+        this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
 //        int c = bf.read();
 //        System.out.println((char) c);

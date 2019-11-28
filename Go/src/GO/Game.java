@@ -88,6 +88,7 @@ public class Game implements GameInterface {
 
     public void playGame() throws Exception {
         while (!gameEnded) {
+//            System.out.println(boardHistory.get(0).printBoard());
             try {
                 if (currentStoneColor.equals("B")){
                     String playerOneMove = playerOne.makeAMove(boardHistory);
@@ -109,7 +110,6 @@ public class Game implements GameInterface {
                 }
                 if (currentStoneColor.equals("W")){
                     String playerTwoMove = playerTwo.makeAMove(boardHistory);
-
                     if (playerTwoMove.equals("pass")){
                         pass();
                     }

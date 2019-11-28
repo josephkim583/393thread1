@@ -16,8 +16,8 @@ public class tournamentAdmin {
             System.out.println("not enough arguments");
             System.exit(0);
         }
-        System.out.println(Integer.parseInt(args[1]));
-        System.out.println(args[0]);
+//        System.out.println(Integer.parseInt(args[1]));
+//        System.out.println(args[0]);
         ConfigReader configReader = new ConfigReader();
         InetAddress addr = InetAddress.getByName(configReader.ipAddress());
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
@@ -26,18 +26,23 @@ public class tournamentAdmin {
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
-            listOfPlayers.add(proxyPlayer);
+//            listOfPlayers.add(proxyPlayer);
         }
-
+//
         tournamentAdmin admin = new tournamentAdmin();
         String mode = args[0];
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
-        int numNewPlayers = closestPowerOfTwo - playerNum;
-
-        for (int i = 0; i < numNewPlayers ; i++) {
+        for (int i = 0; i < closestPowerOfTwo ; i++) {
             Player defaultPlayer = new Player();
             listOfPlayers.add(defaultPlayer);
         }
+//        int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
+//        int numNewPlayers = closestPowerOfTwo - playerNum;
+//
+//        for (int i = 0; i < numNewPlayers ; i++) {
+//            Player defaultPlayer = new Player();
+//            listOfPlayers.add(defaultPlayer);
+//        }
 
         if (mode.equals("-league") || mode.equals("--league")) {
             System.out.println(admin.league(listOfPlayers));
@@ -75,7 +80,7 @@ public class tournamentAdmin {
 
         //play the league
         for (int i = 0; i < playerList.size(); i++) {
-            System.out.println(i + "playing games");
+//            System.out.println(i + "playing games");
             for (int j = i+1; j < playerList.size(); j++) {
                 GoPlayer playerOne = playerList.get(i);
                 GoPlayer playerTwo = playerList.get(j);
