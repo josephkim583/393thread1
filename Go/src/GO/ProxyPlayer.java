@@ -59,16 +59,18 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != -1 && counter != 2) {
+        while ((c = bf.read()) != -1 && counter < 26) {
             System.out.println(c);
             sb.append((char) c);
-            if (c == 34){
-                counter += 1;
-            }
+            counter += 1;
         }
         String str = sb.toString();
         System.out.println("register Name read");
         System.out.println(str);
+
+        this.in.close();
+        this.bf.close();
+        this.outputWriter.close();
         return proxyPlayer.register(str);
     }
 
@@ -82,6 +84,9 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add(stone.getStone());
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
+        this.in.close();
+        this.bf.close();
+        this.outputWriter.close();
         return proxyPlayer.receiveStones(stone);
     }
 
@@ -117,17 +122,18 @@ public class ProxyPlayer implements GoPlayer{
 
 
         StringBuilder sb = new StringBuilder(512);
-        int counter = 0;
         int c = 0;
-        while ((c = bf.read()) != -1 && counter != 2) {
+        int counter = 0;
+        while ((c = bf.read()) != -1 && counter < 4) {
             System.out.println(c);
             sb.append((char) c);
-            if (c == 34){
-                counter += 1;
-            }
+            counter += 1;
         }
         String str = sb.toString();
         System.out.println("From make a move: " + str);
+        this.in.close();
+        this.bf.close();
+        this.outputWriter.close();
         return str;
     }
 
@@ -145,17 +151,18 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != -1 && counter != 2) {
+        while ((c = bf.read()) != -1 && counter < 3) {
             System.out.println(c);
             sb.append((char) c);
-            if (c == 34){
-                counter += 1;
-            }
+            counter += 1;
         }
         String str = sb.toString();
         System.out.println("at endgame");
         System.out.println(str);
         System.out.println("From end game: " + str);
+        this.in.close();
+        this.bf.close();
+        this.outputWriter.close();
         return str;
 
 //        int c = bf.read();
