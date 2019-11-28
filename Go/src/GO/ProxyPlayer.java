@@ -67,7 +67,7 @@ public class ProxyPlayer implements GoPlayer{
         String str = sb.toString();
         System.out.println("register Name read");
         System.out.println(str);
-        return proxyPlayer.register(str);
+        return proxyPlayer.register(str.substring(1));
     }
 
     //TODO: does it need to return?
@@ -124,7 +124,7 @@ public class ProxyPlayer implements GoPlayer{
         }
         String str = sb.toString();
         System.out.println("From make a move: " + str);
-        return str;
+        return str.substring(1);
     }
 
     public String endGame() throws IOException {
@@ -150,7 +150,7 @@ public class ProxyPlayer implements GoPlayer{
         System.out.println("at endgame");
         System.out.println(str);
         System.out.println("From end game: " + str);
-        return str;
+        return str.substring(1);
 
 //        int c = bf.read();
 //        System.out.println(c);
