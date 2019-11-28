@@ -38,9 +38,9 @@ public class ProxyPlayer implements GoPlayer{
 
     //TODO: does it need to return the name?
     public String register(String string) throws IOException {
-//        if (proxyPlayer.isRegistered()){
-//            return proxyPlayer.getPlayerName();
-//        }
+        if (proxyPlayer.isRegistered()){
+            return proxyPlayer.getPlayerName();
+        }
         this.in = new InputStreamReader(this.s.getInputStream());
         this.bf = new BufferedReader(this.in);
         this.outputWriter = new PrintWriter(this.s.getOutputStream());
