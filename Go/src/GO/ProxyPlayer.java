@@ -67,10 +67,6 @@ public class ProxyPlayer implements GoPlayer{
         String str = sb.toString();
         System.out.println("register Name read");
         System.out.println(str);
-
-        this.in.close();
-        this.bf.close();
-        this.outputWriter.close();
         return proxyPlayer.register(str);
     }
 
@@ -84,9 +80,6 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add(stone.getStone());
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        this.in.close();
-        this.bf.close();
-        this.outputWriter.close();
         return proxyPlayer.receiveStones(stone);
     }
 
@@ -131,9 +124,6 @@ public class ProxyPlayer implements GoPlayer{
         }
         String str = sb.toString();
         System.out.println("From make a move: " + str);
-        this.in.close();
-        this.bf.close();
-        this.outputWriter.close();
         return str;
     }
 
@@ -160,9 +150,6 @@ public class ProxyPlayer implements GoPlayer{
         System.out.println("at endgame");
         System.out.println(str);
         System.out.println("From end game: " + str);
-        this.in.close();
-        this.bf.close();
-        this.outputWriter.close();
         return str;
 
 //        int c = bf.read();
