@@ -125,7 +125,7 @@ public class ProxyPlayer implements GoPlayer{
         }
         String str = sb.toString();
         System.out.println("From make a move: " + str.substring(1));
-        if (str.charAt(0) == 'p'){
+        if (str.charAt(1) == 'p'){
             return "pass";
         }
         return str.substring(1);
