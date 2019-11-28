@@ -37,7 +37,7 @@ public class Board implements Statement {
 
     public Board(Board copyBoard) {
         this.board = new String[boardSize][boardSize];
-        String[][] ref = copyBoard.getBoard();
+        String[][] ref = copyBoard.getStringBoard();
         for (int i = 0 ; i < boardSize ; i++) {
             for (int j = 0; j < boardSize ; j++) {
                 if (!ref[i][j].equals("B") && !ref[i][j].equals("W") && !ref[i][j].equals(" ")){
@@ -57,8 +57,14 @@ public class Board implements Statement {
         }
     }
 
-    public String[][] getBoard() {
-        return board;
+    public String[][] getStringBoard() {
+        String[][] returnBoard = new String[boardSize][boardSize];
+        for (int i = 0 ; i < boardSize ; i++) {
+            for (int j = 0; j < boardSize ; j++) {
+                returnBoard[i][j] = board[i][j];
+            }
+        }
+        return returnBoard;
     }
 
 

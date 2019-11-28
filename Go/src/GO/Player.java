@@ -70,7 +70,7 @@ public class Player implements GoPlayer{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
                     return ("This history makes no sense!");
                 }
-                return smartMove(boards);
+                return randomMove(boards);
 //                return "pass";
             } catch (Exception e){
                 return "GO has gone crazy!";
@@ -132,6 +132,22 @@ public class Player implements GoPlayer{
              return dumbMove(boards);
          }
          return pointToPlace.pointToString();
+     }
+
+     String randomMove (ArrayList<Board> boards) throws Exception {
+         Board b = new Board();
+         int boardSize = b.boardSize();
+
+         RuleChecker ruleChecker = new RuleChecker();
+         for (int i = 1; i <= 10; i++) {
+             int rand1 = (int) (Math.random()*9) +1;
+             int rand2 = (int) (Math.random()*9) +1;
+             Point currPoint = new Point(rand1 + "-" + rand2);
+             if ((boolean)ruleChecker.moveCheck(getPlayerStone(),currPoint,boards).get(0)) {
+                 return (currPoint.pointToString());
+             }
+         }
+         return "pass";
      }
 
      public String endGame() {

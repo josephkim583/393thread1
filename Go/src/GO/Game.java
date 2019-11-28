@@ -35,7 +35,6 @@ public class Game implements GameInterface {
     public void registerPlayer(GoPlayer playerOne, GoPlayer playerTwo) throws IOException {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-
         //register playerOne
         try {
             this.playerOne.register("localPlayer");
@@ -56,8 +55,11 @@ public class Game implements GameInterface {
 
         //receive stone playerOne
         try{
+            System.out.println("before sending receive stone");
             Stone blackStone = new Stone("B");
             this.playerOne.receiveStones(blackStone);
+            System.out.println("after sending receive stone");
+
         }
         catch (Exception e){
             gameEnded = true;
@@ -79,6 +81,8 @@ public class Game implements GameInterface {
             this.playerOne.endGame();
             this.playerTwo.endGame();
         }
+
+
         // TODO: GO has gone crazy case
     }
 
@@ -88,7 +92,6 @@ public class Game implements GameInterface {
             try {
                 if (currentStoneColor.equals("B")){
                     String playerOneMove = playerOne.makeAMove(boardHistory);
-                    playerOneMove = "1-1";
                     if (playerOneMove.equals("pass")){
                         pass();
                     }

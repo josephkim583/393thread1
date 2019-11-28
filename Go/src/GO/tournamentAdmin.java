@@ -64,6 +64,7 @@ public class tournamentAdmin {
     }
 
     String league(ArrayList<GoPlayer> playerList) throws Exception {
+        System.out.println("Enter league");
         ArrayList<String> cheaters = new ArrayList<>();
         HashMap<GoPlayer, HashMap<GoPlayer, Integer>> currentStanding = new HashMap<>();
         //initialize currentStanding
@@ -86,7 +87,7 @@ public class tournamentAdmin {
                 HashMap<String, GoPlayer> gameResult = playOneGame(playerOne,playerTwo);
 
                 //In case there was a cheater
-                if (!gameResult.get("cheater").equals(null)) {
+                if (gameResult.get("cheater") != null) {
                     GoPlayer cheater = gameResult.get("cheater");
                     cheaters.add(cheater.getPlayerName());
                     Player newPlayer = new Player();
