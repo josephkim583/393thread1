@@ -41,8 +41,22 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.flush();
         System.out.println("register proxy flushed");
 
-        String str = this.bf.readLine();
-        return (proxyPlayer.register(str));
+        DataOutputStream out = new DataOutputStream(new BufferedOutputStream(this.s.getOutputStream()));
+        DataInputStream in = new DataInputStream(new BufferedInputStream(this.s.getInputStream()));
+
+
+        StringBuilder sb = new StringBuilder(512);
+        int c = 0;
+        int counter = 0;
+        while ((c = bf.read()) != 10) {
+            System.out.println((char) c);
+            sb.append((char) c);
+            counter += 1;
+        }
+        String str = sb.toString();
+        System.out.println("register proxy received: "+str);
+
+        return proxyPlayer.register(str);
 
 //        StringBuilder sb = new StringBuilder(512);
 //        int c = 0;
@@ -87,24 +101,25 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
 
-        String str = this.bf.readLine();
-        return (str);
-
-
-//        StringBuilder sb = new StringBuilder(512);
-//        int c = 0;
-//        int counter = 0;
+        StringBuilder sb = new StringBuilder(512);
+        int c = 0;
+        int counter = 0;
+        while ((c = bf.read()) != 10) {
+            System.out.println(c);
+            sb.append((char) c);
+            counter += 1;
+        }
 //        while ((c = bf.read()) != -1 && counter < 3) {
 //            char temp = (char) c;
 //            System.out.println(c);
 //            sb.append((char) c);
 //            counter += 1;
 //        }
-//        String str = sb.toString();
-//        if (str.charAt(0) == 'p'){
-//            return "pass";
-//        }
-//        return str;
+        String str = sb.toString();
+        if (str.charAt(0) == 'p'){
+            return "pass";
+        }
+        return str;
 //        return str.substring(1);
     }
 
@@ -115,19 +130,21 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
 
-        String str = this.bf.readLine();
-        return (str);
-
-//        StringBuilder sb = new StringBuilder(512);
-//        int c = 0;
-//        int counter = 0;
+        StringBuilder sb = new StringBuilder(512);
+        int c = 0;
+        int counter = 0;
+        while ((c = bf.read()) != 10) {
+            System.out.println(c);
+            sb.append((char) c);
+            counter += 1;
+        }
 //        while ((c = bf.read()) != -1 && counter < 2) {
 //            System.out.println(c);
 //            sb.append((char) c);
 //            counter += 1;
 //        }
-//        String str = sb.toString();
-//        return str;
+        String str = sb.toString();
+        return str;
 ////        return str.substring(1);
     }
 
