@@ -2,25 +2,26 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-<<<<<<< HEAD
-      <artifact name="tournament:jar" />
-=======
-      <artifact name="gameAdmin" />
->>>>>>> master
+      <artifact name="RemotePlayer:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6574a247-a292-48b1-99ef-1ae3dc29411b" name="Default Changelist" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
-=======
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Assignment3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/Assignment3.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment5_1_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment5_1_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment5_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment5_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Assignment6_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ProxyPlayer/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/RemotePlayer_jar/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TestLiberty/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TestLiberty/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/gameAdmin/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/gameAdmin/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/socket/Go.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/tournament_jar/Go.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/tournament_jar/Go.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GO/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ConfigReader.java" afterDir="false" />
->>>>>>> master
->>>>>>> master
+      <change beforePath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/ProxyPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/RemotePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/RemotePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GO/tournamentAdmin.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

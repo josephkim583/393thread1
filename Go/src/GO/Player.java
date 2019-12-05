@@ -8,9 +8,8 @@ import java.util.List;
 public class Player implements GoPlayer{
     private String playerName;
     private Stone playerStone;
-    private boolean registered;
-    private boolean receivedStone;
-    private boolean gameEnded = false;
+    private boolean registered = false;
+    private boolean receivedStone = false;
 
     public Player() {
     }
@@ -38,7 +37,7 @@ public class Player implements GoPlayer{
     }
 
     public String register(String name) {
-        if (!registered && !gameEnded){
+        if (!registered){
             this.playerName = name;
             this.registered = true;
             return name;
@@ -46,13 +45,13 @@ public class Player implements GoPlayer{
         return "GO has gone crazy!";
     }
 
-    public boolean receiveStones(Stone stone) {
-        if (registered && !receivedStone && !gameEnded) {
+    public String receiveStones(Stone stone) {
+        if (registered && !receivedStone) {
             this.playerStone = stone;
             this.receivedStone = true;
-            return true;
+            return "received Stone";
         }
-        return false;
+        return "GO has gone crazy!";
     }
 
      public String makeADumbMove (ArrayList<Board> boards) throws Exception {
@@ -64,7 +63,7 @@ public class Player implements GoPlayer{
      }
 
      public String makeAMove(ArrayList<Board> boards) throws Exception {
-        if (registered && receivedStone && !gameEnded) {
+        if (registered && receivedStone) {
             RuleChecker ruleChecker = new RuleChecker();
             try{
                 if (!ruleChecker.historyCheck(getPlayerStone(), boards)) {
@@ -121,11 +120,6 @@ public class Player implements GoPlayer{
                          }
                      }
                  }
-//                 Board maybeBoard = ruleChecker.makeMaybeBoard(lastBoard, currPoint, playerStone);
-//                 JSONArray maybeOpponentPoint = maybeBoard.getPoints(opponentStone.toMaybeStone());
-//                 if (opponentPoints.size() > maybeOpponentPoint.size()) {
-//                     return (currPoint.pointToString());
-//                 }
              }
          }
          if (pointToPlace.getCol() == 100){
@@ -151,10 +145,8 @@ public class Player implements GoPlayer{
      }
 
      public String endGame() {
-//        gameEnded = true;
-         this.registered = false;
          this.receivedStone = false;
-        return "OK";
+         return "OK";
      }
 
 }

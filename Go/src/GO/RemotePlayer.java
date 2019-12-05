@@ -21,6 +21,7 @@ public class RemotePlayer {
         } else {
             name = "remotePlayer";
         }
+        System.out.println(name);
 //        ConfigReader config = new ConfigReader();
         RemotePlayer rp = new RemotePlayer();
         int counter = 0;
@@ -40,21 +41,26 @@ public class RemotePlayer {
                     switch (command) {
                         case ("register"): {
                             if (commandArray.size() != 1) {
+                                System.out.println("registered");
                                 outputWrtier.println("GO has gone crazy!");
                                 outputWrtier.flush();
                                 break;
                             }
                             String registered = rp.register(name);
+                            System.out.println(registered);
                             outputWrtier.println(registered);
                             outputWrtier.flush();
                             break;
                         }
                         case ("receive-stones"): {
                             try {
+                                System.out.println("received inside try");
                                 Stone playerStone = new Stone(commandArray.get(1).toString());
-                                boolean receiveStoneSuccess = rp.receiveStones(playerStone);
+                                String
+                                        receiveStoneSuccess = rp.receiveStones(playerStone);
                                 break;
                             } catch (Exception e) {
+                                System.out.println("error in rs");
                                 break;
                             }
                         }
@@ -78,6 +84,7 @@ public class RemotePlayer {
                                 }
                             }
                             String move = rp.makeAMove(boards);
+                            System.out.println(move);
                             outputWrtier.println(move);
                             outputWrtier.flush();
                             break;
@@ -118,8 +125,8 @@ public class RemotePlayer {
         return register;
     }
 
-    public boolean receiveStones(Stone stone) {
-        boolean receiveStoneSuccess = p.receiveStones(stone);
+    public String receiveStones(Stone stone) {
+        String receiveStoneSuccess = p.receiveStones(stone);
         return receiveStoneSuccess;
     }
 
