@@ -48,8 +48,11 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != 10) {
-            System.out.println((char) c);
+        while ((c = bf.read()) != -1) {
+            System.out.println("register char: " +(char) c);
+            System.out.println("regcharister int: " + c);
+
+
             sb.append((char) c);
             counter += 1;
         }
@@ -104,8 +107,9 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != 10) {
-            System.out.println(c);
+        while ((c = bf.read()) != -1) {
+            System.out.println("make a move char: "+(char) c);
+            System.out.println("make a move int: "+c);
             sb.append((char) c);
             counter += 1;
         }
