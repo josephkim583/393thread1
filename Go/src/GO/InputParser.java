@@ -61,4 +61,14 @@ public class InputParser {
         }
         return strBoard;
     }
+
+    public Boolean isValidJson(String s) {
+        JSONParser parser = new JSONParser();
+        try {
+            parser.parse(s);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
+    }
 }

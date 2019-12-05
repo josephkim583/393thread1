@@ -11,6 +11,7 @@ public class ProxyPlayer implements GoPlayer{
     private BufferedReader bf;
     private PrintWriter outputWriter;
     private Player proxyPlayer = new Player();
+    private InputParser parser = new InputParser();
 
     public ProxyPlayer(Socket s) throws IOException {
         System.out.println("Proxy player made - proxyplayer.java");
@@ -49,11 +50,13 @@ public class ProxyPlayer implements GoPlayer{
         int c = 0;
         int counter = 0;
         while ((c = bf.read()) != -1) {
-            System.out.println("register char: " +(char) c);
-            System.out.println("regcharister int: " + c);
-
-
             sb.append((char) c);
+            String s = sb.toString();
+            System.out.println("print s: "+s);
+            System.out.println("valid json?: "+this.parser.isValidJson(s));
+            if (this.parser.isValidJson(s)){
+                break;
+            }
             counter += 1;
         }
         String str = sb.toString();
@@ -104,15 +107,23 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
 
+
+
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
+
         while ((c = bf.read()) != -1) {
-            System.out.println("make a move char: "+(char) c);
-            System.out.println("make a move int: "+c);
             sb.append((char) c);
+            String s = sb.toString();
+            System.out.println("print s: "+s);
+            System.out.println("valid json?: "+this.parser.isValidJson(s));
+            if (this.parser.isValidJson(s)){
+                break;
+            }
             counter += 1;
         }
+
 //        while ((c = bf.read()) != -1 && counter < 3) {
 //            char temp = (char) c;
 //            System.out.println(c);
@@ -137,9 +148,14 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-        while ((c = bf.read()) != 10) {
-            System.out.println(c);
+        while ((c = bf.read()) != -1) {
             sb.append((char) c);
+            String s = sb.toString();
+            System.out.println("print s: "+s);
+            System.out.println("valid json?: "+this.parser.isValidJson(s));
+            if (this.parser.isValidJson(s)){
+                break;
+            }
             counter += 1;
         }
 //        while ((c = bf.read()) != -1 && counter < 2) {

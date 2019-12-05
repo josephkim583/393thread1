@@ -42,13 +42,13 @@ public class RemotePlayer {
                         case ("register"): {
                             if (commandArray.size() != 1) {
                                 System.out.println("registered");
-                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.println("\"GO has gone crazy!\"");
                                 outputWrtier.flush();
                                 break;
                             }
                             String registered = rp.register(name);
-                            System.out.println(registered);
-                            outputWrtier.println(registered);
+                            System.out.println("\"" + registered+ "\"");
+                            outputWrtier.println("\"" + registered+ "\"");
                             outputWrtier.flush();
                             break;
                         }
