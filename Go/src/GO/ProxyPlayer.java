@@ -35,18 +35,28 @@ public class ProxyPlayer implements GoPlayer{
         JSONArray commandArray = new JSONArray();
         commandArray.add("register");
 
+        System.out.println("register proxy function");
+
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
-        StringBuilder sb = new StringBuilder(512);
-        int c = 0;
-        int counter = 0;
-        while ((c = bf.read()) != -1 && counter < 26) {
-            System.out.println(c);
-            sb.append((char) c);
-            counter += 1;
-        }
-        String str = sb.toString();
-        return proxyPlayer.register(str.substring(1));
+        System.out.println("register proxy flushed");
+
+        String str = this.bf.readLine();
+        return (proxyPlayer.register(str));
+
+//        StringBuilder sb = new StringBuilder(512);
+//        int c = 0;
+//        int counter = 0;
+//        while ((c = bf.read()) != -1 && counter < 6) {
+//            System.out.println(c);
+//            sb.append((char) c);
+//            counter += 1;
+//        }
+//        String str = sb.toString();
+//        System.out.println("register proxy received: "+str);
+//
+//        return proxyPlayer.register(str);
+//        return proxyPlayer.register(str.substring(1));
     }
 
     //TODO: does it need to return?
@@ -77,21 +87,25 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.println(commandArray);
         this.outputWriter.flush();
 
+        String str = this.bf.readLine();
+        return (str);
 
-        StringBuilder sb = new StringBuilder(512);
-        int c = 0;
-        int counter = 0;
-        while ((c = bf.read()) != -1 && counter < 4) {
-            char temp = (char) c;
-            System.out.println(c);
-            sb.append((char) c);
-            counter += 1;
-        }
-        String str = sb.toString();
-        if (str.charAt(1) == 'p'){
-            return "pass";
-        }
-        return str.substring(1);
+
+//        StringBuilder sb = new StringBuilder(512);
+//        int c = 0;
+//        int counter = 0;
+//        while ((c = bf.read()) != -1 && counter < 3) {
+//            char temp = (char) c;
+//            System.out.println(c);
+//            sb.append((char) c);
+//            counter += 1;
+//        }
+//        String str = sb.toString();
+//        if (str.charAt(0) == 'p'){
+//            return "pass";
+//        }
+//        return str;
+//        return str.substring(1);
     }
 
     public String endGame() throws IOException {
@@ -100,16 +114,21 @@ public class ProxyPlayer implements GoPlayer{
         commandArray.add("end-game");
         this.outputWriter.println(commandArray.toJSONString());
         this.outputWriter.flush();
-        StringBuilder sb = new StringBuilder(512);
-        int c = 0;
-        int counter = 0;
-        while ((c = bf.read()) != -1 && counter < 3) {
-            System.out.println(c);
-            sb.append((char) c);
-            counter += 1;
-        }
-        String str = sb.toString();
-        return str.substring(1);
+
+        String str = this.bf.readLine();
+        return (str);
+
+//        StringBuilder sb = new StringBuilder(512);
+//        int c = 0;
+//        int counter = 0;
+//        while ((c = bf.read()) != -1 && counter < 2) {
+//            System.out.println(c);
+//            sb.append((char) c);
+//            counter += 1;
+//        }
+//        String str = sb.toString();
+//        return str;
+////        return str.substring(1);
     }
 
     void openConnection() throws IOException {

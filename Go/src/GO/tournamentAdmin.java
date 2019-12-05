@@ -23,16 +23,17 @@ public class tournamentAdmin {
         ServerSocket ss = new ServerSocket(configReader.port(), 50, addr);
         int playerNum = Integer.parseInt(args[1]);
         ArrayList<GoPlayer> listOfPlayers = new ArrayList<>();
+        System.out.println(playerNum);
         for (int i = 0; i < playerNum; i++) {
             Socket s = ss.accept();
             ProxyPlayer proxyPlayer = new ProxyPlayer(s);
-//            listOfPlayers.add(proxyPlayer);
+            listOfPlayers.add(proxyPlayer);
         }
 //
         tournamentAdmin admin = new tournamentAdmin();
         String mode = args[0];
         int closestPowerOfTwo = admin.closestPowerOfTwo(playerNum);
-        for (int i = 0; i < closestPowerOfTwo ; i++) {
+        for (int i = 0; i < closestPowerOfTwo - playerNum ; i++) {
             Player defaultPlayer = new Player();
             listOfPlayers.add(defaultPlayer);
         }
