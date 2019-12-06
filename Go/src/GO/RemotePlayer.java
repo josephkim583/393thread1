@@ -66,7 +66,7 @@ public class RemotePlayer {
                         }
                         case ("make-a-move"): {
                             if (commandArray.size() != 2) {
-                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.println("\"" + "GO has gone crazy!" + "\"");
                                 outputWrtier.flush();
                                 break;
                             }
@@ -78,25 +78,25 @@ public class RemotePlayer {
                                     Board temp = new Board(input.parseJSONboard((JSONArray) boardJSONArray.get(i)));
                                     boards.add(temp);
                                 } catch (Exception e) {
-                                    outputWrtier.println("GO has gone crazy!");
+                                    outputWrtier.println("\"" + "GO has gone crazy!" + "\"");
                                     outputWrtier.flush();
                                     break;
                                 }
                             }
                             String move = rp.makeAMove(boards);
                             System.out.println(move);
-                            outputWrtier.println(move);
+                            outputWrtier.println("\"" + move + "\"");
                             outputWrtier.flush();
                             break;
                         }
                         case ("end-game"): {
                             if (commandArray.size() != 1) {
-                                outputWrtier.println("GO has gone crazy!");
+                                outputWrtier.println("\"" + "GO has gone crazy!" + "\"");
                                 outputWrtier.flush();
                                 break;
                             }
                             String endGame = rp.endGame();
-                            outputWrtier.println(endGame);
+                            outputWrtier.println("\"" + endGame + "\"");
                             outputWrtier.flush();
                             break;
                         }

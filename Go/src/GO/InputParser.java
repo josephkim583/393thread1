@@ -66,9 +66,14 @@ public class InputParser {
         JSONParser parser = new JSONParser();
         try {
             parser.parse(s);
+            return true;
         } catch (ParseException e) {
             return false;
         }
-        return true;
+    }
+
+    public Object parseJSON(String s) throws ParseException {
+        JSONParser parser = new JSONParser();
+        return parser.parse(s);
     }
 }

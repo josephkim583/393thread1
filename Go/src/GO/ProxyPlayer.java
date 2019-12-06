@@ -1,6 +1,9 @@
 package GO;
 
 import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -42,41 +45,23 @@ public class ProxyPlayer implements GoPlayer{
         this.outputWriter.flush();
         System.out.println("register proxy flushed");
 
-        DataOutputStream out = new DataOutputStream(new BufferedOutputStream(this.s.getOutputStream()));
-        DataInputStream in = new DataInputStream(new BufferedInputStream(this.s.getInputStream()));
-
-
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
-        int counter = 0;
+        String registeredName = null;
         while ((c = bf.read()) != -1) {
             sb.append((char) c);
             String s = sb.toString();
             System.out.println("print s: "+s);
-            System.out.println("valid json?: "+this.parser.isValidJson(s));
-            if (this.parser.isValidJson(s)){
+            try{
+                System.out.println("valid json?: "+this.parser.parseJSON(s).toString());
+                registeredName = this.parser.parseJSON(s).toString();
                 break;
+            } catch (ParseException e) {
+                continue;
             }
-            counter += 1;
         }
-        String str = sb.toString();
-        System.out.println("register proxy received: "+str);
-
-        return proxyPlayer.register(str);
-
-//        StringBuilder sb = new StringBuilder(512);
-//        int c = 0;
-//        int counter = 0;
-//        while ((c = bf.read()) != -1 && counter < 6) {
-//            System.out.println(c);
-//            sb.append((char) c);
-//            counter += 1;
-//        }
-//        String str = sb.toString();
-//        System.out.println("register proxy received: "+str);
-//
-//        return proxyPlayer.register(str);
-//        return proxyPlayer.register(str.substring(1));
+        System.out.println("register proxy received: "+registeredName);
+        return proxyPlayer.register(registeredName);
     }
 
     //TODO: does it need to return?
@@ -112,30 +97,21 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
-
+        String move = null;
         while ((c = bf.read()) != -1) {
             sb.append((char) c);
             String s = sb.toString();
             System.out.println("print s: "+s);
             System.out.println("valid json?: "+this.parser.isValidJson(s));
-            if (this.parser.isValidJson(s)){
+            try{
+                System.out.println("valid json?: "+this.parser.parseJSON(s).toString());
+                move = this.parser.parseJSON(s).toString();
                 break;
+            } catch (ParseException e) {
+                continue;
             }
-            counter += 1;
         }
-
-//        while ((c = bf.read()) != -1 && counter < 3) {
-//            char temp = (char) c;
-//            System.out.println(c);
-//            sb.append((char) c);
-//            counter += 1;
-//        }
-        String str = sb.toString();
-        if (str.charAt(0) == 'p'){
-            return "pass";
-        }
-        return str;
-//        return str.substring(1);
+        return move;
     }
 
     public String endGame() throws IOException {
@@ -148,24 +124,21 @@ public class ProxyPlayer implements GoPlayer{
         StringBuilder sb = new StringBuilder(512);
         int c = 0;
         int counter = 0;
+        String endGame = null;
         while ((c = bf.read()) != -1) {
             sb.append((char) c);
             String s = sb.toString();
             System.out.println("print s: "+s);
             System.out.println("valid json?: "+this.parser.isValidJson(s));
-            if (this.parser.isValidJson(s)){
+            try{
+                System.out.println("valid json?: "+this.parser.parseJSON(s).toString());
+                endGame = this.parser.parseJSON(s).toString();
                 break;
+            } catch (ParseException e) {
+                continue;
             }
-            counter += 1;
         }
-//        while ((c = bf.read()) != -1 && counter < 2) {
-//            System.out.println(c);
-//            sb.append((char) c);
-//            counter += 1;
-//        }
-        String str = sb.toString();
-        return str;
-////        return str.substring(1);
+        return endGame;
     }
 
     void openConnection() throws IOException {
